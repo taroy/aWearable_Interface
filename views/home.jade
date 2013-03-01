@@ -1,77 +1,78 @@
 header.jumbotron.subhead#overview
-  h1 aWearable
-section#homeContent
-  .page-header
-    
-    h1 1. Connect your aWearable to the computer
-  .row.example
-    .span12#e2-exampleConnection
-      p
-        a.btn(href="#")#e2-buttonConnect
-          i.icon-refresh
-          |  Connect to aWearable
-      .alert.alert-info Please connect to your aWearable using the button.
-      .alert.hide.alert-error Unable to connect to aWearable!
-      .alert.hide.alert-success Connection to aWearable established!
-    .span12#e2-secondStep
-  .page-header
-    
-   .row.example
-    .
-    //.span12#e2-secondStep
-      p
-        select.span2#e2-pinValue
-          option(value=13) PIN: 13
-          option(value=12) PIN: 12
-          option(value=11) PIN: 11
-          option(value=10) PIN: 10
-          option(value=09) PIN: 09
-        input.span3#e2-interval(type="text",placeholder="Interval in Miliseconds") 
-        |  
-        a.btn(href="#", style="margin-top: 1px;")#e2-buttonStart
-          i.icon-retweet
-          |  Start blinking LED 
-        |  
-        a.btn(href="#", style="margin-top: 1px;")#e2-buttonStop
-          i.icon-off
-          |  Stop 
-        |          
-        label.label#e2-status(style="position: relative; top: -2px;") LED off
-      .alert.hide.alert-info Please connect to your Arduino using the button.
-      .alert.hide.alert-error Connect to Arduino first!
-      .alert.hide.alert-success Connection to Arduino established!
-  .page-header
-  
-  
-    //h1 2. Set range
-  //.row.example
-    .span12#e2-exampleConnection
-      p
-        select.span2#e2-rangeValue 
-          option(value=50) 50m
-          option(value=100) 100m
-          option(value=200) 200m
-          option(value=500) 500m
-        |  
-   
-  .page-header
-    h1 3. Choose awareness
+      h1 aWearable
+    section#homeContent
+      .page-header
+        
+        h1 1. Connect your aWearable to the computer
       .row.example
         .span12#e2-exampleConnection
-          
-            a.btn
-                |  In-range ajsdk
-              a.btn(href="#")
-                |  Direction
-                a.btn(href="#")
-                  |  Distance
-                  a.btn(href="#")
-                    |  Coordinates
-            
-          
+          p
+            a.btn(href="#")#e2-buttonConnect
+              i.icon-refresh
+              |  Connect to aWearable
+          .alert.alert-info Please connect to your aWearable using the button.
+          .alert.hide.alert-error Unable to connect to aWearable!
+          .alert.hide.alert-success Connection to aWearable established!
+        .span12#e2-secondStep
+      .page-header
         
-    
-    
-    h1 4. Components
-    h1 5. Set range
-   
+       .row.example
+        .
+        //.span12#e2-secondStep
+          p
+            select.span2#e2-pinValue
+              option(value=13) PIN: 13
+              option(value=12) PIN: 12
+              option(value=11) PIN: 11
+              option(value=10) PIN: 10
+              option(value=09) PIN: 09
+            input.span3#e2-interval(type="text",placeholder="Interval in Miliseconds") 
+            |  
+            a.btn(href="#", style="margin-top: 1px;")#e2-buttonStart
+              i.icon-retweet
+              |  Start blinking LED 
+            |  
+            a.btn(href="#", style="margin-top: 1px;")#e2-buttonStop
+              i.icon-off
+              |  Stop 
+            |          
+            label.label#e2-status(style="position: relative; top: -2px;") LED off
+          .alert.hide.alert-info Please connect to your Arduino using the button.
+          .alert.hide.alert-error Connect to Arduino first!
+          .alert.hide.alert-success Connection to Arduino established!
+      .page-header
+      
+      
+        //h1 2. Set range
+      //.row.example
+        .span12#e2-exampleConnection
+          p
+            select.span2#e2-rangeValue 
+              option(value=50) 50m
+              option(value=100) 100m
+              option(value=200) 200m
+              option(value=500) 500m
+            |  
+       
+      .page-header
+        h1 3. Choose awareness
+          .row
+            .span12
+              .awareness-buttons
+                a.btn
+                    |  In- <br>range
+                  a.btn(href="#")
+                    |  Direction
+                    a.btn(href="#")
+                      |  Distance
+                      a.btn(href="#")
+                        |  Coordinates
+        
+        h1 4. Components
+          h2 AJAX
+          <button type="button" onclick="loadXMLDoc()">Request data</button>
+          #myDiv
+               
+               
+        h1 5. Set range
+       
