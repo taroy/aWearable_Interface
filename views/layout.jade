@@ -7,25 +7,95 @@ html(lang="en")
     link(rel="stylesheet", href="styles/init.css")
     script(data-main="scripts/app." + jsApp, type="text/javascript", src="scripts/vendor/require-jquery.js")
     script(type="text/javascript", src="http://localhost:8090/socket.io/socket.io.js")
-    script
-      function loadXMLDoc(){
-      var xmlhttp;
-      if (window.XMLHttpRequest){// code for IE7+, Firefox, Chrome, Opera, Safari
-        xmlhttp=new XMLHttpRequest();
-      }
-      else {// code for IE6, IE5
-        xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-      }
-      xmlhttp.onreadystatechange=function() {
-        if (xmlhttp.readyState==4 && xmlhttp.status==200) {
-          document.getElementById("myDiv").innerHTML=xmlhttp.responseText;
-        }
-      }
-      xmlhttp.open("GET","demo_get.asp",true);
-      xmlhttp.send();
-    }
+    //script(type="text/javascript", src="script.js")
+    script(src="//ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.js")
 
+    script
+      function allowDrop(ev) {
+        ev.preventDefault();
+      }
+        
+      function drag(ev) {
+        ev.dataTransfer.setData("Text",ev.target.id);
+      }
+        
+      function drop(ev) {
+        ev.preventDefault();
+        var data=ev.dataTransfer.getData("Text");
+        ev.target.appendChild(document.getElementById(data));
+      }
+      
+       script
+      function allowDrop(ev) {
+        ev.preventDefault();
+      }
+        
+      function drag(ev) {
+        ev.dataTransfer.setData("Text",ev.target.id);
+      }
+        
+      function drop(ev) {
+        ev.preventDefault();
+        var data=ev.dataTransfer.getData("Text");
+        ev.target.appendChild(document.getElementById(data));
+      }
     
+      
+    script
+      function loadXMLDoc() {
+        var request;
+        request = new XMLHttpRequest();
+        request.onreadystatechange=function() {
+  
+            document.getElementById("myDiv").innerHTML=request.responseText;
+          
+        }
+   
+        request.open("GET","example-ajax_info.html", true);
+        request.send();
+      }
+      script
+      function loadXMLDoc2() {
+        var request;
+        request = new XMLHttpRequest();
+        request.onreadystatechange=function() {
+  
+            document.getElementById("myDiv2").innerHTML=request.responseText;
+          
+        }
+   
+        request.open("GET","example-walkLED.html", true);
+        request.send();
+      }
+      script
+      function loadDisplay() {
+        var request;
+        request = new XMLHttpRequest();
+        request.onreadystatechange=function() {
+  
+            document.getElementById("divDisplay").innerHTML=request.responseText;
+          
+        }
+   
+        request.open("GET","example-ajax_info.html", true);
+        request.send();
+      }
+      script
+      function loadLights() {
+        var request;
+        request = new XMLHttpRequest();
+        request.onreadystatechange=function() {
+  
+            document.getElementById("divLights").innerHTML=request.responseText;
+          
+        }
+   
+        request.open("GET","example-lights.html", true);
+        request.send();
+      }
+      script
+   
+        
   body
     .navbar.navbar-fixed-top(style="z-index: 4;position:absolute;")
       .navbar-inner
@@ -44,6 +114,8 @@ html(lang="en")
                     a(href="example-test.html") App 1
                   li
                     a(href="example-motor.html") App 2
+                  li
+                    a(href="example-ajax_info.html") App 3
               li
                 //a(href="https://github.com/semu/noduino") View on GitHub &raquo;
            
