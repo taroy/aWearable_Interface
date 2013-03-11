@@ -53,6 +53,13 @@ define(['kickstart', 'module', 'path', 'fs'], function (kickstart, module, path,
     res.render('example-test', {jsApp: 'test', active: 'examples', title: 'noduino', 'examples': examples});
   });
   
+  /** 
+   * Catch request for serving Ajax example page
+   */
+  srv.all('/example-ajax_info.html', function(req, res) {
+    res.render('example-ajax_info', {jsApp: 'ajax_info', active: 'examples', title: 'noduino', 'examples': examples});
+  });
+  
   /**
    * Catch request for serving motor example
    */
