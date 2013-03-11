@@ -24,7 +24,9 @@ define(function() {
   Example2.stop = function() {
     this.led.stopBlinking();
   };
-  
+ 
+ //The original start function
+
   Example2.start = function(pin, interval) {
     var that = this;
     if (!that.led) {
@@ -47,6 +49,20 @@ define(function() {
       that.led.blink(interval);
     }
   };
+
+ 
+  Example2.saveRange = function(range) {
+    console.log("SaveRange");
+    console.log(range);
+    var that = this;
+    if (!that.range) {
+      this.board.withRANGE({range: range}, function(err, RANGE) {
+        if (err) { return console.log(err); }
+
+      });
+    }
+  };
+
   
   return Example2;
 });

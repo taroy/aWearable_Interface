@@ -126,6 +126,11 @@ define(function(require, exports, module) {
     this.pinMode(pin, this.MODE_OUT);
     next(null, pin);
   };
+  
+    SocketNoduino.prototype.withRANGE = function(range) {
+    console.log("withRANGE in socket")
+    return (range);
+  };
 
   SocketNoduino.prototype.withButton = function(pin, next) {
     this.pinMode(pin, this.MODE_IN);
@@ -137,14 +142,32 @@ define(function(require, exports, module) {
     next(null, pin);
   }  
   
-  SocketNoduino.prototype.digitalWrite = function(pin, val, next) {
+  /*
+  SocketNoduino.prototype.digitalWrite = function(pin, range, val, next) {
   	pin = this.normalizePin(pin);
   	val = this.normalizeVal(val);
   	this.log('info', 'analogWrite to pin ' + pin + ': ' + val);
-  	this.write('03' + pin + val);
+  	this.write(range + range + range + range);
+	console.log("pin");
+	console.log(pin);
+	console.log("val");
+	console.log(val);
+	console.log("next");
+	console.log(next);
+	console.log("range");
+	console.log(range);
     
     if (next) {
       next(null, pin); }
+  };
+  */
+  
+  SocketNoduino.prototype.digitalWrite = function(range, val, next) {
+      this.log('info', 'analogWrite to pin ' + range);
+      this.write(range);
+      
+      if (next) {
+       next(null, range); }
   };  
   
   SocketNoduino.prototype.watchAnalogIn = function(AnalogInput) {

@@ -179,6 +179,7 @@ Board.prototype.pinMode = function (pin, val, callback) {
   this.write('00' + pin + val);
 }
 
+
 /*
  * Tell the board to write to a digital pin
  */

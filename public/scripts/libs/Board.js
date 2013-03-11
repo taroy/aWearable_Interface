@@ -8,7 +8,7 @@
  * @url         https://github.com/semu/noduino
  */
 
-define(['./LED.js', './Button.js', './AnalogInput.js',  './DigitalOutput.js', './Speaker.js', './Motor.js'], function(LEDObj, ButtonObj, AnalogInputObj, DigitalOutObj, SpeakerObj, MotorObj) {
+define(['./LED.js', './Button.js', './AnalogInput.js',  './DigitalOutput.js', './Speaker.js', './Motor.js', './RANGE.js'], function(LEDObj, ButtonObj, AnalogInputObj, DigitalOutObj, SpeakerObj, MotorObj) {
 
   /**
    * Create Board
@@ -21,6 +21,7 @@ define(['./LED.js', './Button.js', './AnalogInput.js',  './DigitalOutput.js', '.
       
     this.c          = Connector;
     this.options    = options;
+    console.log(this.options);
     this.pinMapping = {};
   };
 
@@ -30,8 +31,9 @@ define(['./LED.js', './Button.js', './AnalogInput.js',  './DigitalOutput.js', '.
    * @param string mod pin mode
    * @param function callback
    */
-  Board.prototype.digitalWrite = function(pin, mode, next) {
-    this.c.digitalWrite(pin, mode, function(err) {
+  Board.prototype.digitalWrite = function(range, mode, next) {
+    console.log("digitalWrite in board");
+    this.c.digitalWrite(range, mode, function(err) {
       if (err) { return next(err); }
     });
   };
@@ -70,6 +72,17 @@ define(['./LED.js', './Button.js', './AnalogInput.js',  './DigitalOutput.js', '.
    */
   Board.prototype.withButton = function(options, next) {
     this.with(this.c.TYPE_BUTTON, options, next);
+  };
+  
+    /**
+   * Create Range object on board
+   * @param object options
+   * @param function callback
+   */
+  Board.prototype.withRANGE = function(options) {
+    this.with(this.c.TYPE_DIGITALOUT, options);
+    console.log("withRANGE");
+    console.log(options);
   };
 
   /**
@@ -115,7 +128,7 @@ define(['./LED.js', './Button.js', './AnalogInput.js',  './DigitalOutput.js', '.
    * @param function callback
    */
   Board.prototype.with = function(what, options, next) {
-    if (this.pinAvailable(options.pin)) {
+    if (this.pinAvailable(options.range)) {
       return next(new Error('PIN already in use')); }
     
     var that = this;
@@ -128,6 +141,21 @@ define(['./LED.js', './Button.js', './AnalogInput.js',  './DigitalOutput.js', '.
           next(null, new LEDObj({"pin": pin, "type": what}, that.c));
         });
       break;
+      //Brukes egentlig disse??
+      case this.c.TYPE_RANGE:
+        this.c.withRANGE(options.range, function(err, range) {
+          console.log("TYPE_RANGE");
+          if (err) { return next(err); }
+          next(null, new RANGEObj({"range": range, "type": what}, that.c));
+        });
+      break;
+      case this.c.TYPE_DIGITALOUT:
+        this.c.digitalWrite(options.range, function(err, range) {
+          console.log("TYPE_DIGITALOUT");
+          if (err) { return next(err); }
+          next(null, new DigitalOut({"range": range, "type": what}, that.c));
+        });
+      break;
       case this.c.TYPE_BUTTON:  
         this.c.withButton(options.pin, function(err, pin) {
           if (err) { return next(err); }
@@ -138,12 +166,6 @@ define(['./LED.js', './Button.js', './AnalogInput.js',  './DigitalOutput.js', '.
         this.c.withAnalogIn(options.pin, function(err, pin) {
           if (err) { return next(err); }
           next(null, new AnalogInputObj({"pin": pin, "type": what}, that.c));
-        });
-      break;
-      case this.c.TYPE_DIGITALOUT:
-        this.c.withDigitalOutput(options.pin, function(err, pin) {
-          if (err) { return next(err); }
-          next(null, new DigitalOut({"pin": pin, "type": what}, that.c));
         });
       break;
       case this.c.TYPE_MOTOR:

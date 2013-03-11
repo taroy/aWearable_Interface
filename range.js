@@ -7,32 +7,31 @@
  * Tell the board to set it up
  * @param object options
  */
-var Led = function (options) {
+var Range = function (options) {
   if (!options || !options.board) throw new Error('Must supply required options to LED');
   this.board = options.board;
-  this.pin = options.pin || 13;
+  this.range = options.range || 100;
   this.bright = 0;
-  this.board.pinMode(this.pin, 'out');
+  this.board.pinMode(this.range, 'out');
   this.direction = -1;
-  console.log("duinoLed");
+  
+  console.log("Hallo pa dooooooo")
 }
 
 /**
  * Turn the LED on
  */
 Led.prototype.on = function () {
-  this.board.digitalWrite(this.pin, this.board.HIGH);
+  this.board.digitalWrite(this.range, this.board.HIGH);
 	this.bright = 255;
-	console.log("HIGH");
 }
 
 /* *
  * Turn the LED off
  */
 Led.prototype.off = function () {
-  this.board.digitalWrite(this.pin, this.board.LOW);
+  this.board.digitalWrite(this.range, this.board.LOW);
 	this.bright = 0;
-	console.log("LOW");
 }
 
 /**
@@ -40,7 +39,7 @@ Led.prototype.off = function () {
  * @param integer val
  */
 Led.prototype.brightLevel = function(val) {
-	this.board.analogWrite(this.pin, this.bright = val);
+	this.board.analogWrite(this.range, this.bright = val);
 }
 
 /**

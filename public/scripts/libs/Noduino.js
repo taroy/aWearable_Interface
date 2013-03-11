@@ -34,10 +34,12 @@ define(['./Board.js'], function (objBoard) {
 
   Noduino.prototype.write = function(data) {
     this.c.write(data);
+    
   }
   
   Noduino.prototype.digitalRead = function(pin) {
     this.c.digitalRead(pin);
+    console.log("HER");
   }
 
   Noduino.prototype.watchAnalogIn = function(pin, callback) {

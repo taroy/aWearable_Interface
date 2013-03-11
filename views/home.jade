@@ -39,13 +39,13 @@ header.jumbotron.subhead#overview
             
                
       .page-header
-        h1 4. Set range
+        h1 4. OLD
     .span12#e2-secondStep
       p
         select.span2#e2-pinValue
           option(value=10) 100m
-          option(value=09) 200m
-          option(value=08) 500m
+          option(value=9) 200m
+          option(value=8) 500m
         input.span3#e2-interval(type="text",placeholder="Interval in Miliseconds") 
         |  
         a.btn(href="#")#e2-buttonStart
@@ -62,6 +62,20 @@ header.jumbotron.subhead#overview
       .alert.hide.alert-success Connection to Arduino established!
   .page-header
       
+      
+      h1 4. NEW
+    .span12#e2-secondStep
+      p
+        select.span2#e2-rangeValue
+          option(value=333) 100m
+          option(value=555) 200m
+          option(value=666) 500m
+        |  
+        a.btn(href="#")#e2-buttonSend
+          i.icon-retweet
+          |  Save range 
+        |  
+  .page-header
       .page-header
         h1 5. Group members
        

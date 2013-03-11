@@ -29,6 +29,9 @@ define(function(require, exports, module) {
   SerialNoduino.prototype.TYPE_ANALOGIN = 0x33;
   SerialNoduino.prototype.TYPE_DIGITALOUT = 0x34;
   SerialNoduino.prototype.TYPE_SPEAKER = 0x35;
+  SerialNoduino.prototype.TYPE_RANGE = 0x36;
+  
+  
   
   SerialNoduino.prototype.current = function() {
     return this.boards[0];
@@ -36,6 +39,8 @@ define(function(require, exports, module) {
 
   SerialNoduino.prototype.write = function(data) {
     this.current().write(data);
+    console.log(data);
+    console.log("NoduinoSerial write method");
   };
 
   SerialNoduino.prototype.connect = function(options, next) {
@@ -57,6 +62,7 @@ define(function(require, exports, module) {
   SerialNoduino.prototype.withLED = function(pin, next) {
     this.current().pinMode(pin, this.MODE_OUT);
     next(null, pin);
+    console.log("WithLED");
   };
 
   SerialNoduino.prototype.withButton = function(pin, next) {
@@ -69,8 +75,10 @@ define(function(require, exports, module) {
     next(null, pin);
   }  
   
-  SerialNoduino.prototype.digitalWrite = function(pin, mode, next) {
-    this.current().digitalWrite(pin, mode, next);
+  SerialNoduino.prototype.digitalWrite = function(range, next) {
+    console.log("SerialNoduino digitalWrite");
+    console.log(range);
+    this.current().digitalWrite(range, next);
   };  
   
   SerialNoduino.prototype.watchAnalogIn = function(AnalogInput, callback) {
@@ -99,10 +107,11 @@ define(function(require, exports, module) {
     return ("00" + pin).substr(-2);
   };
   
-  SerialNoduino.prototype.digitalRead = function(pin) {
-    pin = this.normalizePin(pin);
-    this.log('info', 'digitalRead from pin ' + pin);
-    this.write('02' + pin + this.normalizeVal(0));
+  SerialNoduino.prototype.digitalRead = function(range) {
+    console.log("SerialNoduino digitalRead");
+    //pin = this.normalizePin(pin);
+    this.log('info', 'digitalRead from range ' + range);
+    this.write('02' + range + this.normalizeVal(0));
   };
   
   SerialNoduino.prototype.watchDigitalIn = function(DigitalIn, callback) {

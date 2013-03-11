@@ -38,9 +38,18 @@ define(function() {
         $('#e2-secondStep .alert-error').removeClass('hide');
         $('#e2-secondStep .alert-error').html('Connect to your Arduino first!');      
       } else {
+        console.log($('#e2-pinValue').val());
         e2.start($('#e2-pinValue').val(), $('#e2-interval').val());
-        e2.start($('#e2-rangeValue').val()); //henter range. hvor skal den plasseres?
       }
+    });
+
+    
+    //Sending range to Arduino board.
+    $('#e2-buttonSend').click(function(e) {
+      e.preventDefault();       
+      e2.saveRange($('#e2-rangeValue').val());
+      console.log("ButtonSend");
+      console.log($('#e2-rangeValue').val());
     });
     
     $('#e2-buttonConnect').click(function(e) {
