@@ -52,6 +52,14 @@ define(function() {
       console.log($('#e2-rangeValue').val());
     });
     
+    //Changing progress tracker when range is selected
+    $('#e2-rangeValue').change(function() {
+      if ($(this).val() != 000) {
+        document.getElementById("progress_image5").src = "images/prog_green.gif";
+      }
+    });
+    
+    
     $('#e2-buttonConnect').click(function(e) {
       e.preventDefault();
       
@@ -78,12 +86,14 @@ define(function() {
     
   };
   
+  //Trying out progression tracker
+  /*
   $(window).load(function(){
     $("ol.progtrckr").each(function(){
         $(this).attr("data-progtrckr-steps", 
                      $(this).children("li").length);
     });
-  })
+  })*/
   
   return Events;
 });
