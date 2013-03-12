@@ -13,7 +13,8 @@ define(function() {
         if (err) {
           $('#e2-exampleConnection .alert-error').removeClass('hide'); }
         else {
-          $('#e2-exampleConnection .alert-success').removeClass('hide'); 
+          $('#e2-exampleConnection .alert-success').removeClass('hide');
+          $('#e2-status').html('ON');
           that.board = board;
         }
       });

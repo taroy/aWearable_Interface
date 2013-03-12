@@ -1,24 +1,53 @@
 header.jumbotron.subhead#overview
-      <h1> aWearable </h1>
-    section#homeContent
-      
-    <div class="page-header"><h1> 1. Connect your aWearable to the computer </h1></div>
-      
-    .row.example
-      .span12#e2-exampleConnection
-          p
-            a.btn(href="#")#e2-buttonConnect
-              i.icon-refresh
-              |  Connect to aWearable
-          .alert.alert-info Please connect to your aWearable using the button.
-          .alert.hide.alert-error Unable to connect to aWearable!
-          .alert.hide.alert-success Connection to aWearable established!
-        .span12#e2-secondStep
+
+    h1 aWearable
     
-    <div class="page-header"><h1> 2. Components </h1></div>
-    <small> Drag the components on to the Arduino board</small>
-    .row.example
-      .span12
+section#homeContent
+  .rowLine
+  .row
+    #progressBox
+      .span3
+        img(id='strekmann', src='images/strekmann.png')
+        .alert.hide.alert-success img(id='e2-status', src='images/strekmann.png')
+        
+        label.label#strekmann(style="position: relative; top: -2px;") LED off
+        .alert.hide.alert-info Please connect to your Arduino using the button.
+        .alert.hide.alert-error Connect to Arduino first!
+        .alert.hide.alert-success strekmann!
+
+    
+    .span9#e2-exampleConnection
+      .page-header  
+        h1 1. Connect your aWearable to the computer  
+      p
+        a.btn(href="#")#e2-buttonConnect
+            i.icon-refresh
+            |  Connect to aWearable
+        .alert.alert-info Please connect to your aWearable using the button.
+        .alert.hide.alert-error Unable to connect to aWearable!
+        .alert.hide.alert-success Connection to aWearable established!
+        <!--.span12#e2-secondStep -->
+        
+  .rowLine    
+  .row
+    #progressBox
+      .span3
+
+    
+    .span9
+      .page-header
+        h1 2. Add friends 
+  
+  .rowLine    
+  .row
+    #progressBox
+      .span3
+
+    
+    .span9
+      .page-header
+        h1 3. Add components 
+      
         <div id="mainContainer">
         <h2></h2>        
         
@@ -43,6 +72,7 @@ header.jumbotron.subhead#overview
         <div class="clear"></div>
         </div>
         </div>
+
       <div id="debug"></div>
       script
         <!--// Custom drop action for the country boxes-->
@@ -81,46 +111,80 @@ header.jumbotron.subhead#overview
         dragDropObj.addTarget('components','dropItems'); <!--// Set <div id="leftColumn"> as a drop target. Call function dropItems on drop-->
         
         dragDropObj.init();	// Initizlizing drag and drop object
-    
-      .page-header
-        h1 4. OLD
-      .span12#e2-secondStep
-        p
-          select.span2#e2-pinValue
-            option(value=10) 100m
-            option(value=9) 200m
-            option(value=8) 500m
-          input.span3#e2-interval(type="text",placeholder="Interval in Miliseconds") 
-          |  
-          a.btn(href="#")#e2-buttonStart
-            i.icon-retweet
-            |  Save range 
-          |  
-          a.btn(href="#")#e2-buttonStop
-            i.icon-off
-            |  Stop 
-          |          
-          label.label#e2-status(style="position: relative; top: -2px;") LED off
-        .alert.hide.alert-info Please connect to your Arduino using the button.
-        .alert.hide.alert-error Connect to Arduino first!
-        .alert.hide.alert-success Connection to Arduino established!
+  
+  .rowLine      
+  .row
+    #progressBox
+      .span3
+
       
+    .span9
       .page-header
-        h1 4. NEW
-      .span12#e2-secondStep
-          p
-            select.span2#e2-rangeValue
-              option(value=333) 100m
-              option(value=555) 200m
-              option(value=666) 500m
-            |  
-            a.btn(href="#")#e2-buttonSend
-              i.icon-retweet
-              |  Save range 
-            |  
+
+        h1 4. Costumize
+   
+  .rowLine 
+  .row
+    #progressBox
+      .span3
+      
+      
+      
+    .span9
       .page-header
-          
+        h1 5. Choose range
+      
+      p
+        select.span2#e2-rangeValue
+          option(value=333) 100m
+          option(value=555) 200m
+          option(value=666) 500m
+        |  
+  
+  .rowLine
+  .row
+    #progressBox
+      .span3
+      
+    .span9
+      .page-header
+        h1 6. Save application
+      a.btn(href="#")#e2-buttonSend
+        i.icon-retweet
+        |  Save range
+  
+  .rowLine      
+  .row
+    #progressBox
+      .span3
+    
+    .span9
+     .pageheader
+        h1 Choose awareness
+         
+           .awareness-buttons
+              a.btn
+                  |  In- <br>range
+                a.btn(href="#")
+                  |  Direction
+                a.btn(href="#")
+                  |  Distance
+                a.btn(href="#")
+                  |  Coordinates
+                  
+      .page-header
+        h1 3. Components
+          h2 AJAX
+            a.btn(type="button", onclick="loadXMLDoc()")
+               |  In- <br>range
+  .rowLine      
+  .row
+    .progList
+      <ol class="progtrckr" data-progtrckr-steps="5">
+      <li class="progtrckr-done">Order Processing</li>
+      <li class="progtrckr-done">Pre-Production</li>
+      <li class="progtrckr-done">In Production</li>
+      <li class="progtrckr-done">Shipped</li>
+      <li class="progtrckr-todo">Delivered</li>
+      </ol>
 
-        h1 5. Group members
-
-       
