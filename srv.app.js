@@ -47,17 +47,30 @@ define(['kickstart', 'module', 'path', 'fs'], function (kickstart, module, path,
   });
   
   /** 
-   * Catch request for serving Test example page
+   * Catch request for serving Display
    */
-  srv.all('/example-test.html', function(req, res) {
-    res.render('example-test', {jsApp: 'test', active: 'examples', title: 'noduino', 'examples': examples});
+  srv.all('/display-options.html', function(req, res) {
+    res.render('display-options', {jsApp: 'none', active: 'display-options', title: 'noduino', 'examples': examples});
   });
   
   /** 
-   * Catch request for serving Ajax example page
+   * Catch request for serving Lights
    */
-  srv.all('/example-ajax_info.html', function(req, res) {
-    res.render('example-ajax_info', {jsApp: 'ajax_info', active: 'examples', title: 'noduino', 'examples': examples});
+  srv.all('/lights-options.html', function(req, res) {
+    res.render('lights-options', {jsApp: 'none', active: 'lights-options', title: 'noduino', 'examples': examples});
+  });
+  
+  /** 
+   * Catch request for serving Vibration
+   */
+  srv.all('/vibration-options.html', function(req, res) {
+    res.render('vibration-options', {jsApp: 'none', active: 'vibration-options', title: 'noduino', 'examples': examples});
+  });
+  /** 
+   * Catch request for serving Sound
+   */
+  srv.all('/sound-options.html', function(req, res) {
+    res.render('sound-options', {jsApp: 'none', active: 'sound-options', title: 'noduino', 'examples': examples});
   });
   
   /**

@@ -11,20 +11,7 @@ html(lang="en")
     script(src="//ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.js")
     script(type="text/javascript", src="scripts/drag-drop-custom.js")
    
-    script
-      function allowDrop(ev) {
-        ev.preventDefault();
-      }
-        
-      function drag(ev) {
-        ev.dataTransfer.setData("Text",ev.target.id);
-      }
-        
-      function drop(ev) {
-        ev.preventDefault();
-        var data=ev.dataTransfer.getData("Text");
-        ev.target.appendChild(document.getElementById(data));
-      }
+    
     
       
     script
@@ -53,33 +40,54 @@ html(lang="en")
         request.open("GET","example-walkLED.html", true);
         request.send();
       }
+     
+       <!--Load display-->
       script
       function loadDisplay() {
         var request;
         request = new XMLHttpRequest();
         request.onreadystatechange=function() {
-  
-            document.getElementById("divDisplay").innerHTML=request.responseText;
-          
+            document.getElementById("divDisplay").innerHTML=request.responseText;    
         }
-   
-        request.open("GET","example-ajax_info.html", true);
+        request.open("GET","display-options.html", true);
         request.send();
       }
+      
+      <!--Load Lights-->
       script
       function loadLights() {
         var request;
         request = new XMLHttpRequest();
         request.onreadystatechange=function() {
-  
-            document.getElementById("divLights").innerHTML=request.responseText;
-          
+            document.getElementById("divLights").innerHTML=request.responseText; 
         }
-   
-        request.open("GET","example-lights.html", true);
+        request.open("GET","lights-options.html", true);
         request.send();
       }
+      
+      <!--Load vibration-->
       script
+      function loadVibration() {
+        var request;
+        request = new XMLHttpRequest();
+        request.onreadystatechange=function() {
+            document.getElementById("divVibration").innerHTML=request.responseText;  
+        }
+        request.open("GET","vibration-options.html", true);
+        request.send();
+      }
+      
+       <!--Load sound-->
+      script
+      function loadSound() {
+        var request;
+        request = new XMLHttpRequest();
+        request.onreadystatechange=function() {
+            document.getElementById("divSound").innerHTML=request.responseText; 
+        }
+        request.open("GET","sound-options.html", true);
+        request.send();
+      }
    
         
   body

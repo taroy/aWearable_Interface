@@ -75,7 +75,7 @@ section#homeContent
 
       <div id="debug"></div>
       script
-        <!--// Custom drop action for the country boxes-->
+        <!--// Custom drop action for the target boxes-->
         function dropItems(idOfDraggedItem,targetId,x,y){
           var targetObj = document.getElementById(targetId);	<!--// Creating reference to target obj-->
           var subDivs = targetObj.getElementsByTagName('DIV');	<!--// Number of subdivs-->
@@ -83,8 +83,21 @@ section#homeContent
           var sourceObj = document.getElementById(idOfDraggedItem);	<!--// Creating reference to source, i.e. dragged object-->
           var numericIdTarget = targetId.replace(/[^0-9]/gi,'')/1;	<!--// Find numeric id of target-->
           var numericIdSource = idOfDraggedItem.replace(/[^0-9]/gi,'')/1;	<!--// Find numeric id of source-->
-          if(numericIdTarget-numericIdSource==100){	<!--// In the html above, there's a difference in 100 between the id of the country and it's capital(example:	-->									// Oslo have id "box1" and Norway have id "box101", i.e. 1 + 100.
+          if(numericIdSource==1 && numericIdTarget-numericIdSource==100){	<!--// In the html above, there's a difference in 100 between the id of the country and it's capital(example:	-->									// Oslo have id "box1" and Norway have id "box101", i.e. 1 + 100.
             sourceObj.style.backgroundColor='#54F05E';	<!--// Set green background color for dragged objec		-->
+            loadDisplay()
+          }
+          else if(numericIdSource==2 && numericIdTarget-numericIdSource==100){	<!--// In the html above, there's a difference in 100 between the id of the country and it's capital(example:	-->									// Oslo have id "box1" and Norway have id "box101", i.e. 1 + 100.
+            sourceObj.style.backgroundColor='#54F05E';	<!--// Set green background color for dragged objec		-->
+            loadLights()
+          }
+          else if(numericIdSource==3 && numericIdTarget-numericIdSource==100){	<!--// In the html above, there's a difference in 100 between the id of the country and it's capital(example:	-->									// Oslo have id "box1" and Norway have id "box101", i.e. 1 + 100.
+            sourceObj.style.backgroundColor='#54F05E';	<!--// Set green background color for dragged objec		-->
+            loadVibration()
+          }
+          else if(numericIdSource==4 && numericIdTarget-numericIdSource==100){	<!--// In the html above, there's a difference in 100 between the id of the country and it's capital(example:	-->									// Oslo have id "box1" and Norway have id "box101", i.e. 1 + 100.
+            sourceObj.style.backgroundColor='#54F05E';	<!--// Set green background color for dragged objec		-->
+            loadSound()
           }
           else {
             sourceObj.style.backgroundColor='#FF4D45';	<!--// Reset back to default white background color-->
@@ -92,18 +105,31 @@ section#homeContent
           if(targetId=='components') {	<!--// Target is the capital box - append the dragged item as child of first sub div, i.e. as child of <div id="dropContent">-->
             targetObj = targetObj.getElementsByTagName('DIV')[0];
             sourceObj.style.backgroundColor='';
+              if(numericIdSource==1) {
+                document.getElementById("divDisplay").innerHTML= "";
+              }
+              if(numericIdSource==2) {
+                document.getElementById("divLights").innerHTML= "";
+              }
+              if(numericIdSource==3) {
+                document.getElementById("divVibration").innerHTML= "";
+              }
+              if(numericIdSource==4) {
+                document.getElementById("divSound").innerHTML= "";
+              }
+             
           }
           targetObj.appendChild(sourceObj);	<!--// Append	-->
         }
         var dragDropObj = new DHTMLgoodies_dragDrop();	<!--// Creating drag and drop objec-->
         
-        <!--// Assigning drag events to the capitals-->
+        <!--// Assigning drag events to the components-->
         dragDropObj.addSource('box1',true);	<!--// Make <div id="box1"> dragable. slide item back into original position after drop-->
         dragDropObj.addSource('box2',true);	<!-- Make <div id="box2"> dragable. slide item back into original position after drop-->
         dragDropObj.addSource('box3',true);	<!-- Make <div id="box3"> dragable. slide item back into original position after drop-->
         dragDropObj.addSource('box4',true);	<!-- Make <div id="box4"> dragable. slide item back into original position after drop-->
         
-        <!--// Assigning drop events on the countries-->
+        <!--// Assigning drop events on the targets-->
         dragDropObj.addTarget('box101','dropItems'); <!--// Set <div id="leftColumn"> as a drop target. Call function dropItems on drop-->
         dragDropObj.addTarget('box102','dropItems'); <!--// Set <div id="leftColumn"> as a drop target. Call function dropItems on drop-->
         dragDropObj.addTarget('box103','dropItems'); <!--// Set <div id="leftColumn"> as a drop target. Call function dropItems on drop-->
@@ -112,24 +138,30 @@ section#homeContent
         
         dragDropObj.init();	// Initizlizing drag and drop object
   
-  .rowLine      
-  .row
-    #progressBox
-      .span3
-
-      
-    .span9
-      .page-header
-
-        h1 4. Costumize
+    .rowLine      
+    .row
+      #progressBox
+        .span3
    
+      .span9
+        .page-header
+          h1 4. Costumize
+          .span4 
+            <div id="options"> 
+            <div id="divDisplay"></div>
+            <div id="divLights"></div>
+            </div>
+          .span4
+            <div id="right">
+            <div id="divVibration"></div>
+            <div id="divSound"></div>
+            </div>
+  
   .rowLine 
   .row
     #progressBox
       .span3
-      
-      
-      
+       
     .span9
       .page-header
         h1 5. Choose range
@@ -159,24 +191,26 @@ section#homeContent
       .span3
     
     .span9
-     .pageheader
-        h1 Choose awareness
-         
-           .awareness-buttons
-              a.btn
-                  |  In- <br>range
-                a.btn(href="#")
-                  |  Direction
-                a.btn(href="#")
-                  |  Distance
-                a.btn(href="#")
-                  |  Coordinates
+     .page-header
+        h1 3. Components 
+          small <br>Choose the components you wish to use for your application
+        .row
+            .span12
+              .awareness-buttons
+                  a.btn(button type="button", onclick="loadDisplay()")
+                    |  <b>Display</b>
+                    a.btn(button type="button", onclick="loadLights()")
+                      |  <b>Lights</b>
+                      a.btn(button type="button", onclick="loadVibration()")
+                        |  <b>Vibration</b>
+                        a.btn(button type="button", onclick="loadSound()")
+                          |  <b>Sound</b>
+                        <div id="divDisplay"></div>
+                        <div id="divLights"></div>
+                        <div id="divVibration"></div>
+                        <div id="divSound"></div>
                   
-      .page-header
-        h1 3. Components
-          h2 AJAX
-            a.btn(type="button", onclick="loadXMLDoc()")
-               |  In- <br>range
+    
   .rowLine      
   .row
     .progList
