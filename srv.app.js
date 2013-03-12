@@ -60,6 +60,13 @@ define(['kickstart', 'module', 'path', 'fs'], function (kickstart, module, path,
     res.render('example-ajax_info', {jsApp: 'ajax_info', active: 'examples', title: 'noduino', 'examples': examples});
   });
   
+  /** 
+  * Catch request for progression tracker/icon test
+  */
+  srv.all('/progression_icon.html', function(req, res) {
+    res.render('progression_icon', {jsApp: 'none', active: 'progression_icon', title: 'noduino', 'examples': examples});
+  });
+  
   /**
    * Catch request for serving motor example
    */

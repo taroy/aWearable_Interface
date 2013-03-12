@@ -60,7 +60,7 @@ hr.soften{height:1px;margin:54px 0;background-image:-webkit-linear-gradient(left
 .download .checkbox{padding:6px 10px 6px 25px;color:#555;background-color:#f9f9f9;-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px;cursor:pointer;}
 .download .checkbox:hover{color:#333;background-color:#f5f5f5;}
 .download .checkbox small{font-size:12px;color:#777;}
-#progressBox .span3{border-left:thick solid green;margin-top:30px;height:100px;width:215px;vertical-align:middle;}
+#progressBox .span3{height:187px;width:200px;vertical-align:middle;}
 ol.progtrckr{margin:0;padding:0;list-style-type:none;}
 ol.progtrckr li{display:inline-block;text-align:center;line-height:3em;}
 ol.progtrckr[data-progtrckr-steps="2"] li{width:49%;}
@@ -77,8 +77,11 @@ ol.progtrckr li:after{content:"\00a0\00a0";}
 ol.progtrckr li:before{position:relative;bottom:-2.5em;float:left;left:50%;line-height:1em;}
 ol.progtrckr li.progtrckr-done:before{content:"\2713";color:white;background-color:yellowgreen;height:1.2em;width:1.2em;line-height:1.2em;border:none;border-radius:1.2em;}
 ol.progtrckr li.progtrckr-todo:before{content:"\039F";color:silver;background-color:white;font-size:1.5em;bottom:-1.6em;}
-.rowLine{border-bottom:solid #D3D3D3 1px;padding:10px 0 10px 0;}
+.rowLine{border-bottom:solid #D3D3D3 1px;padding:0;}
 .inline-block{display:inline-block;zoom:1;*display:inline;}
+img#progress_image1,#progress_image2,#progress_image4,#progress_image5,#progress_image6,#progress_image7{height:100%;display:table-cell;vertical-align:middle;margin-left:auto;margin-right:auto;}
+img#progress_image3{height:450px;display:table-cell;vertical-align:middle;margin-left:auto;margin-right:auto;}
+img#strekmann{max-height:100px;}
 #variables label{margin-bottom:0;}
 .download-btn{margin:36px 0 108px;}
 .download p,.download h4{max-width:50%;margin:0 auto;color:#999;text-align:center;}
@@ -105,7 +108,7 @@ form.well{padding:14px;}
 .jumbotron p{margin-bottom:18px;font-weight:300;}
 .subhead{padding-bottom:0;margin-bottom:9px;}
 .subhead h1{font-size:70px;color:#ffc0cb;}
-#homeContent{padding-top:30px;}
+#homeContent{padding-top:30px;height:100%;}
 #homeBoxes{padding-top:30px;}
 .example{margin-top:10px;}
 .example .btn{margin-bottom:10px;}

@@ -66,6 +66,30 @@ html(lang="en")
         request.open("GET","example-ajax_info.html", true);
         request.send();
       }
+      
+      script
+      function loadIcon() {
+        var request;
+        request = new XMLHttpRequest();
+        request.onreadystatechange=function() {
+            
+            document["divIcon"].src="images/prog_grey.gif";
+            document.getElementById("divIcon2").style.vilibility = 'hidden';
+            document.getElementById("divIcon").innerHTML=request.responseText;
+          
+        }
+          request.open("GET","progression_icon.html", true);
+        request.send();
+      }
+
+      //Changing progress tracker when save application is clicked
+      script
+      function ShowProgress() 
+      {
+        document.getElementById("progress_image6").src = "images/prog_green.gif"; 
+      }s
+      
+      
       script
       function loadLights() {
         var request;

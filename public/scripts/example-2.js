@@ -15,6 +15,8 @@ define(function() {
         else {
           $('#e2-exampleConnection .alert-success').removeClass('hide');
           $('#e2-status').html('ON');
+          //Changing progression tracker when connection is etablished.
+          document.getElementById("progress_image1").src = "images/prog_green.gif";
           that.board = board;
         }
       });
