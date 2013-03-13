@@ -44,7 +44,7 @@ define(function() {
     });
 
     
-    //Sending range to Arduino board.
+    //Sending range to Arduino board. - Maria
     $('#e2-buttonSend').click(function(e) {
       e.preventDefault();       
       e2.saveRange($('#e2-rangeValue').val());
@@ -52,13 +52,24 @@ define(function() {
       console.log($('#e2-rangeValue').val());
     });
     
-    //Changing progress tracker when range is selected
+    //Changing progress tracker when range is selected - Maria
     $('#e2-rangeValue').change(function() {
       if ($(this).val() != 000) {
         document.getElementById("progress_image5").src = "images/prog_green.gif";
       }
     });
     
+    //Checking 
+    
+    //Preventing form from commiting when enter is pressed - Maria
+    $(document).ready(function() {
+      $(window).keydown(function(event){
+        if(event.keyCode == 13) {
+          event.preventDefault();
+          return false;
+        }
+      });
+    });
     
     $('#e2-buttonConnect').click(function(e) {
       e.preventDefault();

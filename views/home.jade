@@ -1,26 +1,35 @@
 header.jumbotron.subhead#overview
-
+  
   h1 aWearable
+  h2 Create Application
     
 section#homeContent
-  .rowLine
+
+  .rowLine    
   .row
     #progressBox
       .span3
-        <img src="images/prog_grey.gif" id="progress_image1" />
-   
-    .span9#e2-exampleConnection
-      .page-header  
-        h1 1. Connect your aWearable to the computer  
-      p
-        a.btn(href="#")#e2-buttonConnect
-            i.icon-refresh
-            |  Connect to aWearable
-        .alert.alert-info Please connect to your aWearable using the button.
-        .alert.hide.alert-error Unable to connect to aWearable!
-        .alert.hide.alert-success Connection to aWearable established!
-        <!--.span12#e2-secondStep -->
-        
+        <img src="images/prog_grey.gif" id="progress_image2" />
+    
+    .span9
+      .page-header
+        h1 1. Add application name
+      
+      <form>
+      <input type="text" placeholder="Name:" name="app_name" id="nameForm"><br>
+      </form>
+      
+      script
+        document.getElementById('nameForm').onkeyup = function() {
+          var count = document.getElementById('nameForm').value.length;
+          if(count != 0) {
+            document.getElementById("progress_image2").src = "images/prog_green.gif"; 
+          }
+          else {
+            document.getElementById("progress_image2").src = "images/prog_grey.gif";
+          }
+        }
+      
   .rowLine    
   .row
     #progressBox
@@ -30,6 +39,25 @@ section#homeContent
     .span9
       .page-header
         h1 2. Add friends 
+        
+  .rowLine
+  .row
+    #progressBox
+      .span3
+        <img src="images/prog_grey.gif" id="progress_image1" />
+   
+    .span9#e2-exampleConnection
+      .page-header  
+        h1 3. Connect your aWearable to the computer  
+      p
+        a.btn(href="#")#e2-buttonConnect
+            i.icon-refresh
+            |  Connect to aWearable
+        .alert.alert-info Please connect to your aWearable using the button.
+        .alert.hide.alert-error Unable to connect to aWearable!
+        .alert.hide.alert-success Connection to aWearable established!
+        <!--.span12#e2-secondStep -->
+      
   
   .rowLine    
   .row
@@ -39,7 +67,7 @@ section#homeContent
     
     .span9
       .page-header
-        h1 3. Add components 
+        h1 4. Add components 
       
         <div id="mainContainer">
         <h2></h2>        
@@ -139,7 +167,7 @@ section#homeContent
    
       .span9
         .page-header
-          h1 4. Costumize
+          h1 5. Costumize
           .span4 
             <div id="options"> 
             <div id="divDisplay"></div>
@@ -150,6 +178,9 @@ section#homeContent
             <div id="divVibration"></div>
             <div id="divSound"></div>
             </div>
+            
+        a.btn(href="#", onclick="DoneCostume()")#doneButton
+            |  Done
   
    
     .rowLine 
@@ -160,7 +191,7 @@ section#homeContent
         
       .span9
         .page-header
-          h1 5. Choose range
+          h1 6. Choose range
           
           p
           select.span2#e2-rangeValue
@@ -180,7 +211,7 @@ section#homeContent
 
       .span9
         .page-header
-          h1 6. Save application
+          h1 7. Save application
         a.btn(href="#", onclick="ShowProgress()")#e2-buttonSend
           i.icon-retweet
           |  Save application
