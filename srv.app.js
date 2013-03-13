@@ -74,6 +74,13 @@ define(['kickstart', 'module', 'path', 'fs'], function (kickstart, module, path,
   });
   
   /** 
+   * Catch request for serving savedApp-test
+   */
+  srv.all('/savedApp.html', function(req, res) {
+    res.render('savedApp', {jsApp: 'none', active: 'savedApp', title: 'noduino', 'examples': examples});
+  });
+  
+  /** 
   * Catch request for progression tracker/icon test
   */
   srv.all('/progression_icon.html', function(req, res) {
