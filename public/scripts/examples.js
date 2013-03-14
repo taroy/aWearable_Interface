@@ -46,10 +46,12 @@ define(function() {
     
     //Sending range to Arduino board. - Maria
     $('#e2-buttonSend').click(function(e) {
-      e.preventDefault();       
-      e2.saveRange($('#e2-rangeValue').val());
-      console.log("ButtonSend");
-      console.log($('#e2-rangeValue').val());
+      e.preventDefault();
+      console.log("Application name:", $('#nameForm').val());
+      console.log("Range:", $('#e2-rangeValue').val());
+      //e2.saveRange($('#e2-rangeValue').val());
+      
+
     });
     
     //Changing progress tracker when range is selected - Maria

@@ -79,8 +79,10 @@ ol.progtrckr li.progtrckr-done:before{content:"\2713";color:white;background-col
 ol.progtrckr li.progtrckr-todo:before{content:"\039F";color:silver;background-color:white;font-size:1.5em;bottom:-1.6em;}
 .rowLine{border-bottom:solid #D3D3D3 1px;padding:0;}
 .inline-block{display:inline-block;zoom:1;*display:inline;}
+#menubox{color:green;height:10px;border:solid 2px;width:20px;float:right;}
 img#progress_image1,#progress_image2,#progress_image4,#progress_image5,#progress_image6,#progress_image7{max-height:120px;display:table-cell;vertical-align:middle;margin-left:auto;margin-right:auto;}
 img#progress_image3{height:300px;display:table-cell;vertical-align:middle;margin-left:auto;margin-right:auto;}
+img#face_connect{max-width:185px;}
 img#strekmann{max-height:100px;}
 #nameForm{width:170px;color:grey;}
 #variables label{margin-bottom:0;}
