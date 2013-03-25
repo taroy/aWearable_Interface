@@ -1,8 +1,9 @@
 #include <Servo.h>
-char messageBuffer[30], cmd[3], pin[4], val[5], aux[5];
+char messageBuffer[20], cmd[3], pin[4], val[5], aux[5];
 boolean debug = false;
 int index = 0;
 Servo servo;
+
 
 void setup() {
   Serial.begin(115200);
@@ -24,6 +25,7 @@ void loop() {
  * Deal with a full message and determine function to call
  */
 void process() {
+  Serial.print("process");
   index = 0;
   
   strncpy(cmd, messageBuffer, 3);
@@ -34,6 +36,9 @@ void process() {
   val[3] = '\0';
   strncpy(aux, messageBuffer + 13, 6);
   aux[3] = '\0';
+  
+  Serial.println("messageBuffer"); 
+  Serial.println(messageBuffer);
   
   if (debug) {
     Serial.println("messageBuffer"); 
