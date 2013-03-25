@@ -1,5 +1,7 @@
 !!! 5
 html(lang="en")
+html(xmlns="http://www.w3.org/1999/xhtml",
+xmlns:fb="https://www.facebook.com/2008/fbml")
   head
     title Arduino control nodeuino for JavaScript and Node.js with WebSockets and HTML5
     link(rel="stylesheet", href="styles/bootstrap/init.css")
@@ -10,10 +12,10 @@ html(lang="en")
     //script(type="text/javascript", src="script.js")
     script(src="//ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.js")
     script(type="text/javascript", src="scripts/drag-drop-custom.js")
+    script(src="http://connect.facebook.net/en_US/all.js")
+
    
-    
-    
-      
+   
     script
       function loadXMLDoc() {
         var request;
@@ -27,7 +29,8 @@ html(lang="en")
         request.open("GET","example-ajax_info.html", true);
         request.send();
       }
-      script
+      
+    script
       function loadXMLDoc2() {
         var request;
         request = new XMLHttpRequest();
@@ -41,10 +44,7 @@ html(lang="en")
         request.send();
       }
      
-       
-      
-
-      script
+    script
       function loadIcon() {
         var request;
         request = new XMLHttpRequest();
@@ -61,7 +61,7 @@ html(lang="en")
       
       
       //Changing progress tracker when done is clicked
-      script
+    script
       function DoneCostume() 
       {
         document.getElementById("progress_image4").src = "images/prog_green.gif"; 
@@ -69,7 +69,7 @@ html(lang="en")
       
 
       //Changing progress tracker when save application is clicked
-      script
+    script
       function ShowProgress() 
       {
         document.getElementById("progress_image6").src = "images/prog_green.gif"; 
@@ -78,7 +78,7 @@ html(lang="en")
       
 
       <!--Load display-->
-      script
+    script
       function loadDisplay() {
         var request;
         request = new XMLHttpRequest();
@@ -90,7 +90,7 @@ html(lang="en")
       }
       
       <!--Load Lights-->
-      script
+    script
       function loadLights() {
         var request;
         request = new XMLHttpRequest();
@@ -102,7 +102,7 @@ html(lang="en")
       }
       
       <!--Load vibration-->
-      script
+    script
       function loadVibration() {
         var request;
         request = new XMLHttpRequest();
@@ -114,7 +114,7 @@ html(lang="en")
       }
       
        <!--Load sound-->
-      script
+    script
       function loadSound() {
         var request;
         request = new XMLHttpRequest();

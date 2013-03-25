@@ -93,6 +93,21 @@ define(['kickstart', 'module', 'path', 'fs'], function (kickstart, module, path,
   srv.all('/example-motor.html', function(req, res) {
     res.render('example-motor', {jsApp: 'motor', active: 'examples', title: 'noduino', 'examples': examples});
   });
+  
+  /**
+   * Catch request for serving request_response page - Ingrid
+   */
+  srv.all('/request_response.html', function(req, res) {
+    res.render('request_response', {jsApp: 'main', active: 'request_response.', title: 'noduino', 'examples': examples});
+  });
+  
+  
+  /** 
+  * Catch request for progression tracker/icon test
+  */
+  srv.all('/channel.html', function(req, res) {
+    res.render('channel', {jsApp: 'none', active: 'channel', title: 'noduino', 'examples': examples});
+  });
 
   return {'kickstart': kickstart, 'srv': srv};
 });
