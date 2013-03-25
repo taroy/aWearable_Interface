@@ -17,31 +17,6 @@ xmlns:fb="https://www.facebook.com/2008/fbml")
    
    
     script
-      function loadXMLDoc() {
-        var request;
-        request = new XMLHttpRequest();
-        request.onreadystatechange=function() {
-  
-            document.getElementById("myDiv").innerHTML=request.responseText;
-          
-        }
-   
-        request.open("GET","example-ajax_info.html", true);
-        request.send();
-      }
-      
-      function loadXMLDoc2() {
-        var request;
-        request = new XMLHttpRequest();
-        request.onreadystatechange=function() {
-  
-            document.getElementById("myDiv2").innerHTML=request.responseText;
-          
-        }
-   
-        request.open("GET","example-walkLED.html", true);
-        request.send();
-      }
 
       function loadIcon() {
         var request;

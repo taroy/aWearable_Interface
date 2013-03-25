@@ -125,10 +125,6 @@ label.label{display:inline;}
 .interval{margin-bottom:0px;position:relative;top:-9px;margin-left:12px;width:60px;}
 .collectedTags{margin-top:14px;}
 #connection-log{height:358px;overflow:hidden;padding-top:4px;overflow-x:hidden;margin-bottom:16px;}
-.sidemenu{float:left;width:250px;height:1440px;margin-left:0px;-moz-box-shadow:0 0 10px 10px #0088cc;-webkit-box-shadow:0 0 10px 10px #0088cc;box-shadow:0 0 10px 10px #0088cc;background-color:#0088cc;}
-.sidemenu a{color:white;font-size:14px;display:block;}
-.sidemenu li{list-style-type:none;text-align:right;}
-.sidemenu ul{margin:30px 30px 0px 30px;border-top:1px solid #04518C;padding:30px 5px 0px 5px;}
 .content{margin-left:320px;}
 .content p{font-size:14px;}
 .content .span12{width:540px;}
@@ -136,17 +132,6 @@ label.label{display:inline;}
 .awareness-buttons .btn{padding:5px;margin:10px 10px 10px 0;font-weight:normal;text-align:center;width:150px;border-radius:8px;-moz-border-radius:8px;-webkit-border-radius:8px;box-shadow:0px 3px 5px #000;-moz-box-shadow:0px 3px 5px #000;-webkit-box-shadow:0px 3px 5px #000;}
 .awareness-buttons .btn:hover{position:relative;top:3px;box-shadow:none;-moz-box-shadow:none;-webkit-box-shadow:none;}
 .awareness-buttons .btn:active{position:relative;top:1px;}
-#displayTarget{width:200px;height:90px;padding:10px;border:1px solid #aaaaaa;float:left;width:40%;margin-top:10%;}
-#lightsTarget{width:200px;height:90px;padding:10px;border:1px solid #aaaaaa;width:40%;margin-top:20%;}
-#targetArduino{width:auto;height:90px;}
-#div1{height:70px;padding:10px;border:1px solid #aaaaaa;width:40%;margin:-50px 0 0 50%;}
-#div2{width:350px;height:70px;padding:10px;border:1px solid #aaaaaa;margin:10px 0 0 50%;width:40%;}
-#div3{width:350px;height:70px;padding:10px;border:1px solid #aaaaaa;margin:10px 0 0 50%;width:40%;}
-#div4{width:350px;height:70px;padding:10px;border:1px solid #aaaaaa;margin:10px 0 0 50%;width:40%;}
-#dragDisplay{width:auto;height:90px;}
-#dragLights{width:auto;height:90px;}
-#dragVibration{width:auto;height:80px;}
-#dragSound{width:auto;height:80px;}
 #mainContainer{width:700px;margin-top:10px;height:420px;border:1px solid #bce8f1;background-color:#d9edf7;-webkit-border-radius:4px;border-radius:4px;color:#3a87ad;}
 #components{width:210px;float:left;padding:10px 22px 10px 22px;height:401px;border-right:thin solid #bce8f1;color:#3a87ad;}
 #countries{width:450px;float:right;margin:90px -50px 10px 0px;height:370px;background-image:url('../images/ArduinoUno.png');background-size:76% 62%;background-repeat:no-repeat;}
@@ -171,3 +156,4 @@ a{color:#F00;}
 #box2{width:120px;height:120px;}
 #box3{width:80px;height:50px;}
 #box4{width:130px;height:80px;}
+#friendnames{color:black;font-size:14px;}
