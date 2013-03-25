@@ -150,8 +150,26 @@ section#homeContent
     
     .span9
       .page-header
-        h1 2. Add friends
-      <img src="images/face_connect.png" id="face_connect" />
+        h1 2. Create group /Add friends to be aware of 
+          small <br>Add friends to group using facebook
+          <br>
+          <!--
+          <button id="fb-login-button" onclick="login()"></button>
+          
+          <button id="fb-logout" onclick="logout()">Log out</button>
+          <br> --> 
+          <img type="button" onclick="sendRequestViaMultiFriendSelector()" src="images/facebook_icon.png"; return true;/>
+          <br>
+          p 
+            b Friends added to group:
+          <br>
+          <div id="friendnames"></div>
+
+          
+          <!--
+          <div id="fb-root"></div>
+          
+          <div class="fb-login-button" data-show-faces="true" data-width="500" data-max-rows="1"></div> </div> -->
     
   //SENDING LATITUDE AND LONGITUDE TO BILLY  
   .rowLine    
@@ -195,32 +213,7 @@ section#homeContent
     
     .span9
       .page-header 
-        h1 2. Create group 
-          small <br>Add friends to group using facebook
-        <br>
-        <!--
-        <button id="fb-login-button" onclick="login()"></button>
         
-        <button id="fb-logout" onclick="logout()">Log out</button>
-        <br> --> 
-         
-        <img type="button" onclick="sendRequestViaMultiFriendSelector()" src="images/facebook_icon.png"; return true;/>
-        <br>
-        p 
-          b Friends added to group:
-        
-        <div id="friendnames"></div>
-        
-        <div align="center">
-        <img id="picture"/>
-        </div>
-        
-        </div>
-        
-        <!--
-        <div id="fb-root"></div>
-        
-        <div class="fb-login-button" data-show-faces="true" data-width="500" data-max-rows="1"></div> </div> -->
   
       
   //ADD COMPONENTS
@@ -257,7 +250,7 @@ section#homeContent
         </div>
         <div class="clear"></div>
         </div>
-        </div>
+       
 
         <div id="debug"></div>
         <!-- Dragn drop-->
