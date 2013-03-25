@@ -1,4 +1,6 @@
 define(function(require, exports, module) {
+  
+  console.log("NODUINO.SERIAL");
 
   function SerialNoduino (options) {
     if (false === (this instanceof SerialNoduino)) {

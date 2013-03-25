@@ -47,12 +47,30 @@ define(function() {
     //Sending range to Arduino board. - Maria
     $('#e2-buttonSend').click(function(e) {
       e.preventDefault();
+      
+      var lat = parseFloat($('#inputLat').val());
+      var lon = parseFloat($('#inputLong').val());
+      
       console.log("Application name:", $('#nameForm').val());
       console.log("Range:", $('#e2-rangeValue').val());
-      //e2.saveRange($('#e2-rangeValue').val());
-      
-
+      e2.saveApp($('#e2-rangeValue').val());
+      //e2.saveApp($('#e2-rangeValue').val(), $('#inputLat').val(), $('#inputLong').val());
     });
+    
+    //Sending lat and long to Arduino board - Maria
+    $('#e2-geoSend').click(function(e) {
+      e.preventDefault();
+      console.log($('#inputLat').val());
+      var v1 = parseFloat($('#inputLat').val());
+      console.log(v1);
+      if(v1!=null) {
+        console.log(v1);
+        e2.saveGeo(v1);
+        console.log(v1);
+      }
+      
+      
+    });    
     
     //Changing progress tracker when range is selected - Maria
     $('#e2-rangeValue').change(function() {
@@ -61,7 +79,7 @@ define(function() {
       }
     });
     
-    //Checking 
+ 
     
     //Preventing form from commiting when enter is pressed - Maria
     $(document).ready(function() {

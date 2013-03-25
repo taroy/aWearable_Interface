@@ -1,7 +1,6 @@
 define(['./DigitalOutput.js'], function(LED) {
   
   console.log("publicLed");
-  console.log(LED);
   
   LED.prototype.toggle = function(callback) {
     if (this.mode == this.c.LOW) {

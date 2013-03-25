@@ -54,7 +54,7 @@ define(function() {
   };
 
  
-  Example2.saveRange = function(range) {
+  Example2.saveApp = function(range) {
     console.log("SaveRange");
     console.log(range);
     var that = this;
@@ -64,6 +64,10 @@ define(function() {
 
       });
     }
+  };
+  
+  Example2.saveGeo = function(inputLat) {
+    console.log("SaveGeo");
   };
 
   

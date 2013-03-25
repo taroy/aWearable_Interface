@@ -1,5 +1,5 @@
 #include <Servo.h>
-char messageBuffer[30], cmd[3], pin[4], val[5], aux[5];
+char messageBuffer[20], range[3], cmd[3], pin[3], val[8], aux[4];
 boolean debug = false;
 int index = 0;
 Servo servo;
@@ -26,21 +26,26 @@ void loop() {
 void process() {
   index = 0;
   
-  strncpy(cmd, messageBuffer, 3);
-  cmd[2] = '\0';
-  strncpy(pin, messageBuffer + 3, 4);
-  pin[2] = '\0';
-  strncpy(val, messageBuffer + 7, 6);
-  val[3] = '\0';
-  strncpy(aux, messageBuffer + 13, 6);
+  strncpy(range, messageBuffer, 3);
+  range[3] = '\0';
+  strncpy(cmd, messageBuffer + 3, 4);
+  cmd[4] = '\0';
+  strncpy(pin, messageBuffer + 4, 4);
+  pin[4] = '\0';
+  strncpy(val, messageBuffer + 8, 16);
+  val[8] = '\0';
+  strncpy(aux, messageBuffer + 16, 4);
   aux[3] = '\0';
   
   if (debug) {
-    Serial.println("messageBuffer"); 
     Serial.println(messageBuffer); }
 
   int cmdid = atoi(cmd);
   
+  Serial.println("messageBuffer");
+  Serial.println(messageBuffer);
+
+ 
   switch(cmdid) {
     case 0:  sm(pin,val);               break;
     case 1:  dw(pin,val);               break;

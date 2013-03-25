@@ -1,20 +1,18 @@
 define(function() {
   
-  function DigitalOutput(options, Connector) { 
+  function DigitalOutput(options, Connector) {
+    console.log("digitaloutput.js");
     if (false === (this instanceof DigitalOutput)) {
-      return new DigitalOutput(options); }
-
+      return new DigitalOutput(options);
+    }
     this.c      = Connector;
     this.pin    = options.pin;
     this.range  = options.range;
     this.mode   = this.c.LOW;
     this.events = {};
-    console.log("her");
-    console.log(this.c);
-    console.log(this.pin);
-    console.log(this.mode);
-    console.log(this.range);
   };
+  
+  //console.log(options);
 
   DigitalOutput.prototype.setOn = function(callback) {
     if (!this.active) {

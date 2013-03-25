@@ -34,7 +34,7 @@ define(['./Board.js'], function (objBoard) {
 
   Noduino.prototype.write = function(data) {
     this.c.write(data);
-    
+    console.log("writing to board")
   }
   
   Noduino.prototype.digitalRead = function(pin) {

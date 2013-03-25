@@ -11,40 +11,8 @@ html(lang="en")
     script(src="//ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.js")
     script(type="text/javascript", src="scripts/drag-drop-custom.js")
    
-    
-    
       
     script
-      function loadXMLDoc() {
-        var request;
-        request = new XMLHttpRequest();
-        request.onreadystatechange=function() {
-  
-            document.getElementById("myDiv").innerHTML=request.responseText;
-          
-        }
-   
-        request.open("GET","example-ajax_info.html", true);
-        request.send();
-      }
-      script
-      function loadXMLDoc2() {
-        var request;
-        request = new XMLHttpRequest();
-        request.onreadystatechange=function() {
-  
-            document.getElementById("myDiv2").innerHTML=request.responseText;
-          
-        }
-   
-        request.open("GET","example-walkLED.html", true);
-        request.send();
-      }
-     
-       
-      
-
-      script
       function loadIcon() {
         var request;
         request = new XMLHttpRequest();
@@ -61,7 +29,6 @@ html(lang="en")
       
       
       //Changing progress tracker when done is clicked
-      script
       function DoneCostume() 
       {
         document.getElementById("progress_image4").src = "images/prog_green.gif"; 
@@ -69,7 +36,6 @@ html(lang="en")
       
 
       //Changing progress tracker when save application is clicked
-      script
       function ShowProgress() 
       {
         document.getElementById("progress_image6").src = "images/prog_green.gif"; 
@@ -78,7 +44,6 @@ html(lang="en")
       
 
       <!--Load display-->
-      script
       function loadDisplay() {
         var request;
         request = new XMLHttpRequest();
@@ -90,7 +55,6 @@ html(lang="en")
       }
       
       <!--Load Lights-->
-      script
       function loadLights() {
         var request;
         request = new XMLHttpRequest();
@@ -102,7 +66,6 @@ html(lang="en")
       }
       
       <!--Load vibration-->
-      script
       function loadVibration() {
         var request;
         request = new XMLHttpRequest();
@@ -114,7 +77,6 @@ html(lang="en")
       }
       
        <!--Load sound-->
-      script
       function loadSound() {
         var request;
         request = new XMLHttpRequest();

@@ -21,6 +21,7 @@ define(['./LED.js', './Button.js', './AnalogInput.js',  './DigitalOutput.js', '.
       
     this.c          = Connector;
     this.options    = options;
+    console.log("board.js")
     console.log(this.options);
     this.pinMapping = {};
   };
@@ -102,6 +103,18 @@ define(['./LED.js', './Button.js', './AnalogInput.js',  './DigitalOutput.js', '.
   Board.prototype.withLED = function(options, next) {
     this.with(this.c.TYPE_LED, options, next);
   };
+  
+  /**
+   * Maria
+   * Create aWearable object on board
+   * @param object options
+   * @param function callback
+   */
+  Board.prototype.withObject = function(options, next) {
+    console.log("Board.prototype.withObject")
+    console.log(options);
+    this.with(this.c.TYPE_OBJECT, options, next);
+  };
 
   /**
    * Create Motor object on board
@@ -133,16 +146,32 @@ define(['./LED.js', './Button.js', './AnalogInput.js',  './DigitalOutput.js', '.
     
     var that = this;
     this.pinMapping[options.pin] = what;
+    console.log(what);
     
     switch (what) {
       case this.c.TYPE_LED:
+        console.log("TYPE_LED");
         this.c.withLED(options.pin, function(err, pin) {
           if (err) { return next(err); }
           next(null, new LEDObj({"pin": pin, "type": what}, that.c));
         });
       break;
-      //Brukes egentlig disse??
+          //Maria
+      case this.c.TYPE_OBJECT:
+        console.log("TYPE_OBJECT");
+        console.log(options.range);
+        console.log(options.lat);
+        this.c.withObject(options.range, options.lat, options.lon, function(err, range) {
+          console.log(options.range);
+          console.log("TYPE_RANGE");
+          if (err) { return next(err); }
+          console.log("errorrrrrr");
+          next(null, new RANGEObj({"range": range, "type": what}, that.c));
+        });
+      break;
+      //Brukes egentlig disse?? -Maria
       case this.c.TYPE_RANGE:
+        console.log("TYPE_RANGE");
         this.c.withRANGE(options.range, function(err, range) {
           console.log("TYPE_RANGE");
           if (err) { return next(err); }
@@ -150,6 +179,7 @@ define(['./LED.js', './Button.js', './AnalogInput.js',  './DigitalOutput.js', '.
         });
       break;
       case this.c.TYPE_DIGITALOUT:
+        console.log("TYPE_DIGITALOUT");
         this.c.digitalWrite(options.range, function(err, range) {
           console.log("TYPE_DIGITALOUT");
           if (err) { return next(err); }

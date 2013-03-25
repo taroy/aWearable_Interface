@@ -1,4 +1,6 @@
 define(function(require, exports, module) {
+  
+  console.log("NODUINO.SOCKET");
 
   function Board(options) {
     
@@ -11,8 +13,12 @@ define(function(require, exports, module) {
   function SocketNoduino (options) {
     if (false === (this instanceof SocketNoduino)) {
       return new SocketNoduino(options); }
+    
+    console.log("socketNoduino options");
+    console.log(options);
       
     this.options  = options;
+    console.log(options);
     this.boards   = [];
     this.board    = null;
     this.logger   = null;
@@ -97,21 +103,34 @@ define(function(require, exports, module) {
   }
   
   SocketNoduino.prototype.pushSocket = function(type, data) {
+    console.log("push socket");
     this.log('socket-write', type + ': ' + JSON.stringify(data));
     this.io.emit(type, data);
+    console.log(data);
   }
   
   SocketNoduino.prototype.write = function(cmd, callback) {
+    console.log("socket da vet, write");
+    console.log(cmd);
     this.log('info', 'writing: ' + cmd);
     this.pushSocket('serial', {'type': 'write', 'write': cmd, 'id': this.io.socket.sessionid});
   };
 
   SocketNoduino.prototype.pinMode = function(pin, val) {
+    console.log("SocketNoduino.prototype.pinMode");
     pin = this.normalizePin(pin);
     val = (val == this.MODE_OUT ? this.normalizeVal(1) : this.normalizeVal(0));
     this.log('info', 'set pin ' + pin + ' mode to ' + val);
     
     this.write('00' + pin + val);    
+  };
+  
+  //Maria
+  SocketNoduino.prototype.withObject = function(range, lat, lon) {
+    console.log("SocketNoduino.prototype.withObject");
+    this.log('info', 'set range ' + range );
+    
+    this.write('00' + range + '!' + lat + '!' + lon);    
   };
 
   SocketNoduino.prototype.normalizeVal = function(val) {
@@ -123,11 +142,14 @@ define(function(require, exports, module) {
   };
 
   SocketNoduino.prototype.withLED = function(pin, next) {
+    console.log("SocketNoduino.prototype.withLED");
+    console.log(pin);
     this.pinMode(pin, this.MODE_OUT);
     next(null, pin);
   };
   
-    SocketNoduino.prototype.withRANGE = function(range) {
+  // Maria
+  SocketNoduino.prototype.withRANGE = function(range) {
     console.log("withRANGE in socket")
     return (range);
   };
@@ -162,10 +184,12 @@ define(function(require, exports, module) {
   };
   */
   
+  
+  //Is this the shit?
   SocketNoduino.prototype.digitalWrite = function(range, val, next) {
       this.log('info', 'analogWrite to pin ' + range);
       this.write(range);
-      
+      console.log("digitalWrite in socket noduino");
       if (next) {
        next(null, range); }
   };  

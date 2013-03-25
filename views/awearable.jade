@@ -4,8 +4,7 @@ header.jumbotron.subhead#overview
   h2 Create Application
 
 section#homeContent
-  
-  //ADD APPLICATION NAME
+
   .rowLine    
   .row
     #progressBox
@@ -31,7 +30,6 @@ section#homeContent
           }
         }
       
-  //ADD FRIENDS    
   .rowLine    
   .row
     #progressBox
@@ -42,8 +40,7 @@ section#homeContent
       .page-header
         h1 2. Add friends
       <img src="images/face_connect.png" id="face_connect" />
-    
-  //SENDING LATITUDE AND LONGITUDE TO BILLY  
+      
   .rowLine    
   .row
     #progressBox
@@ -57,9 +54,11 @@ section#homeContent
       <form>
       <input type="text" placeholder="Latitude:" name="inputLat" id="inputLat"><br>
       <input type="text" placeholder="Longitude:" name="inputLong" id="inputLong"><br>  
+      a.btn(href="#")#e2-geoSend
+          |  Send
+          
       </form>
-  
-  //CONNECT AWEARABLE TO THE COMPUTER    
+        
   .rowLine
   .row
     #progressBox
@@ -70,14 +69,15 @@ section#homeContent
       .page-header  
         h1 3. Connect your aWearable to the computer  
       p
-        a.btn(href="#")#buttonConnect
+        a.btn(href="#")#e2-buttonConnect
             i.icon-refresh
             |  Connect to aWearable
         .alert.alert-info Please connect to your aWearable using the button.
         .alert.hide.alert-error Unable to connect to aWearable!
         .alert.hide.alert-success Connection to aWearable established!
+        <!--.span12#e2-secondStep -->
       
-  //ADD COMPONENTS
+  
   .rowLine    
   .row
     #progressBox
@@ -186,7 +186,6 @@ section#homeContent
         
         dragDropObj.init();	// Initizlizing drag and drop object
 
-    //CUSTOMIZE
     .rowLine      
     .row
       #progressBox
@@ -197,7 +196,7 @@ section#homeContent
         .page-header
           h1 5. Costumize
           .span4 
-            <div id="left"> 
+            <div id="options"> 
             <div id="divDisplay"></div>
             <div id="divLights"></div>
             </div>
@@ -282,7 +281,7 @@ section#homeContent
             }    
         }
         
-    //CHOOSE RANGE
+   
     .rowLine 
     .row
       #progressBox
@@ -294,14 +293,14 @@ section#homeContent
           h1 6. Choose range
           
           p
-          select.span2#rangeValue
+          select.span2#e2-rangeValue
             option(value="null") Choose range
-            option(value=10) 100m
-            option(value=11) 200m
-            option(value=13) 500m
+            option(value=100) 100m
+            option(value=200) 200m
+            option(value=500) 500m
           | 
 
-    //SAVE APPLICATION
+  
     .rowLine
     .row
       #progressBox
@@ -312,7 +311,7 @@ section#homeContent
       .span9
         .page-header
           h1 7. Save application
-        a.btn(href="#", onclick="ShowProgress()")#buttonSend
+        a.btn(href="#", onclick="ShowProgress()")#e2-buttonSend
           i.icon-retweet
           |  Save application
 

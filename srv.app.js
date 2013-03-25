@@ -47,34 +47,34 @@ define(['kickstart', 'module', 'path', 'fs'], function (kickstart, module, path,
   });
   
   /** 
-   * Catch request for serving Display
+   * Catch request for serving Display - Ingrid
    */
   srv.all('/display-options.html', function(req, res) {
     res.render('display-options', {jsApp: 'none', active: 'display-options', title: 'noduino', 'examples': examples});
   });
   
   /** 
-   * Catch request for serving Lights
+   * Catch request for serving Lights -Ingrid
    */
   srv.all('/lights-options.html', function(req, res) {
     res.render('lights-options', {jsApp: 'none', active: 'lights-options', title: 'noduino', 'examples': examples});
   });
   
   /** 
-   * Catch request for serving Vibration
+   * Catch request for serving Vibration -Ingrid
    */
   srv.all('/vibration-options.html', function(req, res) {
     res.render('vibration-options', {jsApp: 'none', active: 'vibration-options', title: 'noduino', 'examples': examples});
   });
   /** 
-   * Catch request for serving Sound
+   * Catch request for serving Sound - Ingrid
    */
   srv.all('/sound-options.html', function(req, res) {
     res.render('sound-options', {jsApp: 'none', active: 'sound-options', title: 'noduino', 'examples': examples});
   });
   
   /** 
-   * Catch request for serving savedApp-test
+   * Catch request for serving savedApp-test - Maria?
    */
   srv.all('/savedApp.html', function(req, res) {
     res.render('savedApp', {jsApp: 'none', active: 'savedApp', title: 'noduino', 'examples': examples});
