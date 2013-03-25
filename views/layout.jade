@@ -1,5 +1,7 @@
 !!! 5
 html(lang="en")
+html(xmlns="http://www.w3.org/1999/xhtml",
+xmlns:fb="https://www.facebook.com/2008/fbml")
   head
     title Arduino control nodeuino for JavaScript and Node.js with WebSockets and HTML5
     link(rel="stylesheet", href="styles/bootstrap/init.css")
@@ -10,9 +12,37 @@ html(lang="en")
     //script(type="text/javascript", src="script.js")
     script(src="//ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.js")
     script(type="text/javascript", src="scripts/drag-drop-custom.js")
+    script(src="http://connect.facebook.net/en_US/all.js")
+
    
-      
+   
     script
+      function loadXMLDoc() {
+        var request;
+        request = new XMLHttpRequest();
+        request.onreadystatechange=function() {
+  
+            document.getElementById("myDiv").innerHTML=request.responseText;
+          
+        }
+   
+        request.open("GET","example-ajax_info.html", true);
+        request.send();
+      }
+      
+      function loadXMLDoc2() {
+        var request;
+        request = new XMLHttpRequest();
+        request.onreadystatechange=function() {
+  
+            document.getElementById("myDiv2").innerHTML=request.responseText;
+          
+        }
+   
+        request.open("GET","example-walkLED.html", true);
+        request.send();
+      }
+
       function loadIcon() {
         var request;
         request = new XMLHttpRequest();
@@ -29,6 +59,7 @@ html(lang="en")
       
       
       //Changing progress tracker when done is clicked
+
       function DoneCostume() 
       {
         document.getElementById("progress_image4").src = "images/prog_green.gif"; 

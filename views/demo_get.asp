@@ -1,1 +1,0 @@
-Hei alle sammennnn

@@ -1,3 +1,113 @@
+<div id="fb-root"></div>
+script
+  // Additional JS functions here
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '109853005851767', // App ID
+      channelUrl : '//localhost:8080/', // Channel File
+      status     : true, // check login status
+      cookie     : true, // enable cookies to allow the server to access the session
+      xfbml      : true  // parse XFBML
+    });
+
+    FB.getLoginStatus(function(response) {
+      if (response.status === 'connected') {
+          // User logged into FB and authorized
+          testAPI();
+          document.getElementById('fb-logout').style.display = 'block';
+      } else if (response.status === 'not_authorized') {
+          // User logged into FB but not authorized
+          login();
+      } else {
+          // User not logged into FB
+          login();
+          document.getElementById('fb-logout').style.display = 'block';
+      }
+    });
+    
+  };
+  
+  function login() {
+    FB.login(function(response) {
+        if (response.authResponse) {
+            // connected
+            testAPI();
+        } else {
+            // cancelled
+        }
+    });
+  }
+  
+  function logout() {
+    FB.logout(function(response) {
+        console.log('User is now logged out');
+    });
+  }
+  
+  function testAPI() {
+    console.log('Welcome!  Fetching your information.... ');
+    FB.api('/me', function(response) {
+        console.log('Good to see you, ' + response.name + '.');
+    });
+    FB.api('/me/friends?fields=installed,id,name', function (response) {
+        
+    });   
+  }
+  
+  // Load the SDK Asynchronously
+  (function(d){
+     var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement('script'); js.id = id; js.async = true;
+     js.src = "//connect.facebook.net/en_US/all.js";
+     ref.parentNode.insertBefore(js, ref);
+  }(document));
+  
+  
+  FB.init({
+        appId  : '109853005851767',
+        frictionlessRequests: true
+  });
+
+  function sendRequestToRecipients() {
+        var user_ids = document.getElementsByName("user_ids")[0].value;
+        FB.ui({method: 'apprequests',
+          message: 'My Great Request',
+          to: user_ids
+        }, requestCallback);
+  }
+
+  function sendRequestViaMultiFriendSelector() {
+      FB.ui({
+          method: 'apprequests',
+          message: "Would you like to join my aWearable group?",
+          picture: 'url to my image',
+          max_recipients: '50'
+        }, function(response) {
+          if(response && response.to) {
+              for(i = 0; i < response.to.length; i++) {
+                  console.log("number: " + i + " ID: " + response.to[i]);
+
+                  FB.api('/'+ response.to[i] +'?fields=installed,name', function (response) {
+                      console.log(response);
+                      var friendnames = document.getElementById("friendnames");
+                      friendnames.innerHTML+=(response['name'] + "<br>");
+                  });
+
+              }
+          }
+      });
+  }
+      
+  function requestCallback(response) {
+    var ids = response["to"];
+    for (var i = 0; i < ids.length; ++i){
+        return ids[i];             
+    }
+   
+  }
+   
+
 header.jumbotron.subhead#overview
   
   h1 aWearable
@@ -76,6 +186,34 @@ section#homeContent
         .alert.alert-info Please connect to your aWearable using the button.
         .alert.hide.alert-error Unable to connect to aWearable!
         .alert.hide.alert-success Connection to aWearable established!
+
+        h1 2. Create group 
+          small <br>Add friends to group using facebook
+        <br>
+        <!--
+        <button id="fb-login-button" onclick="login()"></button>
+        
+        <button id="fb-logout" onclick="logout()">Log out</button>
+        <br> --> 
+         
+        <img type="button" onclick="sendRequestViaMultiFriendSelector()" src="images/facebook_icon.png"; return true;/>
+        <br>
+        p 
+          b Friends added to group:
+        
+        <div id="friendnames"></div>
+        
+        <div align="center">
+        <img id="picture"/>
+        </div>
+        
+        </div>
+        
+        <!--
+        <div id="fb-root"></div>
+        
+        <div class="fb-login-button" data-show-faces="true" data-width="500" data-max-rows="1"></div> </div> -->
+  
       
   //ADD COMPONENTS
   .rowLine    
