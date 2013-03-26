@@ -1,51 +1,140 @@
 #include <Servo.h>
-char messageBuffer[20], cmd[3], pin[4], val[5], aux[5];
+char messageBuffer[18], range[3], cmd[2], pin[3], lat[8], lon[8], aux[3], val[3];
 boolean debug = false;
 int index = 0;
 Servo servo;
 
-
 void setup() {
   Serial.begin(115200);
+  
+  messageBuffer[0]='0';
+  messageBuffer[1]='0';
+  messageBuffer[2]=':';
+  messageBuffer[3]='5';
+  messageBuffer[4]='0';
+  messageBuffer[5]='0';
+  messageBuffer[6]=':';
+  messageBuffer[7]='3';
+  messageBuffer[8]='3';
+  messageBuffer[9]=',';
+  messageBuffer[10]='3';
+  messageBuffer[11]='3';
+  messageBuffer[12]=':';
+  messageBuffer[13]='4';
+  messageBuffer[14]='4';
+  messageBuffer[15]=',';
+  messageBuffer[16]='4';
+  messageBuffer[17]='4';
+  
+  Serial.println("messageBuffer");
+  Serial.println(messageBuffer);
+
+  String a = getCmd();
+  Serial.println("cmd:");
+  Serial.println(a);
+  Serial.println(sizeof(cmd));
+  
+  int b = getRange();
+  int c = getLatitude();
+  int d = getLongitude();
+  
+
+  
+  Serial.println(b);
+  Serial.println(c);
+  Serial.println(d);
+  
 }
 
 void loop() {
   /**
    * Waiting for commands
    */
+  
   while(Serial.available() > 0) {
     char x = Serial.read();
     if (x == '!') index = 0;      // start
     else if (x == '.') process(); // end
     else messageBuffer[index++] = x;
   }
+  
+
+  
+}
+
+/**
+ * Splitting up messagebuffer - Maria
+ */
+
+String getCmd () {
+  strncpy(cmd, messageBuffer, 2);
+  //int icmd = atoi(cmd);
+  return cmd;
+}
+
+int getRange () {
+  int j=0;
+  Serial.println("range");
+  for(int i=sizeof(cmd)+1; i<sizeof(messageBuffer); i++){
+    strncpy(range, messageBuffer + sizeof(cmd), 3);
+    if(messageBuffer[i] == ':'){
+      Serial.println(range);
+      break;
+    }
+  }
+  int irange = atoi(range);
+  return (irange);
+}
+
+
+int getLatitude () {
+  for(int i=(sizeof(cmd)+sizeof(range)); i<sizeof(messageBuffer); i++){
+    if(i == ':'){
+      strncpy(lat, messageBuffer, i);
+      Serial.println("latitude");
+      Serial.println(lat);
+    }
+  }
+  int ilat = atoi(lat);
+  return (ilat);
+}
+
+int getLongitude () {
+  for(int i=(sizeof(cmd)+sizeof(range)+sizeof(lat)); i<sizeof(messageBuffer); i++){
+    if(i == ':'){
+      strncpy(lon, messageBuffer, i);
+      Serial.println("longitude");
+      Serial.println(lon);
+    }
+  }
+  int ilon = atoi(lon);
+  return (ilon);
 }
 
 /**
  * Deal with a full message and determine function to call
  */
 void process() {
-  Serial.print("process");
   index = 0;
-  
-  strncpy(cmd, messageBuffer, 3);
-  cmd[2] = '\0';
-  strncpy(pin, messageBuffer + 3, 4);
-  pin[2] = '\0';
-  strncpy(val, messageBuffer + 7, 6);
-  val[3] = '\0';
-  strncpy(aux, messageBuffer + 13, 6);
+    
+  strncpy(range, messageBuffer, 3);
+  range[3] = '\0';
+  strncpy(cmd, messageBuffer + 3, 4);
+  cmd[4] = '\0';
+  strncpy(pin, messageBuffer + 4, 4);
+  pin[4] = '\0';
+  strncpy(val, messageBuffer + 8, 16);
+  val[8] = '\0';
+  strncpy(aux, messageBuffer + 16, 4);
   aux[3] = '\0';
   
-  Serial.println("messageBuffer"); 
-  Serial.println(messageBuffer);
-  
   if (debug) {
-    Serial.println("messageBuffer"); 
-    Serial.println(messageBuffer); }
+  }
 
   int cmdid = atoi(cmd);
-  
+
+
+ 
   switch(cmdid) {
     case 0:  sm(pin,val);               break;
     case 1:  dw(pin,val);               break;
@@ -225,3 +314,5 @@ void handleServo(char *pin, char *val, char *aux) {
     }  
   }
 }
+
+
