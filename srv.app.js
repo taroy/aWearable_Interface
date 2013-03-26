@@ -101,6 +101,12 @@ define(['kickstart', 'module', 'path', 'fs'], function (kickstart, module, path,
     res.render('request_response', {jsApp: 'main', active: 'request_response.', title: 'noduino', 'examples': examples});
   });
   
+/** 
+   * Catch request for serving Groups - Ingrid
+   */
+  srv.all('/aware_of.html', function(req, res) {
+    res.render('aware_of', {jsApp: 'none', active: 'aware_of', title: 'noduino', 'examples': examples});
+  });
   
   /** 
   * Catch request for progression tracker/icon test
@@ -108,6 +114,8 @@ define(['kickstart', 'module', 'path', 'fs'], function (kickstart, module, path,
   srv.all('/channel.html', function(req, res) {
     res.render('channel', {jsApp: 'none', active: 'channel', title: 'noduino', 'examples': examples});
   });
+  
+  
 
   return {'kickstart': kickstart, 'srv': srv};
 });

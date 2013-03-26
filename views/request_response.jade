@@ -13,22 +13,6 @@ script
       cookie     : true, // enable cookies to allow the server to access the session
       xfbml      : true  // parse XFBML
     });
-
-    FB.getLoginStatus(function(response) {
-      if (response.status === 'connected') {
-          // User logged into FB and authorized
-          testAPI();
-          document.getElementById('fb-logout').style.display = 'block';
-      } else if (response.status === 'not_authorized') {
-          // User logged into FB but not authorized
-          login();
-      } else {
-          // User not logged into FB
-          login();
-          document.getElementById('fb-logout').style.display = 'block';
-      }
-    });
-    
   };
   
 
@@ -40,14 +24,6 @@ script
      js.src = "//connect.facebook.net/en_US/all.js";
      ref.parentNode.insertBefore(js, ref);
   }(document));
-  
-  
-  FB.init({
-        appId  : '109853005851767',
-        frictionlessRequests: true
-  });
-
-
       
   function requestCallback(response) {
     var ids = response["to"];
@@ -56,20 +32,28 @@ script
     }
    
   }
+script
+    <!--Load accept- Ingrid-->
+    
+    function loadInvitationAnswer() {
+        if (document.answerInvitation.acc1[0].checked) {
+            document.getElementById("accept").innerHTML = "You accepted the invitation. Ingrid is now aware of you";
+        }
+        else if (document.answerInvitation.acc1[1].checked) {
+            document.getElementById("accept").innerHTML = "You ignored the invitation.";
+        }
+    }
 header.jumbotron.subhead#overview
       
       h1 aWearable
       
         h3 Ingrid has invited you to join her awareness group/Let Ingrid be aware of you
-        p Join/Accept  Ignore
-        <form action="demo_form.asp" method="get">
-        Choose your favorite subject:
-        <button name="subject" type="submit" value="fav_HTML">HTML</button>
-        <button name="subject" type="submit" value="fav_CSS">CSS</button>
-        </form>
-      
-      
-      .span9
-      .page-header
-
+        <div id="accept">
+        <form name="answerInvitation">
+        <input type="radio" id = "acc1" name="acc1" onclick = "loadInvitationAnswer()" value="Accept" style=display:none> 
+        <label for="acc1"><img src="accept.png" alt="Accepting" /></label>
+        <input type="radio" id = "acc2" name="acc1" onclick = "loadInvitationAnswer()" value="Ignore" style=display:none>
+        <label for="acc2"><img src="ignore.png" alt="Ignoring" /></label>
         
+        </form>
+        </div>
