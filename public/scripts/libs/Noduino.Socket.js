@@ -130,7 +130,15 @@ define(function(require, exports, module) {
     console.log("SocketNoduino.prototype.withObject");
     this.log('info', 'set range ' + range );
     
-    this.write('00' + ':' + range + ':' + lat + ':' + lon);    
+    this.write('00' + range + lat + lon);    
+  };
+  
+  //Maria
+  SocketNoduino.prototype.withPosition = function(lat, lon) {
+    console.log("SocketNoduino.prototype.withPosition");
+    this.log('info', 'set position ' + lat + lon );
+    
+    this.write('00' + ':' + lat + ':' + lon);    
   };
 
   SocketNoduino.prototype.normalizeVal = function(val) {

@@ -31,15 +31,11 @@ define(function() {
   
   Awearable2.writeToBoard = function(range, lat, lon)
   {
-    console.log("writeToBoard1");
-    console.log(lat);
     var that = this;
     //that = Window {top:window, window:Window, location:location osv..}
+    console.log("with object");
     if (!that.range)
     {
-      console.log("writeToBoard");
-      console.log(range);
-      console.log(lat);
       this.board.withObject({range: range, lat: lat, lon: lon}, function(err, LED)
       {
         if (err)
@@ -49,5 +45,31 @@ define(function() {
       });
     }
   };
+  
+  Awearable2.saveGroup = function(Groupmember)
+  {
+    Awearable2.writeGroup(Groupmember.lat, Groupmember.lon);
+  };  
+  
+  //Saving group/ hardcoded latitude and longitude
+  Awearable2.writeGroup = function(lat, lon)
+  {
+    console.log(lat);
+    console.log(lon);
+    var that = this;
+    if(!that.lat)
+    {
+      console.log("her");
+      console.log(lat);
+      this.board.withPosition({lat: lat, lon: lon}, function(err)
+      {
+        if (err)
+        {
+          return console.log(err);
+        }
+      });
+    }
+  };
+  
   return Awearable2;
 });

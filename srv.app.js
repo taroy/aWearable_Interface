@@ -105,7 +105,7 @@ define(['kickstart', 'module', 'path', 'fs'], function (kickstart, module, path,
    * Catch request for serving Groups - Ingrid
    */
   srv.all('/aware_of.html', function(req, res) {
-    res.render('aware_of', {jsApp: 'none', active: 'aware_of', title: 'noduino', 'examples': examples});
+    res.render('aware_of', {jsApp: 'main', active: 'aware_of', title: 'noduino', 'examples': examples});
   });
   
   /** 

@@ -1,12 +1,7 @@
+
 #include <Servo.h>
 #include <SoftwareSerial.h>
 #include <TinyGPS.h>
-#include <SerialLCD.h>
-#include <PString.h> 
-
-
-// initialize the library
-SerialLCD slcd(11,12);//this is a must, assign soft serial pins
 
 
 TinyGPS gps;
@@ -38,7 +33,6 @@ void setup() {
   Serial.println("Sats HDOP Latitude Longitude Fix  Date       Time       Date Alt     Course Speed Card  Distance Course Card  Chars Sentences Checksum");
   Serial.println("          (deg)    (deg)     Age                        Age  (m)     --- from GPS ----  ---- to target  ----  RX    RX        Fail");
   Serial.println("--------------------------------------------------------------------------------------------------------------------------------------");
-
 }
 
 /**
@@ -65,23 +59,8 @@ void process() {
   Serial.println("lon");
   Serial.println(lon);
   
-  
-  char buffer[12];
-  PString(buffer, sizeof(buffer), lat);
-  Serial.println("latitude");
-  Serial.println(buffer);
-  
-  //slcd.begin();
-  //slcd.print(buffer);
-  
-  
-  char buffer2[12];
-  PString(buffer2, sizeof(buffer2), lon);
-  Serial.println("longitude");
-  Serial.println(buffer2);
-  //slcd.setCursor(0,1);
-  //slcd.print(buffer2);
-
+  float l = atof(lat);
+  Serial.println(l);
   
   
   if (debug) {
@@ -111,28 +90,19 @@ void loop() {
     if (x == '!') index = 0;      // start
     else if (x == '.') process(); // end
     else messageBuffer[index++] = x;
-   
   }
-  
-  //LCD
-  // set the cursor to column 0, line 1
-  // (note: line 1 is the second row, since counting begins with 0):
-  //slcd.setCursor(0, 1);
-  // print the number of seconds since reset:
-  //slcd.print(millis()/1000,DEC);
   
     bool newdata = false;
   unsigned long start = millis();
   
   // Every second we print an update - from GPS
-  while (millis() - start < 5000)
+  while (millis() - start < 1000)
   {
     if (feedgps())
       newdata = true;
   }
   
   gpsdump(gps);
- 
 }
 
 
@@ -141,8 +111,8 @@ static void gpsdump(TinyGPS &gps)
   float flat, flon;
   unsigned long age, date, time, chars = 0;
   unsigned short sentences = 0, failed = 0;
-  static const float TARGET_LAT = 63.41696, TARGET_LON = 10.40298;
-
+  static const float TARGET_LAT = 59.13131, TARGET_LON = 10.216595;
+  
   print_int(gps.satellites(), TinyGPS::GPS_INVALID_SATELLITES, 5);
   print_int(gps.hdop(), TinyGPS::GPS_INVALID_HDOP, 5);
   gps.f_get_position(&flat, &flon, &age);
@@ -156,11 +126,11 @@ static void gpsdump(TinyGPS &gps)
   print_float(gps.f_course(), TinyGPS::GPS_INVALID_F_ANGLE, 7, 2);
   print_float(gps.f_speed_kmph(), TinyGPS::GPS_INVALID_F_SPEED, 6, 2);
   print_str(gps.f_course() == TinyGPS::GPS_INVALID_F_ANGLE ? "*** " : TinyGPS::cardinal(gps.f_course()), 6);
-  print_int(flat == TinyGPS::GPS_INVALID_F_ANGLE ? 0UL : (unsigned long)TinyGPS::distance_between(flat, flon, TARGET_LAT, TARGET_LON), 0xFFFFFFFF, 9);
+  print_int(flat == TinyGPS::GPS_INVALID_F_ANGLE ? 0UL : (unsigned long)TinyGPS::distance_between(flat, flon, TARGET_LAT, TARGET_LON) / 1000, 0xFFFFFFFF, 9);
   print_float(flat == TinyGPS::GPS_INVALID_F_ANGLE ? 0.0 : TinyGPS::course_to(flat, flon,TARGET_LAT, TARGET_LON), TinyGPS::GPS_INVALID_F_ANGLE, 7, 2);
   print_str_target(flat == TinyGPS::GPS_INVALID_F_ANGLE ? "*** " : TinyGPS::cardinal(TinyGPS::course_to(flat, flon, TARGET_LAT, TARGET_LON)), 6);
 
-  //in_range((unsigned long)TinyGPS::distance_between(flat, flon, TARGET_LAT, TARGET_LON), range);
+  print_distance((unsigned long)TinyGPS::distance_between(flat, flon, TARGET_LAT, TARGET_LON) / 1000, range);
   
   gps.stats(&chars, &sentences, &failed);
   print_int(chars, 0xFFFFFFFF, 6);
@@ -168,49 +138,18 @@ static void gpsdump(TinyGPS &gps)
   print_int(failed, 0xFFFFFFFF, 9);
   Serial.println();
   
-
-  
 }
 
 //MARIA - Is distance within range?
-//boolean in_range(unsigned long val, char range[])
-//{
-  //boolean inRange = false;
- // char buffer3[12];
-  //PString(buffer3, sizeof(buffer3), val);
-  //Serial.println(buffer3);
- // int r = atoi(range); 
- // if(val < r) {
- //   inRange = true;
-  //}
- // return inRange; 
-//}
-
-/*
-static void update_lcd(unsigned long val, boolean inRange)
+static void print_distance(unsigned long val, char range[])
 {
-  Serial.println("inRange");
-  if(inRange){
-    Serial.println("inRange2");
-    
+  int r = atoi(range);
+  
+  if(val < r) {
+     Serial.println("yaaa maaan");
+     Serial.println(range);
   }
-
-
-
-  //char lcdBuffer[4];
-  //memcpy(lcdBuffer, &val, sizeof(lcdBuffer));
-  //Serial.println("lcdBuffer");
-  //Serial.println(lcdBuffer);
-
-    // Serial.println(val);
-     //slcd.begin();
-     //slcd.print("distance: ");
-     //slcd.print(buffer3);
-     //slcd.print("m");
-  //}
- 
 }
-*/
 
 
 static void print_int(unsigned long val, unsigned long invalid, int len)
