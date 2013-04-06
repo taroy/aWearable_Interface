@@ -44,6 +44,7 @@ void process() {
   
   Serial.println("messageBuffer");
   Serial.println(messageBuffer);
+  
 
  
   switch(cmdid) {

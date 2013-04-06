@@ -13,10 +13,16 @@ define(function()
   {
     name: null,
     //members: [],
-    latitude: 0.00,
-    longitude: 0.00,
+    latitude: '63,427029',
+    longitude: '10,396700',
     //modules: [],
     range: 0
+  };
+  
+  var Groupmember =
+  {
+    lat: 63.427029,
+    lon: 10.396700
   };
   
   /*
@@ -49,14 +55,23 @@ define(function()
       e.preventDefault();
       
       Awearable.name = $('#nameForm').val()
-      Awearable.latitude = $('#inputLat').val();
-      Awearable.longitude = $('#inputLong').val();
       Awearable.range = $('#rangeValue').val();
       console.log(Awearable.range);
       require(['awearable-2'], function(example)
       {
         e2 = example;
         example.saveApp(Awearable);
+      });
+    });
+  
+    //Save group - Maria
+    $('#saveGroup').click(function(e)
+    {
+      e.preventDefault();
+      require(['awearable-2'], function(example)
+      {
+        e2 = example;
+        example.saveGroup(Groupmember);
       });
     });
   };

@@ -115,6 +115,18 @@ define(['./LED.js', './Button.js', './AnalogInput.js',  './DigitalOutput.js', '.
     console.log(options);
     this.with(this.c.TYPE_OBJECT, options, next);
   };
+  
+    /**
+   * Maria
+   * Create group on board
+   * @param object options
+   * @param function callback
+   */
+  Board.prototype.withPosition = function(options, next) {
+    console.log("Board.prototype.withPosition")
+    console.log(options);
+    this.with(this.c.TYPE_POSITION, options, next);
+  };
 
   /**
    * Create Motor object on board
@@ -155,8 +167,9 @@ define(['./LED.js', './Button.js', './AnalogInput.js',  './DigitalOutput.js', '.
           if (err) { return next(err); }
           next(null, new LEDObj({"pin": pin, "type": what}, that.c));
         });
+
       break;
-          //Maria
+      //Maria
       case this.c.TYPE_OBJECT:
         console.log("TYPE_OBJECT");
         console.log(options.range);
