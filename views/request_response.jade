@@ -28,32 +28,38 @@ script
   function requestCallback(response) {
     var ids = response["to"];
     for (var i = 0; i < ids.length; ++i){
-        return ids[i];             
+        return ids[i];
+        var nameid = ids[i];
+        loadInvitationAnswer(nameid);
     }
    
   }
+  
 script
     <!--Load accept- Ingrid-->
     
-    function loadInvitationAnswer() {
+    function loadInvitationAnswer(nameid) {
         if (document.answerInvitation.acc1[0].checked) {
-            document.getElementById("accept").innerHTML = "You accepted the invitation. Ingrid is now aware of you";
+            document.getElementById("accept").innerHTML = "<br>" + nameid+ "Maria is now aware of you";
         }
         else if (document.answerInvitation.acc1[1].checked) {
-            document.getElementById("accept").innerHTML = "You ignored the invitation.";
+            document.getElementById("accept").innerHTML = "<br>" + "You declined the invitation.";
         }
     }
 header.jumbotron.subhead#overview
       
-      h1 aWearable
+        h1 aWearable
       
-        h3 Ingrid has invited you to join her awareness group/Let Ingrid be aware of you
+       
+        <div id="acceptOuter">
+        h4 Maria Moller has requested to be aware of you
         <div id="accept">
+        <br>
         <form name="answerInvitation">
         <input type="radio" id = "acc1" name="acc1" onclick = "loadInvitationAnswer()" value="Accept" style=display:none> 
-        <label for="acc1"><img src="accept.png" alt="Accepting" /></label>
+        <label for="acc1"><img src="/images/AcceptButton.png" alt="Accepting" /></label>
         <input type="radio" id = "acc2" name="acc1" onclick = "loadInvitationAnswer()" value="Ignore" style=display:none>
-        <label for="acc2"><img src="ignore.png" alt="Ignoring" /></label>
+        <label for="acc2"><img src="/images/DeclineButton.png" alt="Ignoring" /></label>
         
         </form>
         </div>

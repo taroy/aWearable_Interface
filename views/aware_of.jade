@@ -66,7 +66,7 @@ script
   
   FB.init({
         appId  : '109853005851767',
-        frictionlessRequests: true
+        frictionlessRequests: false
   });
 
   function sendRequestViaMultiFriendSelector() {
@@ -77,35 +77,73 @@ script
           max_recipients: '50'
         }, function(response) {
           if(response && response.to) {
-              for(i = 0; i < response.to.length; i++) {
-                  console.log("number: " + i + " ID: " + response.to[i]);
-
-                  FB.api('/'+ response.to[i] +'?fields=installed,name', function (response) {
-                      console.log(response);
-                      var friendnames = document.getElementById("friendnamesDiv");
-                      friendnames.innerHTML+=(response['name'] + "<br>");
-                  });
-
+                for(i = 0; i < response.to.length; i++) {
+                    console.log("number: " + i + " ID: " + response.to[i]);
+                    
+                    if(i==0) {
+                        FB.api('/'+ response.to[i] +'?fields=installed,name', function (response) {
+                            console.log(response);
+                            var removefriend=document.createElement("button");
+                            var t=document.createTextNode("X");
+                            removefriend.appendChild(t);
+                            var friendnames = document.getElementById("friendnamesDiv");
+                            friendnames.innerHTML+=(response['name'] + "<br>");
+                            document.getElementById("fjerneDiv").appendChild(removefriend);
+                            friendnames.innerHTML+=("<br>");
+                            
+                        });
+                    }
+                    if(i==1) {
+                        FB.api('/'+ response.to[i] +'?fields=installed,name', function (response) {
+                            console.log(response);
+                            var removefriend=document.createElement("button");
+                            var t=document.createTextNode("X");
+                            removefriend.appendChild(t);
+                            var friendnames = document.getElementById("friendnamesDiv1");
+                            friendnames.innerHTML+=(response['name'] + "<br>");
+                            document.getElementById("fjerneDiv1").appendChild(removefriend);
+                            friendnames.innerHTML+=("<br>");
+                            
+                        });
+                    }   
+                    
               }
           }
       });
   }
       
-  function requestCallback(response) {
-    var ids = response["to"];
-    for (var i = 0; i < ids.length; ++i){
-        return ids[i];             
-    }
+    function requestCallback(response) {
+        var ids = response["to"];
+        for (var i = 0; i < ids.length; ++i){
+            return ids[i];             
+        }
    
-  }
+    }
+ 
+    function functionRemove() {
+        var elem = document.getElementById('friendnamesDiv');
+        elem.parentNode.removeChild(elem);
+        return false; 
+    }
+    function functionRemove1() {
+        var elem = document.getElementById('friendnamesDiv1');
+        elem.parentNode.removeChild(elem);
+        return false; 
+    }
   
 header.jumbotron.subhead#overview
-    
+  
+  h1 aWearable
+
+  h2 <a href="/">Create Application</a> <a href="aware_of.html">Friends and Privacy</a>
+    <div id="friendspage">
+section#homeContent
+    h2 Friends
+        .rowLine 
+        small Add friends to your awareness group using facebook
+          <br>
     .span9
       .page-header
-        h1 Create group 
-          small <br>Add friends to you awareness group using facebook
-          <br>
         <!--
         <button id="fb-login-button" onclick="login()"></button>
           
@@ -113,20 +151,64 @@ header.jumbotron.subhead#overview
         <br> --> 
         <img type="button" onclick="sendRequestViaMultiFriendSelector()" src="images/facebook_icon.png"; return true;/>
         <br>
+        <div id="following">    
         p 
-            b Friends added to group:
+            b Friends you are aware of:
             <br>
-            <div id="friendnamesDiv"></div>
-          
+            .span4 
+            <div id="friendnamesDiv">
+            
+            .span4
+            <div TITLE="Delete friend" id="fjerneDiv" onclick="functionRemove()"> </div>
+            </div>
+            .span4
+            <div id="friendnamesDiv1">
+            .span4    
+            <div TITLE="Delete friend" id="fjerneDiv1" onclick="functionRemove1()"> </div>
+            </div>
+            <br>
+        
+        <div id="followers">  
         p
-            b Friends following you:
-            p None
-        
-        h3 Privacy settings    
-        
-        
+            b Friends aware of you:
+            p
+                i No friends are aware of you
+        </div>
+
+        <br>
+        <br>
         
     
-  
-  
-  
+        <div id="privacy">
+        <img src="images/Black_Lock.png">
+        h2 Privacy settings
+            .rowLine
+            small Decide what location information to share with your friends:
+        <form action="">
+        .span4    
+            <label for="allow"><b>Distance:</b></label>
+        .span12
+            <div class="privacy_settings">
+            <input checked type="radio" name="privacy" id="allow" value="allow"> Allow
+            <input type="radio" name="privacy" value="Not allow"> Not Allow <br>
+            </div>
+        </form>
+        
+        <form action="">
+        .span4     
+            <label for="allow"><b>Direction:</b></label>
+        .span12
+            <div class="privacy_settings">
+            <input checked type="radio" name="privacy" value="Allow"> Allow
+            <input type="radio" name="privacy" value="Not allow"> Not Allow <br>
+            </div>
+        </form>
+        <form action="">
+        .span4     
+            <label for="allow"><b>Coordinates:</b></label>
+        .span12
+            <div class="privacy_settings">
+            <input checked type="radio" name="privacy" value="Allow"> Allow
+            <input type="radio" name="privacy" value="Not allow"> Not Allow
+            </div>
+        </form>
