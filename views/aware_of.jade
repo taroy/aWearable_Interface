@@ -149,37 +149,40 @@ header.jumbotron.subhead#overview
 
     h2 <a href="/">Create Application</a> | <a href="aware_of.html" class="selected">Friends and Privacy</a>
     <div id="friendspage">
+      
 section#homeContent
-    h2 Friends
-        .rowLine 
-        small Add friends to your awareness group using facebook
-          <br>
 
+  .rowLine
+  .row
+    #progressBox
+      .span3
+        <img src="images/prog_grey.gif" id="progress_image5" />
+        
     .span9
       .page-header
+        h1 Friends
+          <br>
+          small Add friends to your awareness group using facebook
+          <br>
         <!--
         <button id="fb-login-button" onclick="login()"></button>
           
         <button id="fb-logout" onclick="logout()">Log out</button>
         <br> --> 
-        <img type="button" onclick="sendRequestViaMultiFriendSelector()" src="images/facebook_icon.png"; return true;/>
+        <img type="button" onclick="sendRequestViaMultiFriendSelector()" id="facebook-login" src="images/facebook-login.png"; return true;/>
         <br><br>
         <div id="following">    
         p 
             b Friends you are aware of:
             <br>
             form
-                .span4 
-                <div id="friendnamesDiv">
+              <div id="friendnamesDiv">
                 
-                .span4
-                <div TITLE="Delete friend" id="fjerneDiv" onclick="functionRemove()"> </div>
-                </div>
-                .span4
-                <div id="friendnamesDiv1">
-                .span4    
-                <div TITLE="Delete friend" id="fjerneDiv1" onclick="functionRemove1()"> </div>
-                </div>
+              <div TITLE="Delete friend" id="fjerneDiv" onclick="functionRemove()"> </div>
+              </div>
+              <div id="friendnamesDiv1">  
+              <div TITLE="Delete friend" id="fjerneDiv1" onclick="functionRemove1()"> </div>
+              </div>
             
         <br>
         
@@ -189,41 +192,48 @@ section#homeContent
             p
                 i No friends are aware of you
         </div>
+      </div>
 
-        <br>
-        <br>
-        
-    
-        <div id="privacy">
-        <img src="images/Black_Lock.png">
-        h2 Privacy settings
-            .rowLine
-            small Decide what location information to share with your friends:
+      <br>
+      <br>
+
+  .rowLine
+  .row
+    #progressBox
+      .span3
+        <img src="images/prog_grey.gif" id="progress_image5" />
+  
+     
+    .span9
+      .page-header
+        <img src="images/Black_Lock.png" id="lock">
+        h1 Privacy settings
+          <br>
+          small Decide what location information to share with your friends:
         <form action="">
-        .span4    
-            <label for="allow"><b>Distance:</b></label>
-        .span12
-            <div class="privacy_settings">
-            <input checked type="radio" name="privacy" id="allow" value="allow"> Allow
-            <input type="radio" name="privacy" value="Not allow"> Not Allow <br>
-            </div>
-        </form>
-        
-        <form action="">
-        .span4     
-            <label for="allow"><b>Direction:</b></label>
-        .span12
-            <div class="privacy_settings">
-            <input checked type="radio" name="privacy" value="Allow"> Allow
-            <input type="radio" name="privacy" value="Not allow"> Not Allow <br>
-            </div>
+        .span4
+          <label for="allow"><b>Distance:</b></label>
+        .span5
+          <div class="privacy_settings">
+          <input checked type="radio" name="privacy" id="allow" value="allow"> Allow
+          <input type="radio" name="privacy" value="Not allow" id="not-allow"> Not Allow <br>
+          </div>
         </form>
         <form action="">
-        .span4     
-            <label for="allow"><b>Coordinates:</b></label>
-        .span12
-            <div class="privacy_settings">
-            <input checked type="radio" name="privacy" value="Allow"> Allow
-            <input type="radio" name="privacy" value="Not allow"> Not Allow
-            </div>
+        .span4
+          <label for="allow"><b>Direction:</b></label>
+        .span5
+          <div class="privacy_settings">
+          <input checked type="radio" name="privacy" value="Allow"> Allow
+          <input type="radio" name="privacy" value="Not allow"id="not-allow"> Not Allow <br>
+          </div>
+        </form>
+        <form action="">
+        .span4
+          <label for="allow"><b>Coordinates:</b></label>
+        .span5
+          <div class="privacy_settings">
+          <input checked type="radio" name="privacy" value="Allow"> Allow
+          <input type="radio" name="privacy" value="Not allow"id="not-allow"> Not Allow
+          </div>
         </form>
