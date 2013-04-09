@@ -81,7 +81,7 @@ ol.progtrckr li.progtrckr-todo:before{content:"\039F";color:silver;background-co
 .inline-block{display:inline-block;zoom:1;*display:inline;}
 #menubox{color:green;height:10px;border:solid 2px;width:20px;float:right;}
 img#progress_image1,#progress_image2,#progress_image4,#progress_image5,#progress_image6,#progress_image7{max-height:120px;display:table-cell;vertical-align:middle;margin-left:auto;margin-right:auto;}
-img#progress_image3{height:300px;display:table-cell;vertical-align:middle;margin-left:auto;margin-right:auto;}
+img#progress_image3{height:400px;display:table-cell;vertical-align:middle;margin-left:auto;margin-right:auto;margin-top:220px;}
 img#face_connect{max-width:185px;}
 img#strekmann{max-height:100px;}
 #nameForm{width:170px;color:grey;}
@@ -132,8 +132,8 @@ label.label{display:inline;}
 .awareness-buttons .btn{padding:5px;margin:10px 10px 10px 0;font-weight:normal;text-align:center;width:150px;border-radius:8px;-moz-border-radius:8px;-webkit-border-radius:8px;box-shadow:0px 3px 5px #000;-moz-box-shadow:0px 3px 5px #000;-webkit-box-shadow:0px 3px 5px #000;}
 .awareness-buttons .btn:hover{position:relative;top:3px;box-shadow:none;-moz-box-shadow:none;-webkit-box-shadow:none;}
 .awareness-buttons .btn:active{position:relative;top:1px;}
-#mainContainer{width:700px;margin-top:10px;height:420px;-webkit-border-radius:4px;border-radius:4px;color:#3a87ad;}
-#components{width:680px;padding:10px 22px 10px 22px;border:solid 1px #3a87ad;height:120px;color:#3a87ad;}
+#mainContainer{width:700px;margin-top:10px;height:420px;color:#3a87ad;}
+#components{width:680px;padding:10px 22px 10px 22px;border:solid 1px #3a87ad;-webkit-border-radius:4px;border-radius:4px;height:120px;color:#3a87ad;}
 #arduinoBase{width:450px;margin:90px 0 10px 160px;height:370px;background-image:url('../images/grovebaseshield.png');background-size:66% 55%;background-repeat:no-repeat;}
 #arduinoBase p{color:black;font-weight:normal;}
 .dragableBox1{margin-bottom:5px;margin-right:40px;padding:3px 3px 3px 3px;font-weight:bold;text-align:center;display:inline-block;}
@@ -160,15 +160,15 @@ a{color:#F00;}
 #divDisplay{margin:-210px 0 0 442px;}
 #divLights{margin:5px 0 0 440px;}
 #divSound{margin:-330px 0 0 70px;}
-#divVibration{margin:-115px 0 0 0;float:left;}
+#divVibration{margin:0 0 0 -180px;float:left;height:50px;width:400px;}
 #friendnamesDiv{color:#3b5998;font-weight:bold;font-size:13px;margin-left:15px;}
 #fjerneDiv{float:right;margin:0 70% 0 0;font-weight:bold;}
 #fjerneDiv button{display:block;margin:0 0 10px 0;border:none;background-color:white;font-weight:bold;color:#627aac;}
-#fjerneDiv button:hover{color:#ffffff;background-color:#293e6a;}
+#fjerneDiv button:hover{color:#ffffff;background-color:#627aac;}
 #friendnamesDiv1{color:#3b5998;font-weight:bold;font-size:13px;margin-left:15px;}
 #fjerneDiv1{float:right;margin:0 70% 0 0;font-weight:bold;}
 #fjerneDiv1 button{display:block;margin:0 0 10px 0;border:none;background-color:white;font-weight:bold;color:#627aac;}
-#fjerneDiv1 button:hover{color:#293e6a;}
+#fjerneDiv1 button:hover{color:#ffffff;background-color:#627aac;}
 #acceptOuter{border:solid 1px;max-width:300px ;padding:10px;height:90px;}
 #accept img{width:100px;height:auto;}
 #accept label{display:inline;}
@@ -177,10 +177,15 @@ a{color:#F00;}
 #privacy .span12{margin-top:-20px;}
 #privacy img{width:12px;height:auto;float:left;margin-top:8px;margin-left:-17px;}
 #privacy .rowLine{margin-left:-20px;}
+#homeContent h2{color:#0088cc;}
 .privacy_settings{display:inline;margin:10%;}
 #friendspage h2{font-size:30px;color:#71af71;margin-left:20px;}
 #privacy h2 small{margin-left:-20px;}
 #followers p i{margin-left:15px;}
-h2 a{color:#71af71;}
+h2 a{color:#999999;}
 #following p{font-size:14px;}
 #followers p{font-size:14px;}
+#connect_parts{padding-bottom:20px;margin-left:-20px;}
+#connect_parts .btn{margin-right:20px;}
+h2 a.selected{color:#71af71;text-decoration:underline;}
+h2 a:hover{color:#71af71;}

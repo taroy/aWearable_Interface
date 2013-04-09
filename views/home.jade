@@ -1,7 +1,7 @@
 header.jumbotron.subhead#overview
   
   h1 aWearable
-  h2 <a href="/">Create Application</a> <a href="aware_of.html">Friends and Privacy</a>
+  h2 <a href="/" class="selected">Create Application</a> | <a href="aware_of.html">Friends and Privacy</a>
 
 section#homeContent
   
@@ -40,7 +40,7 @@ section#homeContent
    
     .span9#e2-exampleConnection
       .page-header  
-        h1 3. Connect your aWearable to the computer  
+        h1 2. Connect your aWearable to the computer  
       p
         a.btn(href="#")#buttonConnect
             i.icon-refresh
@@ -49,17 +49,7 @@ section#homeContent
         .alert.hide.alert-error Unable to connect to aWearable!
         .alert.hide.alert-success Connection to aWearable established!
 
-  .rowLine
-  .row
-    #progressBox
-      .span3
-        <img src="images/prog_grey.gif" id="progress_image1" />
-    
-    .span9
-      .page-header 
-        
-  
-      
+     
   //ADD COMPONENTS
   .rowLine    
   .row
@@ -69,8 +59,8 @@ section#homeContent
     
     .span9
       .page-header
-        h1 4. Choose components and their behavior/Build the device
-          small <br>Drag the desired components to the corresponding boxes and 
+        h1 3. Choose parts and their behavior and plug the parts to the aWearable
+          small <br>a. Drag the desired parts to their respective boxes <br>b. Choose their behavior <br>c. Plug the chosen parts to the aWearable as illustrated below
       
         <div id="mainContainer">
         <h2></h2>        
@@ -89,15 +79,10 @@ section#homeContent
         <div id="arduinoBase">
  
         <div id="box101" class="dragableBoxRight">
-        
-      
         </div>
         <div id="box103" class="dragableBoxRight">
-         
         </div>		      
-  
-        <div id="box104" class="dragableBoxRight">
-        
+        <div id="box104" class="dragableBoxRight">   
         </div>
         <div id="box102" class="dragableBoxRight">
        
@@ -111,18 +96,35 @@ section#homeContent
           <div id="divSound"></div>
         .span2
           <div id="divLights"></div>
+        .span
           <div id="divVibration"></div>
+          <div id="debug"></div>
+      .span9
         
+        <div id="connect_parts">
+        h1
+         small Click "Done" when you have finished this step
+        a.btn(onclick="doneCustom()")#doneButton
+          |  Done
+        </div>
         
-        
-        
-     
-        
-       
+      script
+        function doneCustom(numericIdSource, numericIdTarget ) {
+          var r=confirm("Make sure you have plugged the parts correct before clicking 'OK'!");
+          if (r==true) {
+            
+              document.getElementById("progress_image3").src = "images/prog_green.gif";
+            
+            
+          }
+          else {
+            document.getElementById("progress_image3").src = "images/prog_long_grey.gif";
+          }
+        }
 
-        <div id="debug"></div>
-        <!-- Dragn drop-->
-        script
+            
+      <!-- Dragn drop-->
+      script
           <!--// Custom drop action for the target boxes-->
           function dropItems(idOfDraggedItem,targetId,x,y){
             var targetObj = document.getElementById(targetId);	<!--// Creating reference to target obj-->
@@ -134,30 +136,27 @@ section#homeContent
             if(numericIdSource==1 && numericIdTarget-numericIdSource==100){	<!--// In the html above, there's a difference in 100 between the id of the country and it's capital(example:	-->									
               sourceObj.style.backgroundColor='#54F05E';	<!--// Set green background color for dragged objec		-->
               loadDisplay();
-              document.getElementById("progress_image4").src = "images/prog_green.gif";
             }
             else if(numericIdSource==2 && numericIdTarget-numericIdSource==100){	<!--// In the html above, there's a difference in 100 between the id of the country and it's capital(example:	-->									
               sourceObj.style.backgroundColor='#54F05E';	<!--// Set green background color for dragged objec		-->
               loadLights();
-              document.getElementById("progress_image4").src = "images/prog_green.gif";
               
             }
             else if(numericIdSource==3 && numericIdTarget-numericIdSource==100){	<!--// In the html above, there's a difference in 100 between the id of the country and it's capital(example:	-->									
               sourceObj.style.backgroundColor='#54F05E';	<!--// Set green background color for dragged objec		-->
               loadVibration()
-              document.getElementById("progress_image4").src = "images/prog_green.gif";
             }
             else if(numericIdSource==4 && numericIdTarget-numericIdSource==100){	<!--// In the html above, there's a difference in 100 between the id of the country and it's capital(example:	-->									
               sourceObj.style.backgroundColor='#54F05E';	<!--// Set green background color for dragged objec		-->
               loadSound()
-              document.getElementById("progress_image4").src = "images/prog_green.gif";
             }
             else {
               sourceObj.style.backgroundColor='#FF4D45';	<!--// Reset back to default white background color-->
             }
             
-
             
+            
+
 
             if(targetId=='components') {	<!--// Target is the capital box - append the dragged item as child of first sub div, i.e. as child of <div id="dropContent">-->
               targetObj = targetObj.getElementsByTagName('DIV')[0];
@@ -169,23 +168,23 @@ section#homeContent
                 }
                 if(numericIdSource==2) {
                   document.getElementById("divLights").innerHTML= "";
-                  
+                 
                   
                 }
                 if(numericIdSource==3) {
                   document.getElementById("divVibration").innerHTML= "";
-                  
+                 
                 }
                 if(numericIdSource==4) {
                   document.getElementById("divSound").innerHTML= "";
-                  
+                
                 }
-                
-                
-             
+              
+  
             }
             targetObj.appendChild(sourceObj);	<!--// Append	-->
-          } 
+          }
+          
           var dragDropObj = new DHTMLgoodies_dragDrop();	<!--// Creating drag and drop objec-->
         
           <!--// Assigning drag events to the components-->
@@ -203,19 +202,6 @@ section#homeContent
         
           dragDropObj.init();	// Initizlizing drag and drop object
 
-  //CUSTOMIZE
-  .rowLine      
-  .row
-    #progressBox
-      .span3
-        <img src="images/prog_grey.gif" id="progress_image4" />
-   
-    
-            
-      .span9  
-        <!--
-        a.btn(href="#", onclick="DoneCostume()")#doneButton
-          |  Done -->
           
   //CHOOSE RANGE
   .rowLine
@@ -226,7 +212,7 @@ section#homeContent
         
     .span9
       .page-header
-        h1 6. Choose range
+        h1 4. Choose range
           
         p
         select.span2#rangeValue
@@ -246,7 +232,7 @@ section#homeContent
 
     .span9
       .page-header
-        h1 7. Save application
+        h1 5. Save application
       a.btn(href="#", onclick="ShowProgress()")#buttonSend
         i.icon-retweet
         |  Save application

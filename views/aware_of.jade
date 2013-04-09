@@ -130,13 +130,24 @@ script
         elem.parentNode.removeChild(elem);
         return false; 
     }
+    
+script
+  function storeValues(form)  {
+    setCookie("field1", form.field1.value);
+    setCookie("field2", form.field2.value);
+    setCookie("field3", form.field3.value);
+    setCookie("field4", form.field4.value);
+    return true;
+  }
+
+</script>
   
 header.jumbotron.subhead#overview
 
   
   h1 aWearable
 
-  h2 <a href="/">Create Application</a> <a href="aware_of.html">Friends and Privacy</a>
+    h2 <a href="/">Create Application</a> | <a href="aware_of.html" class="selected">Friends and Privacy</a>
     <div id="friendspage">
 section#homeContent
     h2 Friends
@@ -152,23 +163,25 @@ section#homeContent
         <button id="fb-logout" onclick="logout()">Log out</button>
         <br> --> 
         <img type="button" onclick="sendRequestViaMultiFriendSelector()" src="images/facebook_icon.png"; return true;/>
-        <br>
+        <br><br>
         <div id="following">    
         p 
             b Friends you are aware of:
             <br>
-            .span4 
-            <div id="friendnamesDiv">
+            form
+                .span4 
+                <div id="friendnamesDiv">
+                
+                .span4
+                <div TITLE="Delete friend" id="fjerneDiv" onclick="functionRemove()"> </div>
+                </div>
+                .span4
+                <div id="friendnamesDiv1">
+                .span4    
+                <div TITLE="Delete friend" id="fjerneDiv1" onclick="functionRemove1()"> </div>
+                </div>
             
-            .span4
-            <div TITLE="Delete friend" id="fjerneDiv" onclick="functionRemove()"> </div>
-            </div>
-            .span4
-            <div id="friendnamesDiv1">
-            .span4    
-            <div TITLE="Delete friend" id="fjerneDiv1" onclick="functionRemove1()"> </div>
-            </div>
-            <br>
+        <br>
         
         <div id="followers">  
         p

@@ -510,11 +510,12 @@ img#progress_image1, #progress_image2, #progress_image4, #progress_image5, #prog
 }
 
 img#progress_image3 {
-    height: 300px;
+    height: 400px;
     display: table-cell;
     vertical-align: middle;
     margin-left: auto;
     margin-right: auto;
+    margin-top: 220px;
 }
 
 img#face_connect {
@@ -1026,8 +1027,7 @@ label.label { display: inline; }
   width:700px;
   margin-top:10px;
   height:420px;
-  -webkit-border-radius: 4px;
-  border-radius:4px;
+
   color: #3a87ad;
 
 }
@@ -1036,7 +1036,8 @@ label.label { display: inline; }
   width:680px; 
   padding:10px 22px 10px 22px;
   border: solid 1px #3a87ad;;
- 
+  -webkit-border-radius: 4px;
+  border-radius:4px;
   height:120px;
   color: #3a87ad;
 }
@@ -1223,8 +1224,10 @@ label.label { display: inline; }
 }
 
 #divVibration{
-  margin: -115px 0 0 0;
+  margin: 0 0 0 -180px;
   float:left;
+  height: 50px;
+  width: 400px;
 }
 
 
@@ -1232,7 +1235,8 @@ label.label { display: inline; }
   color: #3b5998;
   font-weight: bold;
   font-size: 13px;
-  margin-left:15px
+  margin-left:15px;
+  
   
 }
 
@@ -1254,14 +1258,15 @@ label.label { display: inline; }
 
 #fjerneDiv button:hover {
   color: #ffffff;
-  background-color: #293e6a
+  background-color: #627aac;
 }
 
 #friendnamesDiv1 {
   color: #3b5998;
   font-weight: bold;
   font-size: 13px;
-  margin-left:15px
+  margin-left:15px;
+
 }
 
 #fjerneDiv1 {
@@ -1281,7 +1286,8 @@ label.label { display: inline; }
 }
 
 #fjerneDiv1 button:hover {
-  color: #293e6a;
+  color: #ffffff;
+  background-color: #627aac;
 }
 
 
@@ -1325,6 +1331,10 @@ label.label { display: inline; }
   margin-left: -20px;
 }
 
+#homeContent h2 {
+  color:#0088cc;
+}
+
 .privacy_settings {
   display: inline;
   margin:10%;
@@ -1345,7 +1355,7 @@ label.label { display: inline; }
 }
 
 h2 a {
-  color:#71af71;
+  color:#999999;
 }
 
 #following p {
@@ -1354,6 +1364,26 @@ h2 a {
 
 #followers p {
   font-size: 14px;
+}
+
+#connect_parts{
+  padding-bottom:20px;
+  margin-left: -20px;
+  
+}
+
+#connect_parts .btn{
+  margin-right: 20px;
+   
+}
+
+h2 a.selected{
+  color: #71af71;
+  text-decoration:underline;
+}
+
+h2 a:hover{
+  color:#71af71
 }
 
 
