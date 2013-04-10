@@ -169,9 +169,8 @@ a{color:#F00;}
 #fjerneDiv1{float:right;margin:0 70% 0 0;font-weight:bold;}
 #fjerneDiv1 button{display:block;margin:0 0 10px 0;border:none;background-color:white;font-weight:bold;color:#627aac;}
 #fjerneDiv1 button:hover{color:#ffffff;background-color:#627aac;}
-#acceptOuter{border:solid 1px;max-width:300px ;padding:10px;height:90px;}
-#accept img{width:100px;height:auto;}
-#accept label{display:inline;}
+#acceptOuter{max-width:500px ;padding:10px;height:90px;}
+#acceptOuter p{font-size:15px;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
 #privacy label{display:inline-block;}
 #privacy .span4{margin-left:0;padding:10px 0 0 0;}
 #privacy .span12{margin-top:-20px;}
