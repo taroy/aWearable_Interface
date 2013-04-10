@@ -1,6 +1,6 @@
 <div id="fb-root"></div>
 script
-  // Additional JS functions here
+    
   window.fbAsyncInit = function() {
     FB.init({
       appId      : '109853005851767', // App ID
@@ -8,6 +8,7 @@ script
       status     : true, // check login status
       cookie     : true, // enable cookies to allow the server to access the session
       xfbml      : true  // parse XFBML
+      
     });
 
     FB.getLoginStatus(function(response) {
@@ -48,10 +49,7 @@ script
     console.log('Welcome!  Fetching your information.... ');
     FB.api('/me', function(response) {
         console.log('Good to see you, ' + response.name + '.');
-    });
-    FB.api('/me/friends?fields=installed,id,name', function (response) {
-        
-    });   
+    });  
   }
   
   // Load the SDK Asynchronously
@@ -70,6 +68,7 @@ script
   });
 
   function sendRequestViaMultiFriendSelector() {
+  
       FB.ui({
           method: 'apprequests',
           message: "Would you like to join my aWearable group?",
@@ -104,6 +103,7 @@ script
                             document.getElementById("fjerneDiv1").appendChild(removefriend);
                             friendnames.innerHTML+=("<br>");
                             
+                            
                         });
                     }   
                     
@@ -131,16 +131,7 @@ script
         return false; 
     }
     
-script
-  function storeValues(form)  {
-    setCookie("field1", form.field1.value);
-    setCookie("field2", form.field2.value);
-    setCookie("field3", form.field3.value);
-    setCookie("field4", form.field4.value);
-    return true;
-  }
 
-</script>
   
 header.jumbotron.subhead#overview
 
@@ -175,15 +166,17 @@ section#homeContent
         p 
             b Friends you are aware of:
             <br>
-            form
-              <div id="friendnamesDiv">
+        
+            <div type="text" id="friendnamesDiv"> 
                 
-              <div TITLE="Delete friend" id="fjerneDiv" onclick="functionRemove()"> </div>
-              </div>
-              <div id="friendnamesDiv1">  
-              <div TITLE="Delete friend" id="fjerneDiv1" onclick="functionRemove1()"> </div>
-              </div>
-            
+            <div TITLE="Delete friend" id="fjerneDiv" onclick="functionRemove()"> </div>
+            </div>
+          
+            <div type="text" id="friendnamesDiv1">
+                
+            <div TITLE="Delete friend" id="fjerneDiv1" onclick="functionRemove1()"> </div>
+            </div>
+
         <br>
         
         <div id="followers">  
@@ -229,6 +222,7 @@ section#homeContent
           </div>
         </form>
         <form action="">
+
         .span4
           <label for="allow"><b>Coordinates:</b></label>
         .span5
@@ -236,4 +230,8 @@ section#homeContent
           <input checked type="radio" name="privacy" value="Allow"> Allow
           <input type="radio" name="privacy" value="Not allow"id="not-allow"> Not Allow
           </div>
+
         </form>
+    .span9
+      .page-header
+    

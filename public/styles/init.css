@@ -169,6 +169,15 @@ a{color:#F00;}
 #fjerneDiv1{float:right;margin:0 70% 0 0;font-weight:bold;}
 #fjerneDiv1 button{display:block;margin:0 0 10px 0;border:none;background-color:white;font-weight:bold;color:#627aac;}
 #fjerneDiv1 button:hover{color:#ffffff;background-color:#627aac;}
+<<<<<<< HEAD
+#acceptOuter{max-width:500px ;padding:10px;height:90px;}
+#acceptOuter p{font-size:15px;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+#privacy label{display:inline-block;}
+#privacy .span4{margin-left:0;padding:10px 0 0 0;}
+#privacy .span12{margin-top:-20px;}
+#privacy img{width:12px;height:auto;float:left;margin-top:8px;margin-left:-17px;}
+#privacy .rowLine{margin-left:-20px;}
+=======
 #acceptOuter{border:solid 1px;max-width:300px ;padding:10px;height:90px;}
 #accept img{width:100px;height:auto;}
 #accept label{display:inline;}
@@ -178,6 +187,7 @@ a{color:#F00;}
 .span5 label{display:inline-block;}
 .span4 label{display:inline-block;margin-left:-20px;}
 .page-header img#lock{width:10px;height:auto;float:left;margin:2px 5px 0 0;}
+>>>>>>> 562122c9f0ebb825a5f45c1169527778e7ce5012
 #homeContent h2{color:#0088cc;}
 .privacy_settings{display:inline;}
 #friendspage h2{font-size:30px;color:#71af71;margin-left:20px;}
