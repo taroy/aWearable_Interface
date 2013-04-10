@@ -4,32 +4,7 @@ header.jumbotron.subhead#overview
   h2 <a href="/" class="selected">Create Application</a> | <a href="aware_of.html">Friends and Privacy</a>
 
 section#homeContent
-  
-  //ADD APPLICATION NAME
-  .rowLine    
-  .row
-    #progressBox
-      .span3
-        <img src="images/prog_grey.gif" id="progress_image2" />
-    
-    .span9
-      .page-header
-        h1 1. Add application name
-      
-      <form>
-      <input type="text" placeholder="Name:" name="app_name" id="nameForm"><br>
-      </form>
-      
-      script
-        document.getElementById('nameForm').onkeyup = function() {
-          var count = document.getElementById('nameForm').value.length;
-          if(count != 0) {
-            document.getElementById("progress_image2").src = "images/prog_green.gif"; 
-          }
-          else {
-            document.getElementById("progress_image2").src = "images/prog_grey.gif";
-          }
-        }
+
   
   //CONNECT AWEARABLE TO THE COMPUTER    
   .rowLine
@@ -60,7 +35,7 @@ section#homeContent
     .span9
       .page-header
         h1 3. Choose parts and their behavior and plug the parts to the aWearable
-          small <br>a. Drag the desired parts to their respective boxes <br>b. Choose their behavior <br>c. Plug the chosen parts to the aWearable as illustrated below
+          small <br>a. Drag the desired parts to their respective boxes
       
         <div id="mainContainer">
         <h2></h2>        
@@ -76,6 +51,8 @@ section#homeContent
         </div>
         </div>
         <br>
+        h1
+          small<br>b. Choose their behavior
         <div id="arduinoBase">
  
         <div id="box101" class="dragableBoxRight">
@@ -98,12 +75,15 @@ section#homeContent
           <div id="divLights"></div>
         .span
           <div id="divVibration"></div>
-          <div id="debug"></div>
+          <div id="debug"></div>        
+          
       .span9
+        
         
         <div id="connect_parts">
         h1
-         small Click "Done" when you have finished this step
+          small <br>c. Plug the chosen parts to the aWearable as illustrated below
+          small <br> Click "Done" when you have finished this step
         a.btn(onclick="doneCustom()")#doneButton
           |  Done
         </div>
@@ -134,20 +114,20 @@ section#homeContent
             var numericIdTarget = targetId.replace(/[^0-9]/gi,'')/1;	<!--// Find numeric id of target-->
             var numericIdSource = idOfDraggedItem.replace(/[^0-9]/gi,'')/1;	<!--// Find numeric id of source-->
             if(numericIdSource==1 && numericIdTarget-numericIdSource==100){	<!--// In the html above, there's a difference in 100 between the id of the country and it's capital(example:	-->									
-              sourceObj.style.backgroundColor='#54F05E';	<!--// Set green background color for dragged objec		-->
+              sourceObj.style.backgroundColor='#dff0d8';	<!--// Set green background color for dragged objec		-->
               loadDisplay();
             }
             else if(numericIdSource==2 && numericIdTarget-numericIdSource==100){	<!--// In the html above, there's a difference in 100 between the id of the country and it's capital(example:	-->									
-              sourceObj.style.backgroundColor='#54F05E';	<!--// Set green background color for dragged objec		-->
+              sourceObj.style.backgroundColor='#dff0d8';	<!--// Set green background color for dragged objec		-->
               loadLights();
               
             }
             else if(numericIdSource==3 && numericIdTarget-numericIdSource==100){	<!--// In the html above, there's a difference in 100 between the id of the country and it's capital(example:	-->									
-              sourceObj.style.backgroundColor='#54F05E';	<!--// Set green background color for dragged objec		-->
+              sourceObj.style.backgroundColor='#dff0d8';	<!--// Set green background color for dragged objec		-->
               loadVibration()
             }
             else if(numericIdSource==4 && numericIdTarget-numericIdSource==100){	<!--// In the html above, there's a difference in 100 between the id of the country and it's capital(example:	-->									
-              sourceObj.style.backgroundColor='#54F05E';	<!--// Set green background color for dragged objec		-->
+              sourceObj.style.backgroundColor='#dff0d8';	<!--// Set green background color for dragged objec		-->
               loadSound()
             }
             else {

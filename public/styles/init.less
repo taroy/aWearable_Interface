@@ -95,8 +95,11 @@ hr.soften {
 ------------------------- */
 /* supporting docs pages */
 .subhead {
-  padding-bottom: 0;
+  padding-bottom: 15px;
   margin-bottom: 9px;
+  border: solid 1px grey;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
 }
 .subhead h1 {
   font-size: 54px;
@@ -518,12 +521,13 @@ img#progress_image3 {
     margin-top: 220px;
 }
 
-img#face_connect {
-    max-width: 185px;
-}
-
 img#strekmann {
     max-height: 100px;
+}
+
+img#facebook-login{
+    max-width: 185px;
+    margin: 20px 0;
 }
 
 //Maria
@@ -891,12 +895,13 @@ form.well {
 body {
 position: relative;
 padding-top: 90px;
-background-color: white;
+background-color: #E8E8E8;
 /*background-image: url(../images/azul_claro.jpg); */
 
 background-position: 0 40px; }
 .jumbotron {
   position: relative;
+  background-color: white;
 }
 .jumbotron h1 {
   margin-bottom: 9px;
@@ -909,8 +914,9 @@ background-position: 0 40px; }
   font-weight: 300;
 }
 .subhead {
-  padding-bottom: 0;
-  margin-bottom: 9px;
+  padding: 3%;
+  margin-bottom: 15px;
+  margin-top: -50px;
 }
 .subhead h1 {
   font-size: 50px;
@@ -925,6 +931,11 @@ background-position: 0 40px; }
 #homeContent {
   padding-top: 30px;
   height: 100%;
+  background-color: white;
+  padding: 3%;
+  border: solid 1px grey;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
 }
 #homeBoxes {
   padding-top: 30px;
@@ -1027,15 +1038,14 @@ label.label { display: inline; }
   width:700px;
   margin-top:10px;
   height:420px;
-
   color: #3a87ad;
-
 }
       
 #components {
-  width:680px; 
+  background-color: #d9edf7;
+  width:650px; 
   padding:10px 22px 10px 22px;
-  border: solid 1px #3a87ad;;
+  border: solid 1px #bce8f1;
   -webkit-border-radius: 4px;
   border-radius:4px;
   height:120px;
@@ -1112,7 +1122,9 @@ label.label { display: inline; }
         }
         
         .dragableBoxRight{
-		border:1px solid green;
+		border:1px solid #71af71;
+                -webkit-border-radius: 2px;
+                border-radius: 2px;
 		margin-bottom:5px;
 		padding:3px 3px 3px 3px;
 		font-weight:bold;
@@ -1129,7 +1141,7 @@ label.label { display: inline; }
 	.dropBox{
 		width:190px;
 		border:1px solid #000;
-		background-color:#E2EBED;
+		background-color:#71af71;
 		height:400px;
 		margin-bottom:10px;
 		padding:3px;
@@ -1235,7 +1247,7 @@ label.label { display: inline; }
   color: #3b5998;
   font-weight: bold;
   font-size: 13px;
-  margin-left:15px;
+  margin:15px;
   
   
 }
@@ -1305,36 +1317,45 @@ font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 
 
 
-#privacy label {
+#allow{
+
+}
+
+#not-allow{
+  margin: 0 0 0 20px;
+}
+
+.span5{
+  margin: 15px 0;
+}
+
+.span4 {
+  margin-top: 15px;
+  width: 150px;
+}
+
+.span5 label {
    display: inline-block;
 }
 
-#privacy .span4 {
-  margin-left:0;
-  padding: 10px 0 0 0;
-}
-#privacy .span12 {
-  margin-top:-20px;
-}
-#privacy img {
-  width: 12px;
-  height: auto;
-  float:left;
-  margin-top:8px;
-  margin-left:-17px;
-}
-
-#privacy .rowLine{
+.span4 label {
+  display: inline-block;
   margin-left: -20px;
 }
 
+.page-header img#lock {
+  width: 10px;  
+  height: auto;
+  float: left;
+  margin: 2px 5px 0 0;
+}
+  
 #homeContent h2 {
   color:#0088cc;
 }
 
 .privacy_settings {
   display: inline;
-  margin:10%;
 }
 
 #friendspage h2{
