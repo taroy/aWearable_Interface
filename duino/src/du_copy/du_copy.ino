@@ -22,7 +22,7 @@ static void print_date(TinyGPS &gps);
 static void print_str(const char *str, int len);
 static void print_str_target(const char *str, int len);
 
-char messageBuffer[20], cmd[3], range[4], pin[4], val[4], aux[4], lat[10], lon[10], led[2], disp[4];
+char messageBuffer[23], cmd[3], range[4], pin[4], val[4], aux[4], lat[10], lon[10];
 boolean debug = false;
 int index = 0;
 Servo servo;
@@ -50,37 +50,24 @@ void setup() {
 void process() {
   index = 0;
  
-  Serial.println(messageBuffer);
   
-  int i = 0;
-  while(i< sizeof(messageBuffer)){
-    
-    strncpy(cmd, messageBuffer, 2);
-    cmd[2] = '\0';
-    
-    if(messageBuffer[i]=='r'){
-      strncpy(range, messageBuffer + i + 1, 3);
-      range[3] = '\0';
-    }
-    else if(messageBuffer[i]=='l'){
-      strncpy(led, messageBuffer + i + 1, 2);
-      led[2] = '\0';
-    }
-    else if(messageBuffer[i]=='d'){
-      strncpy(disp, messageBuffer + i + 1, 4);
-      disp[4] = '\0';
-    }
-    i++;
-  }
+  strncpy(cmd, messageBuffer, 2);
+  cmd[2] = '\0';
+  strncpy(range, messageBuffer + 2, 3);
+  range[3] = '\0';
+  strncpy(lat, messageBuffer + 5, 9);
+  lat[9] = '\0';
+  strncpy(lon, messageBuffer + 14, 9);
+  lon[9] = '\0';
   
   Serial.println("cmd");
   Serial.println(cmd);
   Serial.println("range");
   Serial.println(range);
-  Serial.println("led");
-  Serial.println(led);
-  Serial.println("disp");
-  Serial.println(disp);
+  Serial.println("lat");
+  Serial.println(lat);
+  Serial.println("lon");
+  Serial.println(lon);
   
   
   if (debug) {
@@ -167,14 +154,17 @@ static void gpsdump(TinyGPS &gps)
   distance2 = (unsigned long)TinyGPS::distance_between(flat, flon, TARGET_LAT2, TARGET_LON2); 
   Serial.println(distance2);
   distance = getNearest(distance1, distance2);
-  //Serial.println(distance);
+  Serial.println(distance);
   in_range(distance, range);
   
   gps.stats(&chars, &sentences, &failed);
   print_int(chars, 0xFFFFFFFF, 6);
   print_int(sentences, 0xFFFFFFFF, 10);
   print_int(failed, 0xFFFFFFFF, 9);
-  Serial.println();  
+  Serial.println();
+  
+  
+  
 }
 
 //Showing the nearest device

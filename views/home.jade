@@ -35,11 +35,16 @@ section#homeContent
     
     .span9
       .page-header
+
         h1 2. Choose parts and their behavior and plug the parts to the aWearable
           small <br>a. Drag the desired parts to their respective boxes
+
       
         <div id="mainContainer">
-        <h2></h2>        
+        <h2></h2>
+        
+        <div id="displayId" style="visibility: hidden"></div>
+        <div id="ledId" style="visibility: hidden"></div>
         
         <div id="components">
     
@@ -47,7 +52,6 @@ section#homeContent
         <div class="dragableBox1" id="box1"><img src="images/display.png"></div>
         <div class="dragableBox3" id="box3"><img src="images/vibration.png"></div>
         <div class="dragableBox2" id="box2"><img src="images/light.png"></div>
-        
         <div class="dragableBox4" id="box4"><img src="images/sound.png"></div>
         </div>
         </div>
@@ -110,10 +114,13 @@ section#homeContent
             var sourceObj = document.getElementById(idOfDraggedItem);	<!--// Creating reference to source, i.e. dragged object-->
             var numericIdTarget = targetId.replace(/[^0-9]/gi,'')/1;	<!--// Find numeric id of target-->
             var numericIdSource = idOfDraggedItem.replace(/[^0-9]/gi,'')/1;	<!--// Find numeric id of source-->
+            
+            <!--// Display is chosen-->
             if(numericIdSource==1 && numericIdTarget-numericIdSource==100){	<!--// In the html above, there's a difference in 100 between the id of the country and it's capital(example:	-->									
               sourceObj.style.backgroundColor='#dff0d8';	<!--// Set green background color for dragged objec		-->
               loadDisplay();
             }
+            <!--// Light is chosen-->
             else if(numericIdSource==2 && numericIdTarget-numericIdSource==100){	<!--// In the html above, there's a difference in 100 between the id of the country and it's capital(example:	-->									
               sourceObj.style.backgroundColor='#dff0d8';	<!--// Set green background color for dragged objec		-->
               loadLights();
@@ -130,6 +137,8 @@ section#homeContent
             else {
               sourceObj.style.backgroundColor='#FF4D45';	<!--// Reset back to default white background color-->
             }
+            
+
             
             
             

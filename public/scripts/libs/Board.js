@@ -174,7 +174,7 @@ define(['./LED.js', './Button.js', './AnalogInput.js',  './DigitalOutput.js', '.
         console.log("TYPE_OBJECT");
         console.log(options.range);
         console.log(options.lat);
-        this.c.withObject(options.range, options.lat, options.lon, function(err, range) {
+        this.c.withObject(options.range, options.led, options.display, function(err, range) {
           console.log(options.range);
           console.log("TYPE_RANGE");
           if (err) { return next(err); }

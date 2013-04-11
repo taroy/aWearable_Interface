@@ -13,11 +13,9 @@ xmlns:fb="https://www.facebook.com/2008/fbml")
     script(src="//ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.js")
     script(type="text/javascript", src="scripts/drag-drop-custom.js")
     script(src="http://connect.facebook.net/en_US/all.js")
-
-   
    
     script
-
+      
       function loadIcon() {
         var request;
         request = new XMLHttpRequest();
@@ -48,7 +46,6 @@ xmlns:fb="https://www.facebook.com/2008/fbml")
       }
       
       
-
       <!--Load display-->
       function loadDisplay() {
         var request;
@@ -93,9 +90,79 @@ xmlns:fb="https://www.facebook.com/2008/fbml")
         request.send();
       }
       
-      
-   
-        
+      <!--Display result script-->
+      function writeDis() {
+        var displayId = '1';
+        console.log("writeDis()");
+        if (document.display.dis1[0].checked) {
+          displayId = displayId + '1';
+          document.getElementById("displayId").innerHTML = displayId;
+          console.log(displayId);
+        }
+        else if (document.display.dis1[0]) {
+          
+        }
+
+        if (document.display.dis1[1].checked) {
+          displayId = displayId + '2';
+          document.getElementById("displayId").innerHTML = displayId;
+          console.log(displayId);
+        }
+        else if (document.display.dis1[1]) {
+          
+        }
+        if (document.display.dis1[2].checked) {
+          displayId = displayId + '3';
+          document.getElementById("displayId").innerHTML = displayId;
+          console.log(displayId);
+          
+        }
+        else if (document.display.dis1[2]) {
+          
+        }
+
+      }
+      <!--Lights result script-->
+      function writeLig() {
+        var ledId = '2';
+        console.log("writeLig()");
+        if (document.lights.lig1[0].checked) {
+          ledId = ledId + '1';
+          document.getElementById("ledId").innerHTML = ledId;
+          console.log(ledId);
+        }
+        else if (document.lights.lig1[1].checked) {
+          ledId = ledId + '2';
+          document.getElementById("ledId").innerHTML = ledId;
+          console.log(ledId);
+        }
+        else if (document.lights.lig1[2].checked) {
+          ledId = ledId + '3';
+          document.getElementById("ledId").innerHTML = ledId;
+          console.log(ledId);
+        }
+      }
+      <!--Vibration result script-->
+      function writeVib() {
+        if (document.vibration.vib1[0].checked) {
+          document.getElementById("vibration").innerHTML = "Distance";
+        }
+        else if (document.vibration.vib1[1].checked) {
+          document.getElementById("vibration").innerHTML = "In-range";
+        }
+      }
+
+      <!--Sound result script-->
+      function writeSnd()
+      { 
+        if (document.sound.snd1[0].checked) {
+          document.getElementById("sound").innerHTML = "Distance";
+        }
+        else if (document.sound.snd1[1].checked) {
+          document.getElementById("sound").innerHTML = "In-range";
+        } 
+      }
+  
   body
     .navbar.navbar-fixed-top(style="z-index: 4;position:absolute;")
       .navbar-inner

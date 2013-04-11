@@ -16,7 +16,9 @@ define(function()
     latitude: '63,427029',
     longitude: '10,396700',
     //modules: [],
-    range: 0
+    range: 0,
+    display: 0,
+    led: 0
   };
   
   var Groupmember =
@@ -53,10 +55,14 @@ define(function()
     $('#buttonSend').click(function(e)
     {
       e.preventDefault();
-      
+      console.log("buttonSend");
       Awearable.name = $('#nameForm').val()
       Awearable.range = $('#rangeValue').val();
-      console.log(Awearable.range);
+      Awearable.display = document.getElementById('displayId').innerHTML;
+      Awearable.led = document.getElementById('ledId').innerHTML;
+      
+      // display and led
+      console.log(Awearable.display);
       require(['awearable-2'], function(example)
       {
         e2 = example;
