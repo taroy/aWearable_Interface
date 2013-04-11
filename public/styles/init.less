@@ -262,6 +262,7 @@ hr.soften {
   margin-top: 45px;
   padding: 35px 0 36px;
   border-top: none;
+  
 }
 .footer p {
   margin-bottom: 0;
@@ -1053,17 +1054,26 @@ label.label { display: inline; }
 }
 
 #arduinoBase{
-		width:450px;
-		margin:90px 0 10px 160px;
-		height:370px;
+		width:694px;
+	
+		height:440px;
 		background-image: url('../images/grovebaseshield.png');
-                background-size: 66% 55%;
-		background-repeat:no-repeat;	
+                background-size: 66% 60%;
+		background-repeat:no-repeat;
+                background-color: #d9edf7;
+                border: solid 1px #bce8f1;
+                -webkit-border-radius: 4px;
+                border-radius:4px;
+                background-position-x: 25%;
+                background-position-y: 50%;
+               
+
 }
 
 #arduinoBase p{
   color:black;
   font-weight:normal;
+  
   
 }
 .dragableBox1 {
@@ -1160,7 +1170,7 @@ label.label { display: inline; }
 		width: 206px;
                 height: 115px;
 		margin-left: 320px;
-		margin-top:-60px;
+		margin-top:20px;
                 background-image: url('../images/disp-text.png');
                 background-size: 70% 25%;
 		background-repeat:no-repeat;
@@ -1171,7 +1181,7 @@ label.label { display: inline; }
 		width: 81px;
                 height: 91px;
 		margin-left: 320px;
-		margin-top:120px;
+		margin-top:140px;
                 background-image: url('../images/lig-text.png');
                 background-size: 55% 70%;
                 background-repeat:no-repeat;
@@ -1181,8 +1191,8 @@ label.label { display: inline; }
 	#box103 {
 		width: 91px;
                 height: 101px;
-		margin-left: -140px;
-		margin-top:105px;
+		margin-left: -70px;
+		margin-top:260px;
                 background-image: url('../images/vib-text.png');
                 background-size: 80% 65%;
                 background-repeat:no-repeat;
@@ -1192,8 +1202,8 @@ label.label { display: inline; }
 	#box104 {
 	  width: 71px;
           height: 94px;
-	  margin-left:-140px;
-	  margin-top:-120px;
+	  margin-left:30px;
+	  margin-top:30px;
           background-image: url('../images/sound-text.png');
           background-size: 70% 60%;
 	  background-repeat:no-repeat;
@@ -1223,23 +1233,39 @@ label.label { display: inline; }
 }
 
 #divDisplay{
-  margin: -210px 0 0 442px;
+  margin: -230px 0 0 442px;
+}
+#divDisplay .container{
+  width:300px;
 }
 
 #divLights{
-  margin: 5px 0 0 440px;
-  
+  margin: 5px 0 0 410px; 
+}
+#divLights .container{
+  width:300px;
+  height:70px;
 }
 
 #divSound{
-  margin: -330px 0 0 70px;
+  margin: -330px 0 0 90px;
+}
+#divSound .container{
+  width:300px;
 }
 
 #divVibration{
-  margin: 0 0 0 -180px;
+  margin: -20px 0 0 -140px;
   float:left;
-  height: 50px;
-  width: 400px;
+  
+}
+
+#divVibration .container{
+  width:300px;
+  height:70px;
+}
+#divVibration .span5{
+  width:300px;
 }
 
 
@@ -1304,7 +1330,6 @@ label.label { display: inline; }
 
 
 #acceptOuter {
- 
   max-width: 500px ;
   padding: 10px;
   height: 90px;
@@ -1403,5 +1428,17 @@ h2 a.selected{
 h2 a:hover{
   color:#71af71
 }
+
+#overview2{
+  width:500px;
+  height: 110px;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+h2 a.smallhead{
+  font-size: 24px;
+}
+
 
 
