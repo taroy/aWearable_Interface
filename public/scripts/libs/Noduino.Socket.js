@@ -126,11 +126,11 @@ define(function(require, exports, module) {
   };
   
   //Maria
-  SocketNoduino.prototype.withObject = function(range, lat, lon) {
+  SocketNoduino.prototype.withObject = function(range, led, display) {
     console.log("SocketNoduino.prototype.withObject");
+    console.log(range + led + display);
     this.log('info', 'set range ' + range );
-    
-    this.write('00' + range + lat + lon);    
+    this.write('00' + range + 'l' + led + 'd' + display );    
   };
   
   //Maria

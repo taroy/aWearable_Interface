@@ -26,17 +26,19 @@ define(function() {
   //Saving application/Awearable object
   Awearable2.saveApp = function(Awearable)
   {
-    Awearable2.writeToBoard(Awearable.range, Awearable.latitude, Awearable.longitude);
+    Awearable2.writeToBoard(Awearable.range, Awearable.led, Awearable.display);
+    console.log(Awearable.display);
   };  
   
-  Awearable2.writeToBoard = function(range, lat, lon)
+  Awearable2.writeToBoard = function(range, led, display)
   {
     var that = this;
     //that = Window {top:window, window:Window, location:location osv..}
-    console.log("with object");
+    console.log("display");
+    console.log(display);
     if (!that.range)
     {
-      this.board.withObject({range: range, lat: lat, lon: lon}, function(err, LED)
+      this.board.withObject({range: range, led: led, display: display}, function(err, LED)
       {
         if (err)
         {
