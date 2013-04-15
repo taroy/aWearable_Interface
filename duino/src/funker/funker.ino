@@ -22,19 +22,16 @@ static void print_date(TinyGPS &gps);
 static void print_str(const char *str, int len);
 static void print_str_target(const char *str, int len);
 
-char messageBuffer[20], cmd[3], range[4] = {'5','0','0'}, pin[4], val[4], aux[4], lat[10], lon[10], led[3] = {'l', '1'}, disp[5] = {'d','1','2'};
+char messageBuffer[20], cmd[3], range[4], pin[4], val[4], aux[4], lat[10], lon[10], led[3], disp[5];
 boolean debug = false;
 int index = 0;
 Servo servo;
 boolean inRange;
-unsigned long distance;
-char *dir_coor;
-#define LED 9
+unsigned long distance1;
 
 void setup() {
   Serial.begin(115200);
   slcd.begin();
-  pinMode(LED, OUTPUT);
   nss.begin(9600);
   
   
@@ -58,28 +55,27 @@ void process() {
   index = 0;
  
   Serial.println(messageBuffer);
-  
-  if(messageBuffer[0]=='m'){
 
-    int i = 1;
-    while(i< sizeof(messageBuffer)){
+  Serial.println(messageBuffer[0]);
+  int i = 0;
+  while(i< sizeof(messageBuffer)){
     
-      strncpy(cmd, messageBuffer + 1, 2);
-      cmd[2] = '\0';
+    strncpy(cmd, messageBuffer, 2);
+    cmd[2] = '\0';
     
-      strncpy(range, messageBuffer + 3, 3);
+    if(messageBuffer[i]=='r'){
+      strncpy(range, messageBuffer + i + 1, 3);
       range[3] = '\0';
-
-      if(messageBuffer[i]=='l'){
-         strncpy(led, messageBuffer + i, 2);
-        led[2] = '\0';
-      }
-      else if(messageBuffer[i]=='d'){
-        strncpy(disp, messageBuffer + i, 4);
-        disp[4] = '\0';
-      }
-      i++;
     }
+    else if(messageBuffer[i]=='l'){
+      strncpy(led, messageBuffer + i + 1, 2);
+      led[2] = '\0';
+    }
+    else if(messageBuffer[i]=='d'){
+      strncpy(disp, messageBuffer + i + 1, 4);
+      disp[4] = '\0';
+    }
+    i++;
   }
   
   Serial.println("cmd");
@@ -90,7 +86,6 @@ void process() {
   Serial.println(led);
   Serial.println("disp");
   Serial.println(disp);
-
   
   
   if (debug) {
@@ -153,7 +148,7 @@ static void gpsdump(TinyGPS &gps)
   
   //Hardcoded locations
   static const float TARGET_LAT1 = 63.41696, TARGET_LON1 = 10.40298;
-  //static const float TARGET_LAT1 = 63.410679, TARGET_LON1 = 10.412807;
+  //static const float TARGET_LAT2 = 59.13131, TARGET_LON2 = 10.216595;
   
 
   print_int(gps.satellites(), TinyGPS::GPS_INVALID_SATELLITES, 5);
@@ -179,30 +174,15 @@ static void gpsdump(TinyGPS &gps)
   //print_float(flat == TinyGPS::GPS_INVALID_F_ANGLE ? 0.0 : TinyGPS::course_to(flat, flon,TARGET_LAT2, TARGET_LON2), TinyGPS::GPS_INVALID_F_ANGLE, 7, 2);
   //print_str_target(flat == TinyGPS::GPS_INVALID_F_ANGLE ? "*** " : TinyGPS::cardinal(TinyGPS::course_to(flat, flon, TARGET_LAT2, TARGET_LON2)), 6);
   
-  distance = (unsigned long)TinyGPS::distance_between(flat, flon, TARGET_LAT1, TARGET_LON1);
-  dir_coor = (char *)TinyGPS::cardinal(TinyGPS::course_to(flat, flon, TARGET_LAT1, TARGET_LON1));
-  inRange = in_range((unsigned long)TinyGPS::distance_between(flat, flon, TARGET_LAT1, TARGET_LON1), range);
+  distance1 = (unsigned long)TinyGPS::distance_between(flat, flon, TARGET_LAT1, TARGET_LON1);
+  update_lcd(distance1, range);
+  //update_lcd(distance1, range);
   
-  Serial.println("dir_coor");
-  Serial.println(dir_coor);
- 
-  if(inRange){ 
-    if(disp[0]=='d')
-    {
-      Serial.println("disp[0]=='d'");
-      update_lcd(distance, range, TARGET_LAT1, TARGET_LON1, *dir_coor);
-    }
-    if(led[0]=='l')
-    {
-      Serial.println("led[0]=='l'");
-      update_LED(range);
-    }
-  }
-  else
-  {
-    slcd.clear();
-  }
-
+  //distance2 = (unsigned long)TinyGPS::distance_between(flat, flon, TARGET_LAT2, TARGET_LON2); 
+  //Serial.println(distance2);
+  //distance = getNearest(distance1, distance2);
+  //Serial.println(distance);
+  //in_range(distance1, range);
   
   gps.stats(&chars, &sentences, &failed);
   print_int(chars, 0xFFFFFFFF, 6);
@@ -213,13 +193,42 @@ static void gpsdump(TinyGPS &gps)
 }
 
 
+
+//Showing the nearest device
+unsigned long getNearest(unsigned long distance1, unsigned long distance2)
+{
+  unsigned long distance = 0;
+  if (distance1 < distance2)
+  {
+    //in_range(distance1, range);
+    Serial.println("distance1");
+    distance = distance1;
+  }
+  else if(distance2 < distance1)
+  {
+    //in_range(distance2, range);
+    Serial.println("distance2");
+    distance = distance2;
+  }
+  return distance;
+}
+
+/*
 //MARIA - Is distance within range?
 boolean in_range(unsigned long val, char range[])
 {
   char buffer[12];
+  char buffer2[12];
+  val = val;
   PString(buffer, sizeof(buffer), val);
+  PString(buffer2, sizeof(buffer2), range);
   int r = atoi(range); 
-
+  Serial.println("range");
+  Serial.println(buffer2);
+  Serial.println("distance");
+  Serial.println(buffer);
+  //slcd.begin();
+  slcd.print("hei");
   if(r!=0) {
     Serial.println(r);
 
@@ -228,58 +237,45 @@ boolean in_range(unsigned long val, char range[])
       Serial.println("true");
       inRange = true;
       Serial.println("in range");
+      //Updating LCD
+      
+      //slcd.print("distance :");
+      //slcd.print(buffer);  
+      //slcd.print("m");
+      //slcd.setCursor(0, 1);
+      //slcd.print("range :");
+      //slcd.print(buffer2);
     }
     else
     {
       inRange = false;
+      //slcd.print("not in range");
       Serial.println("not in range");
     }
   }
-  else if(r==0)
-  {
+  else if(r==0){
      Serial.println("r er null");
   }
   
   return inRange; 
 }
+*/
 
-static void update_lcd(unsigned long val, char range[], float TARGET_LAT, float TARGET_LON, char dir_coor)
+
+static void update_lcd(unsigned long val, char range[])
 {
   Serial.println("update lcd");
-  Serial.println(TARGET_LAT);
-  Serial.println(dir_coor);
   char buffer[12];
   PString(buffer, sizeof(buffer), val);
-  
   slcd.clear();
   delay(1000);
   slcd.setCursor(0,0);
-  
-  if(disp[1]=='1'){
-    if(disp[2]=='2')
-    {
-      Serial.println("disp[2]=='2'");
-    }
-      if(disp[3]=='3')
-      {
-        Serial.println("disp[3]=='3'");
-      }
-    slcd.print("Latitude :");
-    slcd.print(buffer);  
-    slcd.print("m");
-    
-  }
   slcd.print("Distance :");
   slcd.print(buffer);  
   slcd.print("m");
     
   feedgps();
 
-}
-
-static void update_LED(char range[])
-{
-  digitalWrite(LED, HIGH); 
 }
 
 
@@ -350,8 +346,6 @@ static void print_date(TinyGPS &gps)
 
 static void print_str(const char *str, int len)
 {
-  //Serial.println("print_str: const char *str");
-  //Serial.println(*str);
   int slen = strlen(str);
   for (int i=0; i<len; ++i)
     Serial.print(i<slen ? str[i] : ' ');
@@ -362,8 +356,6 @@ static void print_str(const char *str, int len)
 //calls blinking_lights
 static void print_str_target(const char *str, int len)
 {
-  //Serial.println("print_str_target: const char *str");
-  //Serial.println(*str);
   int slen = strlen(str);
   for (int i=0; i<len; ++i)
     Serial.print(i<slen ? str[i] : ' ');

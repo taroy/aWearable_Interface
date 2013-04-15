@@ -33,7 +33,10 @@ define(function() {
   Awearable2.writeToBoard = function(range, led, display)
   {
     var that = this;
-    //that = Window {top:window, window:Window, location:location osv..}
+    console.log("range");
+    console.log(range);
+    console.log("led");
+    console.log(led);
     console.log("display");
     console.log(display);
     if (!that.range)
