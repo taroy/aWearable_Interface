@@ -35,18 +35,8 @@ script
    
   }
   
-script
-    <!--Load accept- Ingrid-->
-    
-    function loadInvitationAnswer(nameid) {
-        if (document.answerInvitation.acc1[0].checked) {
-            document.getElementById("accept").innerHTML = "<br>" + nameid+ "Maria is now aware of you";
-        }
-        else if (document.answerInvitation.acc1[1].checked) {
-            document.getElementById("accept").innerHTML = "<br>" + "You declined the invitation.";
-        }
-    }
-header.jumbotron.subhead#overview
+
+header.jumbotron.subhead#overview2
       
         h1 aWearable
       
@@ -54,9 +44,4 @@ header.jumbotron.subhead#overview
         <div id="acceptOuter">
         p
              <b>Maria Moller</b> has added you to her <b>awareness group</b>! <br><i>Go to your aWearable application to edit groups and privacy settings.</i>
-        
-       
-        
-        
-        </form>
         </div>

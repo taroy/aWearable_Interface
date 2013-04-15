@@ -62,7 +62,7 @@ static void gpsdump(TinyGPS &gps)
   float flat, flon;
   unsigned long age, date, time, chars = 0;
   unsigned short sentences = 0, failed = 0;
-  static const float TARGET_LAT = 59.13131, TARGET_LON = 10.216595;
+  static const float TARGET_LAT = 63.41696, TARGET_LON = 10.40298;
   
   print_int(gps.satellites(), TinyGPS::GPS_INVALID_SATELLITES, 5);
   print_int(gps.hdop(), TinyGPS::GPS_INVALID_HDOP, 5);

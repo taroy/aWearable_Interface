@@ -130,7 +130,7 @@ define(function(require, exports, module) {
     console.log("SocketNoduino.prototype.withObject");
     console.log(range + led + display);
     this.log('info', 'set range ' + range );
-    this.write('00' + 'r' + range + 'l' + led + 'd' + display );    
+    this.write('m' + '00' + range + led + display );    
   };
   
   //Maria

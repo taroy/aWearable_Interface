@@ -1,13 +1,13 @@
 header.jumbotron.subhead#overview
   
   h1 aWearable
-  h2 <a href="/" class="selected">Create Application</a> | <a href="aware_of.html">Friends and Privacy</a>
+  h2 <a href="/" class="selected">Create Application</a> | <a href="aware_of.html" class="smallhead">Friends and Privacy</a>
 
 section#homeContent
 
   
   //CONNECT AWEARABLE TO THE COMPUTER    
-  .rowLine
+
   .row
     #progressBox
       .span3
@@ -15,7 +15,8 @@ section#homeContent
    
     .span9#e2-exampleConnection
       .page-header  
-        h1 2. Connect your aWearable to the computer  
+        h1 1. Connect your aWearable to the computer
+          small <br>Connect the USB cable to the aWearable and the computer, then click the button
       p
         a.btn(href="#")#buttonConnect
             i.icon-refresh
@@ -34,8 +35,10 @@ section#homeContent
     
     .span9
       .page-header
-        h1 3. Choose parts and their behavior and plug the parts to the aWearable
-          small <br>a. Drag the desired parts to their respective boxes 
+
+        h1 2. Choose parts and their behavior and plug the parts to the aWearable
+          small <br>a. Drag the desired parts to their respective boxes
+
       
         <div id="mainContainer">
         <h2></h2>
@@ -54,19 +57,16 @@ section#homeContent
         </div>
         <br>
         h1
-          small<br>b. Choose their behavior
+          small<br>b. Choose the behavior of the parts
         <div id="arduinoBase">
- 
-        <div id="box101" class="dragableBoxRight">
+
+        <div id="box104" class="dragableBoxRight"></div>
+        <div id="box103" class="dragableBoxRight"></div>		      
+        <div id="box101" class="dragableBoxRight"></div>
+        <div id="box102" class="dragableBoxRight"></div>
+        
         </div>
-        <div id="box103" class="dragableBoxRight">
-        </div>		      
-        <div id="box104" class="dragableBoxRight">   
-        </div>
-        <div id="box102" class="dragableBoxRight">
-       
-        </div>
-        </div>
+        
         <div class="clear"></div>
         </div>
         .span2 
@@ -75,17 +75,16 @@ section#homeContent
           <div id="divSound"></div>
         .span2
           <div id="divLights"></div>
-        .span
+        .span2
           <div id="divVibration"></div>
-          <div id="debug"></div>        
-          
+        <div id="debug"></div>        
+    
       .span9
-        
-        
+        <br>
         <div id="connect_parts">
         h1
-          small <br>c. Plug the chosen parts to the aWearable as illustrated below
-          small <br> Click "Done" when you have finished this step
+          small <br>c. Plug the chosen parts to the aWearable as illustrated above
+          p  <br> <i>Click "Done" when you have finished step 3a, 3b and 3c</i>
         a.btn(onclick="doneCustom()")#doneButton
           |  Done
         </div>
@@ -199,14 +198,15 @@ section#homeContent
         
     .span9
       .page-header
-        h1 4. Choose range
+        h1 3. Choose range
+          small <br>The range decides how far away your friends can be for you to be aware of them<br>(If range is 20m, you will only be aware of friends in a 20 meters range)
           
         p
         select.span2#rangeValue
           option(value="null") Choose range
           option(value='020') 20m
           option(value='100') 100m
-          option(value='200') 200m
+          option(value='500') 500m
         | 
 
     //SAVE APPLICATION
@@ -219,7 +219,7 @@ section#homeContent
 
     .span9
       .page-header
-        h1 5. Save application
+        h1 4. Save application
       a.btn(href="#", onclick="ShowProgress()")#buttonSend
         i.icon-retweet
         |  Upload application

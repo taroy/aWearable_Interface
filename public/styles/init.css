@@ -134,7 +134,7 @@ label.label{display:inline;}
 .awareness-buttons .btn:active{position:relative;top:1px;}
 #mainContainer{width:700px;margin-top:10px;height:420px;color:#3a87ad;}
 #components{background-color:#d9edf7;width:650px;padding:10px 22px 10px 22px;border:solid 1px #bce8f1;-webkit-border-radius:4px;border-radius:4px;height:120px;color:#3a87ad;}
-#arduinoBase{width:450px;margin:90px 0 10px 160px;height:370px;background-image:url('../images/grovebaseshield.png');background-size:66% 55%;background-repeat:no-repeat;}
+#arduinoBase{width:694px;height:440px;background-image:url('../images/grovebaseshield.png');background-size:66% 60%;background-repeat:no-repeat;background-color:#d9edf7;border:solid 1px #bce8f1;-webkit-border-radius:4px;border-radius:4px;background-position-x:25%;background-position-y:50%;}
 #arduinoBase p{color:black;font-weight:normal;}
 .dragableBox1{margin-bottom:5px;margin-right:40px;padding:3px 3px 3px 3px;font-weight:bold;text-align:center;display:inline-block;}
 .dragableBox1 img{width:200px;height:auto;}
@@ -149,18 +149,23 @@ div.dragableBoxRight{height:90px;width:140px;float:left;margin-right:5px;padding
 .dropBox{width:190px;border:1px solid #000;background-color:#71af71;height:400px;margin-bottom:10px;padding:3px;overflow:auto;}
 a{color:#F00;}
 .clear{clear:both;}
-#box101{width:206px;height:115px;margin-left:320px;margin-top:-60px;background-image:url('../images/disp-text.png');background-size:70% 25%;background-repeat:no-repeat;background-position:center;}
-#box102{width:81px;height:91px;margin-left:320px;margin-top:120px;background-image:url('../images/lig-text.png');background-size:55% 70%;background-repeat:no-repeat;background-position:center;}
-#box103{width:91px;height:101px;margin-left:-140px;margin-top:105px;background-image:url('../images/vib-text.png');background-size:80% 65%;background-repeat:no-repeat;background-position:center;}
-#box104{width:71px;height:94px;margin-left:-140px;margin-top:-120px;background-image:url('../images/sound-text.png');background-size:70% 60%;background-repeat:no-repeat;background-position:center;}
+#box101{width:206px;height:115px;margin-left:320px;margin-top:20px;background-image:url('../images/disp-text.png');background-size:70% 25%;background-repeat:no-repeat;background-position:center;}
+#box102{width:81px;height:91px;margin-left:320px;margin-top:140px;background-image:url('../images/lig-text.png');background-size:55% 70%;background-repeat:no-repeat;background-position:center;}
+#box103{width:91px;height:101px;margin-left:-70px;margin-top:260px;background-image:url('../images/vib-text.png');background-size:80% 65%;background-repeat:no-repeat;background-position:center;}
+#box104{width:71px;height:94px;margin-left:30px;margin-top:30px;background-image:url('../images/sound-text.png');background-size:70% 60%;background-repeat:no-repeat;background-position:center;}
 #box1{width:200px;height:109px;}
 #box2{width:75px;height:85px;}
 #box3{width:85px;height:95px;}
 #box4{width:65px;height:88px;}
-#divDisplay{margin:-210px 0 0 442px;}
-#divLights{margin:5px 0 0 440px;}
-#divSound{margin:-330px 0 0 70px;}
-#divVibration{margin:0 0 0 -180px;float:left;height:50px;width:400px;}
+#divDisplay{margin:-230px 0 0 442px;}
+#divDisplay .container{width:300px;}
+#divLights{margin:5px 0 0 410px;}
+#divLights .container{width:300px;height:70px;}
+#divSound{margin:-330px 0 0 90px;}
+#divSound .container{width:300px;}
+#divVibration{margin:-20px 0 0 -140px;float:left;}
+#divVibration .container{width:300px;height:70px;}
+#divVibration .span5{width:300px;}
 #friendnamesDiv{color:#3b5998;font-weight:bold;font-size:13px;margin:15px;}
 #fjerneDiv{float:right;margin:0 70% 0 0;font-weight:bold;}
 #fjerneDiv button{display:block;margin:0 0 10px 0;border:none;background-color:white;font-weight:bold;color:#627aac;}
@@ -169,9 +174,14 @@ a{color:#F00;}
 #fjerneDiv1{float:right;margin:0 70% 0 0;font-weight:bold;}
 #fjerneDiv1 button{display:block;margin:0 0 10px 0;border:none;background-color:white;font-weight:bold;color:#627aac;}
 #fjerneDiv1 button:hover{color:#ffffff;background-color:#627aac;}
+<<<<<<< HEAD
+#acceptOuter{max-width:500px ;padding:10px;height:90px;}
+#acceptOuter p{font-size:15px;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+=======
 #acceptOuter{border:solid 1px;max-width:300px ;padding:10px;height:90px;}
 #accept img{width:100px;height:auto;}
 #accept label{display:inline;}
+>>>>>>> 837161397950beb3db5614bc8d4e03bc9f895136
 #not-allow{margin:0 0 0 20px;}
 .span5{margin:15px 0;}
 .span4{margin-top:15px;width:150px;}
@@ -190,3 +200,5 @@ h2 a{color:#999999;}
 #connect_parts .btn{margin-right:20px;}
 h2 a.selected{color:#71af71;text-decoration:underline;}
 h2 a:hover{color:#71af71;}
+#overview2{width:500px;height:110px;margin-left:auto;margin-right:auto;}
+h2 a.smallhead{font-size:24px;}
