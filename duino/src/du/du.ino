@@ -22,7 +22,7 @@ static void print_date(TinyGPS &gps);
 static void print_str(const char *str, int len);
 static void print_str_target(const char *str, int len);
 
-char messageBuffer[20], cmd[3], range[4] = {'5','0','0'}, pin[4], val[4], aux[4], lat[10], lon[10], led[3] = {'l', '1'}, disp[5] = {'d','1','2'};
+char messageBuffer[20], cmd[3], range[4] = {'5','0','0'}, pin[4], val[4], aux[4], lat[10], lon[10], led[3] = {"l2"}, disp[5] = {"d123"};
 boolean debug = false;
 int index = 0;
 Servo servo;
@@ -30,6 +30,7 @@ boolean inRange;
 unsigned long distance;
 char *dir_coor;
 #define LED 9
+
 
 void setup() {
   Serial.begin(115200);
@@ -189,7 +190,6 @@ static void gpsdump(TinyGPS &gps)
   if(inRange){ 
     if(disp[0]=='d')
     {
-      Serial.println("disp[0]=='d'");
       update_lcd(distance, range, TARGET_LAT1, TARGET_LON1, *dir_coor);
     }
     if(led[0]=='l')
@@ -245,41 +245,145 @@ boolean in_range(unsigned long val, char range[])
 
 static void update_lcd(unsigned long val, char range[], float TARGET_LAT, float TARGET_LON, char dir_coor)
 {
-  Serial.println("update lcd");
-  Serial.println(TARGET_LAT);
-  Serial.println(dir_coor);
-  char buffer[12];
-  PString(buffer, sizeof(buffer), val);
+
+  char dist[12];
+  PString(dist, sizeof(dist), val);
+  char dir[5];
+  PString(dist, sizeof(dist), val);
   
   slcd.clear();
   delay(1000);
   slcd.setCursor(0,0);
   
   if(disp[1]=='1'){
-    if(disp[2]=='2')
-    {
-      Serial.println("disp[2]=='2'");
-    }
-      if(disp[3]=='3')
-      {
-        Serial.println("disp[3]=='3'");
-      }
-    slcd.print("Latitude :");
-    slcd.print(buffer);  
+    Serial.println("display distance");
+    slcd.print("Distance :");
+    slcd.print(dist);  
     slcd.print("m");
     
-  }
-  slcd.print("Distance :");
-  slcd.print(buffer);  
-  slcd.print("m");
+    if(disp[2]=='2')
+    {
+      Serial.println("display direction");
+      slcd.setCursor(0, 1);
+      slcd.print("Direction :");
+      slcd.print(dir_coor);  
+      
+      if(disp[3]=='3')
+      {
+        Serial.println("display coordinates");
+        delay(700);
+        slcd.setCursor(15, 0);
+        slcd.print("lat :");
+        slcd.print("24345331"); 
+        slcd.setCursor(15, 1);
+        slcd.print("lon :");
+        slcd.print("24345331");
+        for (int positionCounter = 0; positionCounter < 13; positionCounter++) {
+          // scroll one position left:
+          slcd.scrollDisplayLeft(); 
+          // wait a bit:
+          delay(150);
+        }
+      }
+    }
     
+    else if(disp[2]=='3')
+    {
+       Serial.println("display coordinates");
+       delay(700);
+       slcd.setCursor(15, 0);
+       slcd.print("lat :");
+       slcd.print("24345331"); 
+       slcd.setCursor(15, 1);
+       slcd.print("lon :");
+       slcd.print("24345331");
+       for (int positionCounter = 0; positionCounter < 13; positionCounter++) {
+         // scroll one position left:
+         slcd.scrollDisplayLeft(); 
+         // wait a bit:
+         delay(150);
+       }
+    }
+  }else if(disp[1]=='2'){
+    Serial.println("display direction");
+    slcd.home();
+    slcd.print("Direction :");
+    slcd.print(dir_coor);  
+    
+    if(disp[2]=='3'){
+      Serial.println("display coordinates");
+      delay(700);
+      slcd.setCursor(15, 0);
+      slcd.print("lat :");
+      slcd.print("24345331"); 
+      slcd.setCursor(15, 1);
+      slcd.print("lon :");
+      slcd.print("24345331");
+      for (int positionCounter = 0; positionCounter < 15; positionCounter++) {
+        // scroll one position left:
+        slcd.scrollDisplayLeft(); 
+        // wait a bit:
+        delay(150);
+      }
+    }
+  }
+  else if(disp[1]=='3'){
+    Serial.println("display coordinates");
+    slcd.home();
+    slcd.print("lat :");
+    slcd.print("24345331"); 
+    slcd.setCursor(0, 1);
+    slcd.print("lon :");
+    slcd.print("24345331");
+  }
   feedgps();
-
 }
 
 static void update_LED(char range[])
 {
-  digitalWrite(LED, HIGH); 
+  int r = atoi(range); 
+  //int r = 9;
+  if(led[1]=='1')
+  {
+    digitalWrite(LED, HIGH);
+  }
+  else if(led[1]=='2')
+  {
+    digitalWrite(LED, HIGH);
+    if(r < 100)
+    {
+      Serial.println("r er mindre enn 100");
+      digitalWrite(LED, HIGH);
+      delay(500);
+      digitalWrite(LED, LOW);
+      delay(500);
+      
+      if(r < 50)
+      {
+        digitalWrite(LED, HIGH);
+        delay(200);
+        digitalWrite(LED, LOW);
+        delay(200);
+        
+        if(r < 20)
+        {
+          digitalWrite(LED, HIGH);
+          delay(100);
+          digitalWrite(LED, LOW);
+          delay(100);
+          
+          if(r < 10)
+          {
+            digitalWrite(LED, HIGH);
+            delay(50);
+            digitalWrite(LED, LOW);
+            delay(50);
+   
+          }
+        }
+      }
+    }
+  }
 }
 
 
