@@ -1,55 +1,6 @@
 <div id="fb-root"></div>
 script
-  // Additional JS functions here
-  window.fbAsyncInit = function() {
-    FB.init({
-      appId      : '109853005851767', // App ID
-      channelUrl : '//localhost:8080/', // Channel File
-      status     : true, // check login status
-      cookie     : true, // enable cookies to allow the server to access the session
-      xfbml      : true  // parse XFBML
-    });
-
-    FB.getLoginStatus(function(response) {
-      if (response.status === 'connected') {
-          // User logged into FB and authorized
-          testAPI();
-          document.getElementById('fb-logout').style.display = 'block';
-      } else if (response.status === 'not_authorized') {
-          // User logged into FB but not authorized
-          login();
-      } else {
-          // User not logged into FB
-          login();
-          document.getElementById('fb-logout').style.display = 'block';
-      }
-    });
     
-  };
-  
-  function login() {
-    FB.login(function(response) {
-        if (response.authResponse) {
-            // connected
-            testAPI();
-        } else {
-            // cancelled
-        }
-    });
-  }
-  
-  
-  
-  function testAPI() {
-    console.log('Welcome!  Fetching your information.... ');
-    FB.api('/me', function(response) {
-        console.log('Good to see you, ' + response.name + '.');
-    });
-    FB.api('/me/friends?fields=installed,id,name', function (response) {
-        
-    });   
-  }
-  
   // Load the SDK Asynchronously
   (function(d, s, id){
      var js, fjs = d.getElementsByTagName(s)[0];
@@ -66,6 +17,7 @@ script
   });
 
   function sendRequestViaMultiFriendSelector() {
+  
       FB.ui({
           method: 'apprequests',
           message: "Would you like to join my aWearable group?",
@@ -100,6 +52,7 @@ script
                             document.getElementById("fjerneDiv1").appendChild(removefriend);
                             friendnames.innerHTML+=("<br>");
                             
+                            
                         });
                     }   
                     
@@ -108,13 +61,6 @@ script
       });
   }
       
-    function requestCallback(response) {
-        var ids = response["to"];
-        for (var i = 0; i < ids.length; ++i){
-            return ids[i];             
-        }
-   
-    }
  
     function functionRemove() {
         var elem = document.getElementById('friendnamesDiv');
@@ -127,23 +73,16 @@ script
         return false; 
     }
     
-script
-  function storeValues(form)  {
-    setCookie("field1", form.field1.value);
-    setCookie("field2", form.field2.value);
-    setCookie("field3", form.field3.value);
-    setCookie("field4", form.field4.value);
-    return true;
-  }
 
-</script>
   
 header.jumbotron.subhead#overview
-
+    <div class="help">
+    p <a href="about.html"> About</a>  <a href="how_to.html">How-To</a>
+    </div>
   
-  h1 aWearable
+    h1 aWearable
 
-    h2 <a href="/" class="smallhead">Create Application</a> | <a href="aware_of.html" class="selected">Friends and Privacy</a>
+    h2 <a href="aware_of.html" class="selected">Friends and Privacy</a> | <a href="/" class="smallhead">Create Application</a>
     <div id="friendspage">
       
 section#homeContent
@@ -152,34 +91,36 @@ section#homeContent
   .row
     #progressBox
       .span3
-        <img src="images/prog_grey.gif" id="progress_image5" />
+        <img src="images/prog_grey.gif" id="progress_image2" />
         
     .span9
       .page-header
         h1 Friends
-          <br>
-          small Add friends to your awareness group using facebook
-          <br>
+          
+          small <br><br>Add friends to your awareness group using facebook
+       
         <!--
         <button id="fb-login-button" onclick="login()"></button>
           
         <button id="fb-logout" onclick="logout()">Log out</button>
         <br> --> 
         <img type="button" onclick="sendRequestViaMultiFriendSelector()" id="facebook-login" src="images/facebook-login.png"; return true;/>
-        <br><br>
+        <br>
         <div id="following">    
         p 
             b Friends you are aware of:
             <br>
-            form
-              <div id="friendnamesDiv">
+        
+            <div type="text" id="friendnamesDiv"> 
                 
-              <div TITLE="Delete friend" id="fjerneDiv" onclick="functionRemove()"> </div>
-              </div>
-              <div id="friendnamesDiv1">  
-              <div TITLE="Delete friend" id="fjerneDiv1" onclick="functionRemove1()"> </div>
-              </div>
-            
+            <div TITLE="Delete friend" id="fjerneDiv" onclick="functionRemove()"> </div>
+            </div>
+          
+            <div type="text" id="friendnamesDiv1">
+                
+            <div TITLE="Delete friend" id="fjerneDiv1" onclick="functionRemove1()"> </div>
+            </div>
+
         <br>
         
         <div id="followers">  
@@ -197,7 +138,7 @@ section#homeContent
   .row
     #progressBox
       .span3
-        <img src="images/prog_grey.gif" id="progress_image5" />
+        <img src="images/prog_grey.gif" id="progress_image2" />
   
      
     .span9
@@ -205,7 +146,7 @@ section#homeContent
         <img src="images/Black_Lock.png" id="lock">
         h1 Privacy settings
           <br>
-          small Decide what location information to share with your friends:
+          small <br>Decide what location information to share with your friends:
         <form action="">
         .span4
           <label for="allow"><b>Distance:</b></label>
@@ -225,6 +166,7 @@ section#homeContent
           </div>
         </form>
         <form action="">
+
         .span4
           <label for="allow"><b>Coordinates:</b></label>
         .span5
@@ -232,4 +174,8 @@ section#homeContent
           <input checked type="radio" name="privacy" value="Allow"> Allow
           <input type="radio" name="privacy" value="Not allow"id="not-allow"> Not Allow
           </div>
+
         </form>
+    .span9
+      .page-header
+    

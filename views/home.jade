@@ -1,11 +1,14 @@
+<div id="fb-root"></div>
 header.jumbotron.subhead#overview
-  
+  <div class="help">
+  p <a href="about.html"> About</a>  <a href="how_to.html">How-To</a>
+  </div>
   h1 aWearable
-  h2 <a href="/" class="selected">Create Application</a> | <a href="aware_of.html" class="smallhead">Friends and Privacy</a>
-
+  h2 <a href="aware_of.html" class="smallhead">Friends and Privacy</a> |  <a href="/" class="selected">Create Application</a>
+  
+  
 section#homeContent
 
-  
   //CONNECT AWEARABLE TO THE COMPUTER    
 
   .row
@@ -139,10 +142,6 @@ section#homeContent
             }
             
 
-            
-            
-            
-
 
             if(targetId=='components') {	<!--// Target is the capital box - append the dragged item as child of first sub div, i.e. as child of <div id="dropContent">-->
               targetObj = targetObj.getElementsByTagName('DIV')[0];
@@ -150,10 +149,18 @@ section#homeContent
                 <!-- empty div when dropbox is put back to the source -->
                 if(numericIdSource==1) {
                   document.getElementById("divDisplay").innerHTML= "";
+                  console.log("displayId:");
+                  displayId = "";
+                  document.getElementById("displayId").innerHTML = displayId;
+                  console.log(displayId);
                   
                 }
                 if(numericIdSource==2) {
                   document.getElementById("divLights").innerHTML= "";
+                  console.log("ledId:");
+                  ledId = "";
+                  document.getElementById("ledId").innerHTML = ledId;
+                  console.log(ledId);
                  
                   
                 }
@@ -187,8 +194,7 @@ section#homeContent
           dragDropObj.addTarget('components','dropItems'); <!--// Set <div id="leftColumn"> as a drop target. Call function dropItems on drop-->
         
           dragDropObj.init();	// Initizlizing drag and drop object
-
-          
+       
   //CHOOSE RANGE
   .rowLine
   .row
@@ -196,18 +202,22 @@ section#homeContent
       .span3
         <img src="images/prog_grey.gif" id="progress_image5" />
         
-    .span9
+    .span9#range
       .page-header
         h1 3. Choose range
-          small <br>The range decides how far away your friends can be for you to be aware of them<br>(If range is 20m, you will only be aware of friends in a 20 meters range)
-          
+          small <br>You will only receive location information when friends are inside this range.
+        <br>  
         p
         select.span2#rangeValue
           option(value="null") Choose range
           option(value='020') 20m
           option(value='100') 100m
+
+          option(value='200') 200m
+
           option(value='500') 500m
         | 
+
 
     //SAVE APPLICATION
   .rowLine
