@@ -22,7 +22,7 @@ static void print_date(TinyGPS &gps);
 static void print_str(const char *str, int len);
 static void print_str_target(const char *str, int len);
 
-char messageBuffer[20], cmd[3], range[4] = {'5','0','0'}, pin[4], val[4], aux[4], lat[10], lon[10], led[3] = {"l2"}, disp[5] = {"d123"};
+char messageBuffer[20], cmd[3], range[4] = {'5','0','0'}, pin[4], val[4], aux[4], lat[10], lon[10], led[3], disp[5];
 boolean debug = false;
 int index = 0;
 Servo servo;
@@ -184,8 +184,8 @@ static void gpsdump(TinyGPS &gps)
   dir_coor = (char *)TinyGPS::cardinal(TinyGPS::course_to(flat, flon, TARGET_LAT1, TARGET_LON1));
   inRange = in_range((unsigned long)TinyGPS::distance_between(flat, flon, TARGET_LAT1, TARGET_LON1), range);
   
-  Serial.println("dir_coor");
-  Serial.println(dir_coor);
+  Serial.println(disp);
+  Serial.println(led);
  
   if(inRange){ 
     if(disp[0]=='d')
