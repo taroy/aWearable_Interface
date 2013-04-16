@@ -122,6 +122,20 @@ define(['kickstart', 'module', 'path', 'fs'], function (kickstart, module, path,
     res.render('how_to', {jsApp: 'none', active: 'how_to', title: 'noduino', 'examples': examples});
   });
   
+    /** 
+   * Catch request for serving start page - Ingrid
+   */
+  srv.all('/start.html', function(req, res) {
+    res.render('start', {jsApp: 'none', active: 'start', title: 'noduino', 'examples': examples});
+  });
+  
+      /** 
+   * Catch request for serving signup page - Ingrid
+   */
+  srv.all('/signup.html', function(req, res) {
+    res.render('signup', {jsApp: 'none', active: 'signup', title: 'noduino', 'examples': examples});
+  });
+  
   /** 
   * Catch request for progression tracker/icon test
   */

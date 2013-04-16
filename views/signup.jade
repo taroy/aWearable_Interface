@@ -1,0 +1,57 @@
+script 
+    function validateForm() {
+        var x=document.forms["signup"]["name"].value;
+            if (x==null || x=="")
+              {
+              alert("First name must be filled out");
+              return false;
+            }
+        var z=document.forms["signup"]["awearableID"].value;
+            if (z==null || z=="")
+              {
+              alert("aWearableID must be filled out");
+              return false;
+            }
+    
+        var y=document.forms["signup"]["email"].value;
+        var atpos=y.indexOf("@");
+        var dotpos=y.lastIndexOf(".");
+        if(atpos<1 || dotpos<atpos+2 || dotpos+2>=y.length) {
+            alert("Not a valid e-mail address");
+            return false;
+        }
+        var w=document.forms["signup"]["pwd"].value;
+            if (w==null || w=="")
+              {
+              alert("password must be filled out");
+              return false;
+            }
+    }
+
+
+header.jumbotron.subhead#overview
+  <div class="help">
+  p <a href="#">Login</a> <a href="#">Sign up</a>
+  p <a href="about.html"> About</a>  <a href="how_to.html">How-To</a>
+  </div>
+  h1 <a href="start.html">aWearable</a>
+    h2 Signup
+ 
+ section#homeContent
+ .row
+    .span9
+       .page-header
+    
+            h1 Signup
+            <br>
+            <form name="signup" action="/" method="get" onsubmit="return validateForm()">
+            <p> <b>Your name:</b> </p><input type="text" name="name"><br>
+            <p> <b>aWearable ID:</b></p> <input type="text" name="awearableID"><br>
+            <p><b>Your E-mail:</b> </p><input type="text" name="email">
+            <p><b>Password:</b></p> <input type="password" name="pwd">
+            <br>
+            <input type="submit" value="Create account">
+            <br>
+           
+
+            </form>
