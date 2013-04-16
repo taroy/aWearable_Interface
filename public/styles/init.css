@@ -60,7 +60,7 @@ hr.soften{height:1px;margin:54px 0;background-image:-webkit-linear-gradient(left
 .download .checkbox{padding:6px 10px 6px 25px;color:#555;background-color:#f9f9f9;-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px;cursor:pointer;}
 .download .checkbox:hover{color:#333;background-color:#f5f5f5;}
 .download .checkbox small{font-size:12px;color:#777;}
-#progressBox .span3{width:150px;vertical-align:middle;}
+#progressBox .span3{border:solid black;width:150px;vertical-align:middle;}
 ol.progtrckr{margin:0;padding:0;list-style-type:none;}
 ol.progtrckr li{display:inline-block;text-align:center;line-height:3em;}
 ol.progtrckr[data-progtrckr-steps="2"] li{width:49%;}
@@ -87,7 +87,7 @@ img#progress_image5{margin-top:5%;}
 img#progress_image6{margin-top:5%;}
 img#progress_image2{visibility:hidden;}
 img#strekmann{max-height:100px;}
-img#facebook-login{max-width:185px;margin:20px 0;}
+img#facebook-login{max-width:185px;margin:30px 0;}
 #nameForm{width:170px;color:grey;}
 #variables label{margin-bottom:0;}
 .download-btn{margin:36px 0 108px;}
@@ -115,8 +115,15 @@ form.well{padding:14px;}
 .jumbotron p{margin-bottom:18px;font-weight:300;}
 .subhead{padding:3%;margin-bottom:15px;margin-top:-50px;}
 .subhead h1{font-size:50px;color:#468847;}
-.subhead h2{font-size:30px;color:#71af71;margin-left:170px;}
-#homeContent{height:100%;background-color:white;padding:1% 3% 1% 3%;border:solid 1px #B0B0B0;-webkit-border-radius:4px;border-radius:4px;}
+.subhead h2{font-size:30px;color:#71af71;margin-left:225px;}
+.span3{margin-top:0px;}
+.container{width:1020px;}
+.content{width:100%;height:100%;margin-left:auto;margin-right:auto;}
+#groupContent .page-header{margin-top:-25px;}
+#groupContent{background-color:white;border-color:#bce8f1;width:240px;border:solid 1px #B0B0B0;-webkit-border-radius:4px;border-radius:4px;float:left;}
+#homeContent{width:700px;float:right;height:100%;background-color:white;padding:1% 3% 1% 3%;border:solid 1px #B0B0B0;-webkit-border-radius:4px;border-radius:4px;margin-bottom:70px;}
+#howtoContent{width:956px;float:right;height:100%;background-color:white;padding:1% 3% 1% 3%;border:solid 1px #B0B0B0;-webkit-border-radius:4px;border-radius:4px;margin-bottom:70px;}
+#howtoContent .span9{margin-left:240px;margin-right:auto;}
 #homeBoxes{padding-top:30px;}
 .example{margin-top:10px;}
 .example .btn{margin-bottom:10px;}
@@ -138,7 +145,7 @@ label.label{display:inline;}
 .awareness-buttons .btn:active{position:relative;top:1px;}
 #mainContainer{width:700px;margin-top:10px;height:420px;color:#3a87ad;}
 #components{background-color:#d9edf7;width:650px;padding:10px 22px 10px 22px;border:solid 1px #bce8f1;-webkit-border-radius:4px;border-radius:4px;height:120px;color:#3a87ad;}
-#arduinoBase{width:694px;height:440px;background-image:url('../images/grovebaseshield.png');background-size:66% 60%;background-repeat:no-repeat;background-color:#d9edf7;border:solid 1px #bce8f1;-webkit-border-radius:4px;border-radius:4px;background-position-x:25%;background-position-y:50%;}
+#arduinoBase{width:694px;margin-top:10px;height:440px;background-image:url('../images/grovebaseshield.png');background-size:66% 60%;background-repeat:no-repeat;background-color:#d9edf7;border:solid 1px #bce8f1;-webkit-border-radius:4px;border-radius:4px;background-position-x:25%;background-position-y:50%;}
 #arduinoBase p{color:black;font-weight:normal;}
 .dragableBox1{margin-bottom:5px;margin-right:40px;padding:3px 3px 3px 3px;font-weight:bold;text-align:center;display:inline-block;}
 .dragableBox1 img{width:200px;height:auto;}
@@ -170,16 +177,16 @@ a{color:#F00;}
 #divVibration{margin:-20px 0 0 -140px;float:left;}
 #divVibration .container{width:300px;height:70px;}
 #divVibration .span5{width:300px;}
-#friendnamesDiv{color:#3b5998;font-weight:bold;font-size:13px;margin:15px;width:300px;}
+#friendnamesDiv{color:#3b5998;font-weight:bold;font-size:13px;width:300px;}
 #fjerneDiv{float:right;margin:0 30% 0 0;font-weight:bold;}
 #fjerneDiv button{display:block;margin:0 0 10px 0;border:none;background-color:white;font-weight:bold;color:#627aac;}
 #fjerneDiv button:hover{color:#ffffff;background-color:#627aac;}
-#friendnamesDiv1{color:#3b5998;font-weight:bold;font-size:13px;margin-left:15px;width:300px;}
+#friendnamesDiv1{color:#3b5998;font-weight:bold;font-size:13px;width:300px;}
 #fjerneDiv1{float:right;margin:0 30% 0 0;font-weight:bold;}
 #fjerneDiv1 button{display:block;margin:0 0 10px 0;border:none;background-color:white;font-weight:bold;color:#627aac;}
 #fjerneDiv1 button:hover{color:#ffffff;background-color:#627aac;}
 #not-allow{margin:0 0 0 20px;}
-.span5{margin:15px 0;}
+.span5{margin:0;}
 .span4{margin-top:15px;width:150px;}
 .span5 label{display:inline-block;}
 .span4 label{display:inline-block;margin-left:-20px;}
@@ -188,8 +195,9 @@ a{color:#F00;}
 .privacy_settings{display:inline;}
 #friendspage h2{font-size:30px;color:#71af71;margin-left:20px;}
 #privacy h2 small{margin-left:-20px;}
-#followers p i{margin-left:15px;}
+#followers p i{margin-left:0;}
 h2 a{color:#999999;}
+#following{background-color:white;border-color:#B0B0B0;}
 #following p{font-size:14px;}
 #followers p{font-size:14px;}
 #connect_parts{padding-bottom:20px;margin-left:-20px;}

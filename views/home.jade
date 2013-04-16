@@ -4,234 +4,385 @@ header.jumbotron.subhead#overview
   p <a href="about.html"> About</a>  <a href="how_to.html">How-To</a>
   </div>
   h1 aWearable
-  h2 <a href="aware_of.html" class="smallhead">Friends and Privacy</a> |  <a href="/" class="selected">Create Application</a>
+  h2 <a href="/" class="selected">Create Application</a>
+
+section#groupContent
+    <div id="fb-root"></div>
+    script
+    
+      // Load the SDK Asynchronously
+      (function(d, s, id){
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) {return;}
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/all.js";
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
   
   
-section#homeContent
+      FB.init({
+        appId  : '109853005851767',
+        frictionlessRequests: false
+      });
 
-  //CONNECT AWEARABLE TO THE COMPUTER    
+      function sendRequestViaMultiFriendSelector() {
+    
+        FB.ui({
+          method: 'apprequests',
+          message: "Would you like to join my aWearable group?",
+          picture: 'url to my image',
+          max_recipients: '50'
+        }, function(response) {
+            if(response && response.to) {
+                  for(i = 0; i < response.to.length; i++) {
+                      console.log("number: " + i + " ID: " + response.to[i]);
+                    
+                      if(i==0) {
+                          FB.api('/'+ response.to[i] +'?fields=installed,name', function (response) {
+                              console.log(response);
+                              var removefriend=document.createElement("button");
+                              var t=document.createTextNode("X");
+                              removefriend.appendChild(t);
+                              var friendnames = document.getElementById("friendnamesDiv");
+                              friendnames.innerHTML+=(response['name'] + "<br>");
+                              document.getElementById("fjerneDiv").appendChild(removefriend);
+                              friendnames.innerHTML+=("<br>");
+                            
+                          });
+                      }
+                      if(i==1) {
+                          FB.api('/'+ response.to[i] +'?fields=installed,name', function (response) {
+                              console.log(response);
+                              var removefriend=document.createElement("button");
+                              var t=document.createTextNode("X");
+                              removefriend.appendChild(t);
+                              var friendnames = document.getElementById("friendnamesDiv1");
+                              friendnames.innerHTML+=(response['name'] + "<br>");
+                              document.getElementById("fjerneDiv1").appendChild(removefriend);
+                              friendnames.innerHTML+=("<br>");
+                            
+                            
+                          });
+                      }   
+                    
+                }
+            }
+        });
+      }
+      
+ 
+      function functionRemove() {
+          var elem = document.getElementById('friendnamesDiv');
+          elem.parentNode.removeChild(elem);
+          return false; 
+      }
+      function functionRemove1() {
+          var elem = document.getElementById('friendnamesDiv1');
+          elem.parentNode.removeChild(elem);
+          return false; 
+      }
 
-  .row
-    #progressBox
-      .span3
-        <img src="images/prog_grey.gif" id="progress_image1" />
+
+
+        
+    .span3
+      .page-header
+        h1 Friends
+          
+          small <br>Add friends to your awareness group using facebook
+       
+        <!--
+        <button id="fb-login-button" onclick="login()"></button>
+          
+        <button id="fb-logout" onclick="logout()">Log out</button>
+        <br> --> 
+        <img type="button" onclick="sendRequestViaMultiFriendSelector()" id="facebook-login" src="images/facebook-login.png"; return true;/>
+        <br>
+        <div id="following">    
+        p 
+            b Friends you are aware of:
+            <br>
+        
+            <div type="text" id="friendnamesDiv"> 
+                
+            <div TITLE="Delete friend" id="fjerneDiv" onclick="functionRemove()"> </div>
+            </div>
+          
+            <div type="text" id="friendnamesDiv1">
+                
+            <div TITLE="Delete friend" id="fjerneDiv1" onclick="functionRemove1()"> </div>
+            </div>
+
+        <br>
+        
+        <div id="followers">  
+        p
+            b Friends aware of you:
+            p
+                i No friends are aware of you
+        </div>
+      </div>
+
+      <br>
+      <br>
+  
+     
+    .span3
+      .page-header
+        <img src="images/Black_Lock.png" id="lock">
+        h1 Privacy settings
+          <br>
+          small <br>Decide what location information to share with your friends:
+        <form action="">
+        .span4
+          <label for="allow"><b>Distance:</b></label>
+        .span5
+          <div class="privacy_settings">
+          <input checked type="radio" name="privacy" id="allow" value="allow"> Allow
+          <input type="radio" name="privacy" value="Not allow" id="not-allow"> Not Allow <br>
+          </div>
+        </form>
+        <form action="">
+        .span4
+          <label for="allow"><b>Direction:</b></label>
+        .span5
+          <div class="privacy_settings">
+          <input checked type="radio" name="privacy" value="Allow"> Allow
+          <input type="radio" name="privacy" value="Not allow"id="not-allow"> Not Allow <br>
+          </div>
+        </form>
+        <form action="">
+
+        .span4
+          <label for="allow"><b>Coordinates:</b></label>
+        .span5
+          <div class="privacy_settings">
+          <input checked type="radio" name="privacy" value="Allow"> Allow
+          <input type="radio" name="privacy" value="Not allow"id="not-allow"> Not Allow
+          </div>
+
+        </form>
+    .span3
+      .page-header
+    
+
+  section#homeContent
+
+    //CONNECT AWEARABLE TO THE COMPUTER    
+
+    .row
+
    
-    .span9#e2-exampleConnection
-      .page-header  
-        h1 1. Connect your aWearable to the computer
-          small <br>Connect the USB cable to the aWearable and the computer, then click the button
-      p
-        a.btn(href="#")#buttonConnect
-            i.icon-refresh
-            |  Connect to aWearable
-        .alert.alert-info Please connect to your aWearable using the button.
-        .alert.hide.alert-error Unable to connect to aWearable!
-        .alert.hide.alert-success Connection to aWearable established!
+      .span9#e2-exampleConnection
+        .page-header  
+         h1 1. Connect your aWearable to the computer
+           small <br>Connect the USB cable to the aWearable and the computer, then click the button
+        p
+          a.btn(href="#")#buttonConnect
+              i.icon-refresh
+              |  Connect to aWearable
+          .alert.alert-info Please connect to your aWearable using the button.
+          .alert.hide.alert-error Unable to connect to aWearable!
+          .alert.hide.alert-success Connection to aWearable established!
 
      
-  //ADD COMPONENTS
-  .rowLine    
-  .row
-    #progressBox
-      .span3
-        <img src="images/prog_long_grey.gif" id="progress_image3" />
-    
-    .span9
-      .page-header
+    //ADD COMPONENTS
+    .rowLine    
+    .row
 
-        h1 2. Choose parts and their behavior and plug the parts to the aWearable
-          small <br>a. Drag the desired parts to their respective boxes
+      .span9
+        .page-header
+
+          h1 2. Choose parts and their behavior and plug the parts to the aWearable
+            small <br>a. Drag the desired parts to their respective boxes
 
       
-        <div id="mainContainer">
-        <h2></h2>
+          <div id="mainContainer">
+          <h2></h2>
         
-        <div id="displayId" style="visibility: hidden"></div>
-        <div id="ledId" style="visibility: hidden"></div>
+          <div id="displayId" style="visibility: hidden"></div>
+          <div id="ledId" style="visibility: hidden"></div>
         
-        <div id="components">
+          <div id="components">
     
-        <div id="dropContent">
-        <div class="dragableBox1" id="box1"><img src="images/display.png"></div>
-        <div class="dragableBox3" id="box3"><img src="images/vibration.png"></div>
-        <div class="dragableBox2" id="box2"><img src="images/light.png"></div>
-        <div class="dragableBox4" id="box4"><img src="images/sound.png"></div>
-        </div>
-        </div>
-        <br>
-        h1
-          small<br>b. Choose the behavior of the parts
-        <div id="arduinoBase">
+          <div id="dropContent">
+          <div class="dragableBox1" id="box1"><img src="images/display.png"></div>
+          <div class="dragableBox3" id="box3"><img src="images/vibration.png"></div>
+          <div class="dragableBox2" id="box2"><img src="images/light.png"></div>
+          <div class="dragableBox4" id="box4"><img src="images/sound.png"></div>
+          </div>
+          </div>
+          <br>
+          h1
+            small<br>b. Choose the behavior of the parts
+          <div id="arduinoBase">
 
-        <div id="box104" class="dragableBoxRight"></div>
-        <div id="box103" class="dragableBoxRight"></div>		      
-        <div id="box101" class="dragableBoxRight"></div>
-        <div id="box102" class="dragableBoxRight"></div>
+          <div id="box104" class="dragableBoxRight"></div>
+          <div id="box103" class="dragableBoxRight"></div>		      
+          <div id="box101" class="dragableBoxRight"></div>
+          <div id="box102" class="dragableBoxRight"></div>
         
-        </div>
+          </div>
         
-        <div class="clear"></div>
-        </div>
-        .span2 
-          <div id="divDisplay"></div>
-        .span2
-          <div id="divSound"></div>
-        .span2
-          <div id="divLights"></div>
-        .span2
-          <div id="divVibration"></div>
-        <div id="debug"></div>        
+          <div class="clear"></div>
+          </div>
+          .span2 
+            <div id="divDisplay"></div>
+          .span2
+            <div id="divSound"></div>
+          .span2
+            <div id="divLights"></div>
+          .span2
+            <div id="divVibration"></div>
+          <div id="debug"></div>        
     
-      .span9
-        <br>
-        <div id="connect_parts">
-        h1
-          small <br>c. Plug the chosen parts to the aWearable as illustrated above
-          p  <br> <i>Click "Done" when you have finished step 3a, 3b and 3c</i>
-        a.btn(onclick="doneCustom()")#doneButton
-          |  Done
-        </div>
+        .span9
+          <br>
+          <div id="connect_parts">
+          h1
+            small <br>c. Plug the chosen parts to the aWearable as illustrated above
+            p  <br> <i>Click "Done" when you have finished step 3a, 3b and 3c</i>
+          a.btn(onclick="doneCustom()")#doneButton
+            |  Done
+          </div>
         
-      script
-        function doneCustom(numericIdSource, numericIdTarget ) {
-          var r=confirm("Make sure you have plugged the parts correct before clicking 'OK'!");
-          if (r==true) {
+        script
+          function doneCustom(numericIdSource, numericIdTarget ) {
+            var r=confirm("Make sure you have plugged the parts correct before clicking 'OK'!");
+            if (r==true) {
             
-              document.getElementById("progress_image3").src = "images/prog_green.gif";
+                document.getElementById("progress_image3").src = "images/prog_green.gif";
             
             
-          }
-          else {
-            document.getElementById("progress_image3").src = "images/prog_long_grey.gif";
-          }
-        }
-
-            
-      <!-- Dragn drop-->
-      script
-          <!--// Custom drop action for the target boxes-->
-          function dropItems(idOfDraggedItem,targetId,x,y){
-            var targetObj = document.getElementById(targetId);	<!--// Creating reference to target obj-->
-            var subDivs = targetObj.getElementsByTagName('DIV');	<!--// Number of subdivs-->
-            if(subDivs.length>0 && targetId!='components')return;	<!--// Sub divs exists on target, i.e. element already dragged on it. => return from function without doing anything-->
-            var sourceObj = document.getElementById(idOfDraggedItem);	<!--// Creating reference to source, i.e. dragged object-->
-            var numericIdTarget = targetId.replace(/[^0-9]/gi,'')/1;	<!--// Find numeric id of target-->
-            var numericIdSource = idOfDraggedItem.replace(/[^0-9]/gi,'')/1;	<!--// Find numeric id of source-->
-            
-            <!--// Display is chosen-->
-            if(numericIdSource==1 && numericIdTarget-numericIdSource==100){	<!--// In the html above, there's a difference in 100 between the id of the country and it's capital(example:	-->									
-              sourceObj.style.backgroundColor='#dff0d8';	<!--// Set green background color for dragged objec		-->
-              loadDisplay();
-            }
-            <!--// Light is chosen-->
-            else if(numericIdSource==2 && numericIdTarget-numericIdSource==100){	<!--// In the html above, there's a difference in 100 between the id of the country and it's capital(example:	-->									
-              sourceObj.style.backgroundColor='#dff0d8';	<!--// Set green background color for dragged objec		-->
-              loadLights();
-              
-            }
-            else if(numericIdSource==3 && numericIdTarget-numericIdSource==100){	<!--// In the html above, there's a difference in 100 between the id of the country and it's capital(example:	-->									
-              sourceObj.style.backgroundColor='#dff0d8';	<!--// Set green background color for dragged objec		-->
-              loadVibration()
-            }
-            else if(numericIdSource==4 && numericIdTarget-numericIdSource==100){	<!--// In the html above, there's a difference in 100 between the id of the country and it's capital(example:	-->									
-              sourceObj.style.backgroundColor='#dff0d8';	<!--// Set green background color for dragged objec		-->
-              loadSound()
             }
             else {
-              sourceObj.style.backgroundColor='#FF4D45';	<!--// Reset back to default white background color-->
+              document.getElementById("progress_image3").src = "images/prog_long_grey.gif";
             }
+          }
+
+            
+        <!-- Dragn drop-->
+        script
+            <!--// Custom drop action for the target boxes-->
+            function dropItems(idOfDraggedItem,targetId,x,y){
+              var targetObj = document.getElementById(targetId);	<!--// Creating reference to target obj-->
+              var subDivs = targetObj.getElementsByTagName('DIV');	<!--// Number of subdivs-->
+              if(subDivs.length>0 && targetId!='components')return;	<!--// Sub divs exists on target, i.e. element already dragged on it. => return from function without doing anything-->
+              var sourceObj = document.getElementById(idOfDraggedItem);	<!--// Creating reference to source, i.e. dragged object-->
+              var numericIdTarget = targetId.replace(/[^0-9]/gi,'')/1;	<!--// Find numeric id of target-->
+              var numericIdSource = idOfDraggedItem.replace(/[^0-9]/gi,'')/1;	<!--// Find numeric id of source-->
+            
+              <!--// Display is chosen-->
+              if(numericIdSource==1 && numericIdTarget-numericIdSource==100){	<!--// In the html above, there's a difference in 100 between the id of the country and it's capital(example:	-->									
+                sourceObj.style.backgroundColor='#dff0d8';	<!--// Set green background color for dragged objec		-->
+                loadDisplay();
+              }
+              <!--// Light is chosen-->
+              else if(numericIdSource==2 && numericIdTarget-numericIdSource==100){	<!--// In the html above, there's a difference in 100 between the id of the country and it's capital(example:	-->									
+                sourceObj.style.backgroundColor='#dff0d8';	<!--// Set green background color for dragged objec		-->
+                loadLights();
+                
+              }
+              else if(numericIdSource==3 && numericIdTarget-numericIdSource==100){	<!--// In the html above, there's a difference in 100 between the id of the country and it's capital(example:	-->									
+                sourceObj.style.backgroundColor='#dff0d8';	<!--// Set green background color for dragged objec		-->
+                loadVibration()
+              }
+              else if(numericIdSource==4 && numericIdTarget-numericIdSource==100){	<!--// In the html above, there's a difference in 100 between the id of the country and it's capital(example:	-->									
+                sourceObj.style.backgroundColor='#dff0d8';	<!--// Set green background color for dragged objec		-->
+                loadSound()
+              }
+              else {
+                sourceObj.style.backgroundColor='#FF4D45';	<!--// Reset back to default white background color-->
+              }
             
 
 
-            if(targetId=='components') {	<!--// Target is the capital box - append the dragged item as child of first sub div, i.e. as child of <div id="dropContent">-->
-              targetObj = targetObj.getElementsByTagName('DIV')[0];
-              sourceObj.style.backgroundColor='';
-                <!-- empty div when dropbox is put back to the source -->
-                if(numericIdSource==1) {
-                  document.getElementById("divDisplay").innerHTML= "";
-                  console.log("displayId:");
-                  displayId = "";
-                  document.getElementById("displayId").innerHTML = displayId;
-                  console.log(displayId);
+              if(targetId=='components') {	<!--// Target is the capital box - append the dragged item as child of first sub div, i.e. as child of <div id="dropContent">-->
+                targetObj = targetObj.getElementsByTagName('DIV')[0];
+                sourceObj.style.backgroundColor='';
+                  <!-- empty div when dropbox is put back to the source -->
+                  if(numericIdSource==1) {
+                    document.getElementById("divDisplay").innerHTML= "";
+                    console.log("displayId:");
+                    displayId = "";
+                    document.getElementById("displayId").innerHTML = displayId;
+                    console.log(displayId);
                   
-                }
-                if(numericIdSource==2) {
-                  document.getElementById("divLights").innerHTML= "";
-                  console.log("ledId:");
-                  ledId = "";
-                  document.getElementById("ledId").innerHTML = ledId;
-                  console.log(ledId);
+                  }
+                  if(numericIdSource==2) {
+                    document.getElementById("divLights").innerHTML= "";
+                    console.log("ledId:");
+                    ledId = "";
+                    document.getElementById("ledId").innerHTML = ledId;
+                    console.log(ledId);
                  
                   
-                }
-                if(numericIdSource==3) {
-                  document.getElementById("divVibration").innerHTML= "";
+                  }
+                  if(numericIdSource==3) {
+                    document.getElementById("divVibration").innerHTML= "";
                  
-                }
-                if(numericIdSource==4) {
-                  document.getElementById("divSound").innerHTML= "";
-                
-                }
+                  }
+                  if(numericIdSource==4) {
+                    document.getElementById("divSound").innerHTML= "";
+                  
+                  }
               
   
+              }
+              targetObj.appendChild(sourceObj);	<!--// Append	-->
             }
-            targetObj.appendChild(sourceObj);	<!--// Append	-->
-          }
           
-          var dragDropObj = new DHTMLgoodies_dragDrop();	<!--// Creating drag and drop objec-->
+            var dragDropObj = new DHTMLgoodies_dragDrop();	<!--// Creating drag and drop objec-->
         
-          <!--// Assigning drag events to the components-->
-          dragDropObj.addSource('box1',true);	<!--// Make <div id="box1"> dragable. slide item back into original position after drop-->
-          dragDropObj.addSource('box2',true);	<!-- Make <div id="box2"> dragable. slide item back into original position after drop-->
-          dragDropObj.addSource('box3',true);	<!-- Make <div id="box3"> dragable. slide item back into original position after drop-->
-          dragDropObj.addSource('box4',true);	<!-- Make <div id="box4"> dragable. slide item back into original position after drop-->
+            <!--// Assigning drag events to the components-->
+            dragDropObj.addSource('box1',true);	<!--// Make <div id="box1"> dragable. slide item back into original position after drop-->
+            dragDropObj.addSource('box2',true);	<!-- Make <div id="box2"> dragable. slide item back into original position after drop-->
+            dragDropObj.addSource('box3',true);	<!-- Make <div id="box3"> dragable. slide item back into original position after drop-->
+            dragDropObj.addSource('box4',true);	<!-- Make <div id="box4"> dragable. slide item back into original position after drop-->
         
-          <!--// Assigning drop events on the targets-->
-          dragDropObj.addTarget('box101','dropItems'); <!--// Set <div id="leftColumn"> as a drop target. Call function dropItems on drop-->
-          dragDropObj.addTarget('box102','dropItems'); <!--// Set <div id="leftColumn"> as a drop target. Call function dropItems on drop-->
-          dragDropObj.addTarget('box103','dropItems'); <!--// Set <div id="leftColumn"> as a drop target. Call function dropItems on drop-->
-          dragDropObj.addTarget('box104','dropItems'); <!--// Set <div id="leftColumn"> as a drop target. Call function dropItems on drop-->
-          dragDropObj.addTarget('components','dropItems'); <!--// Set <div id="leftColumn"> as a drop target. Call function dropItems on drop-->
+            <!--// Assigning drop events on the targets-->
+            dragDropObj.addTarget('box101','dropItems'); <!--// Set <div id="leftColumn"> as a drop target. Call function dropItems on drop-->
+            dragDropObj.addTarget('box102','dropItems'); <!--// Set <div id="leftColumn"> as a drop target. Call function dropItems on drop-->
+            dragDropObj.addTarget('box103','dropItems'); <!--// Set <div id="leftColumn"> as a drop target. Call function dropItems on drop-->
+            dragDropObj.addTarget('box104','dropItems'); <!--// Set <div id="leftColumn"> as a drop target. Call function dropItems on drop-->
+            dragDropObj.addTarget('components','dropItems'); <!--// Set <div id="leftColumn"> as a drop target. Call function dropItems on drop-->
         
-          dragDropObj.init();	// Initizlizing drag and drop object
+            dragDropObj.init();	// Initizlizing drag and drop object
        
-  //CHOOSE RANGE
-  .rowLine
-  .row
-    #progressBox
-      .span3
-        <img src="images/prog_grey.gif" id="progress_image5" />
+    //CHOOSE RANGE
+    .rowLine
+    .row
+
         
-    .span9#range
-      .page-header
-        h1 3. Choose range
-          small <br>You will only receive location information when friends are inside this range.
-        <br>  
-        p
-        select.span2#rangeValue
-          option(value="null") Choose range
-          option(value='020') 20m
-          option(value='100') 100m
+      .span9#range
+        .page-header
+          h1 3. Choose range
+            small <br>You will only receive location information when friends are inside this range.
+          <br>  
+          p
+          select.span2#rangeValue
+            option(value="null") Choose range
+            option(value='020') 20m
+            option(value='100') 100m
 
-          option(value='200') 200m
+            option(value='200') 200m
 
-          option(value='500') 500m
-        | 
+            option(value='500') 500m
+          | 
 
 
-    //SAVE APPLICATION
-  .rowLine
-  .row
-    #progressBox
-      .span3
-        <img src="images/prog_grey.gif" id="progress_image6" />
+      //SAVE APPLICATION
+    .rowLine
+    .row
       
 
-    .span9
-      .page-header
-        h1 4. Save application
-      a.btn(href="#", onclick="ShowProgress()")#buttonSend
-        i.icon-retweet
-        |  Upload application
+      .span9
+        .page-header
+          h1 4. Save application
+        a.btn(href="#", onclick="ShowProgress()")#buttonSend
+          i.icon-retweet
+          |  Upload application
+        <br>
+        <br>
 
 
