@@ -28,11 +28,14 @@ define(function() {
   {
     Awearable2.writeToBoard(Awearable.range, Awearable.led, Awearable.display);
     console.log(Awearable.display);
+    $('#e2-exampleValidate .alert').addClass('hide'); 
+    $('#e2-exampleValidate .alert-success').removeClass('hide'); 
   };  
   
   Awearable2.writeToBoard = function(range, led, display)
   {
     var that = this;
+    
     console.log("range");
     console.log(range);
     console.log("led");

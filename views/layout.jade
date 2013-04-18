@@ -93,6 +93,7 @@ xmlns:fb="https://www.facebook.com/2008/fbml")
       <!--Display result script-->
       function writeDis() {
         var displayId = 'd';
+       
         console.log("writeDis()");
         if (document.display.dis1[0].checked) {
           displayId = displayId + '1';
@@ -100,7 +101,9 @@ xmlns:fb="https://www.facebook.com/2008/fbml")
           console.log(displayId);
         }
         else if (document.display.dis1[0]) {
-          
+          displayId = 'd';
+          document.getElementById("displayId").innerHTML = displayId;
+          console.log(displayId);
         }
 
         if (document.display.dis1[1].checked) {
@@ -109,6 +112,7 @@ xmlns:fb="https://www.facebook.com/2008/fbml")
           console.log(displayId);
         }
         else if (document.display.dis1[1]) {
+          
           
         }
         if (document.display.dis1[2].checked) {
