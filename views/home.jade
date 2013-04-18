@@ -6,6 +6,10 @@ header.jumbotron.subhead#overview
   h1 aWearable
   h2 <a href="/" class="selected">Create Application</a>
   <img src="images/header-map.jpg" id="header_img">
+
+  <!--<p> Start with adding friends then go through the steps below</p>-->
+
+
 section#groupContent
     
     script
@@ -169,8 +173,7 @@ section#groupContent
     //CONNECT AWEARABLE TO THE COMPUTER    
 
     .row
-
-   
+      
       .span9#e2-exampleConnection
         .page-header  
          h1 1. Connect your aWearable to the computer
@@ -239,9 +242,7 @@ section#groupContent
           <div id="connect_parts">
           h1
             small <br>c. Plug the chosen parts to the aWearable as illustrated above
-            p  <br> <i>Click "Done" when you have finished step 3a, 3b and 3c</i>
-          a.btn(onclick="doneCustom()")#doneButton
-            |  Done
+            
           </div>
         
         script
@@ -273,11 +274,17 @@ section#groupContent
               <!--// Display is chosen-->
               if(numericIdSource==1 && numericIdTarget-numericIdSource==100){	<!--// In the html above, there's a difference in 100 between the id of the country and it's capital(example:	-->									
                 sourceObj.style.backgroundColor='#dff0d8';	<!--// Set green background color for dragged objec		-->
+                var displayId = 'd';
+                console.log(displayId);
+                document.getElementById("displayId").innerHTML = displayId;
                 loadDisplay();
               }
               <!--// Light is chosen-->
               else if(numericIdSource==2 && numericIdTarget-numericIdSource==100){	<!--// In the html above, there's a difference in 100 between the id of the country and it's capital(example:	-->									
                 sourceObj.style.backgroundColor='#dff0d8';	<!--// Set green background color for dragged objec		-->
+                var ledId = 'l';
+                console.log(ledId);
+                document.getElementById("ledId").innerHTML = ledId;
                 loadLights();
                 
               }
@@ -359,7 +366,7 @@ section#groupContent
           <br>  
           p
           select.span2#rangeValue
-            option(value="null") Choose range
+            option(value='0') Choose range
             option(value='020') 20m
             option(value='100') 100m
 
@@ -374,13 +381,17 @@ section#groupContent
     .row
       
 
-      .span9
+      .span9#e2-exampleValidate
         .page-header
           h1 4. Save application
-        a.btn(href="#", onclick="ShowProgress()")#buttonSend
+        a.btn(href="#")#buttonSend
           i.icon-retweet
-          |  Upload application
+          |  Upload Application
+          <br>
+        .alert.alert-info Make sure you have plugged the parts correct before clicking 'Upload Application!
+        .alert.hide.alert-success Hooray, your aWerable application is now ready for use!
         <br>
+        
         <br>
 
 
