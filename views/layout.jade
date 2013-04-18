@@ -166,8 +166,58 @@ xmlns:fb="https://www.facebook.com/2008/fbml")
           document.getElementById("sound").innerHTML = "In-range";
         } 
       }
+    
+    script
+      // Additional JS functions here
+      window.fbAsyncInit = function() {
+        
+        
+        FB.getLoginStatus(function(response) {
+          if (response.status === 'connected') {
+              // User logged into FB and authorized
+              testAPI();
+          } else if (response.status === 'not_authorized') {
+              // User logged into FB but not authorized
+              
+          } else {
+              // User not logged into FB
+              
+          }
+        });
+      
+      };
+      
+      function testAPI() {
+        console.log('Welcome!  Fetching your information.... ');
+        FB.api('/me', function(response) {
+            console.log('Good to see you, ' + response.name + '.');
+            document.getElementById('fb-text').innerHTML=("<b>You are logged in as:</b>");
+            document.getElementById('fb-login-img').innerHTML = '<img src="http://graph.facebook.com/' + response.id + '/picture" />';
+            document.getElementById("fb-login").innerHTML=(response['name'] +"<br>");
+            
+        });
+          
+      }
+      // Load the SDK Asynchronously
+      (function(d, s, id){
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) {return;}
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/all.js";
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
   
+  
+      FB.init({
+        appId  : '109853005851767',
+        frictionlessRequests: false,
+        status     : true, // check login status
+        cookie     : true, // enable cookies to allow the server to access the session
+        xfbml      : true  // parse XFBML
+      });
+
   body
+    <div id="fb-root"></div>
     .navbar.navbar-fixed-top(style="z-index: 4;position:absolute;")
       .navbar-inner
         .container
