@@ -1,33 +1,15 @@
-<div id="fb-root"></div>
+ <div id="fb-root"></div>
 header.jumbotron.subhead#overview
+
   <div class="help">
   p <a href="about.html"> About</a>  <a href="how_to.html">How-To</a>
   </div>
   h1 aWearable
   h2 <a href="/" class="selected">Create Application</a>
-  <img src="images/header-map.jpg" id="header_img">
-
-  <!--<p> Start with adding friends then go through the steps below</p>-->
 
 section#groupContent
     
     script
-    
-      // Load the SDK Asynchronously
-      (function(d, s, id){
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) {return;}
-        js = d.createElement(s); js.id = id;
-        js.src = "//connect.facebook.net/en_US/all.js";
-        fjs.parentNode.insertBefore(js, fjs);
-      }(document, 'script', 'facebook-jssdk'));
-  
-  
-      FB.init({
-        appId  : '109853005851767',
-        frictionlessRequests: false
-      });
-
       function sendRequestViaMultiFriendSelector() {
     
         FB.ui({
@@ -88,16 +70,16 @@ section#groupContent
       
     .span3
       .page-header
+      
+        <div id="fb-text"></div>  
+        <div id="fb-login"></div>
+        <div id="fb-login-img"></div>
+        <br>
         h1 Friends
           
-          small <br>Add friends to your awareness group using facebook
-       
-        <!--
-        <button id="fb-login-button" onclick="login()"></button>
-          
-        <button id="fb-logout" onclick="logout()">Log out</button>
-        <br> --> 
-        <img type="button" onclick="sendRequestViaMultiFriendSelector()" id="facebook-login" src="images/facebook-login.png"; return true;/>
+          small <br>Add friends to your awareness group using facebook       
+          <br>
+        <img type="button" onclick="sendRequestViaMultiFriendSelector()" id="facebook-friends" src="images/buttonFacebookConnect.gif"; return true;/>
         <br>
         <div id="following">    
         p 
