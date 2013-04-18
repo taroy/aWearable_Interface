@@ -22,14 +22,17 @@ static void print_date(TinyGPS &gps);
 static void print_str(const char *str, int len);
 static void print_str_target(const char *str, int len);
 
-char messageBuffer[20], cmd[3], range[4] = {'5','0','0'}, pin[4], val[4], aux[4], lat[10], lon[10], led[3], disp[5];
+
+char messageBuffer[20], cmd[3], range[4]={"100"}, pin[4], val[4], aux[4], lat[10], lon[10], led[3]={"l2"}, disp[5]={"d123"};
 boolean debug = false;
 int index = 0;
 Servo servo;
 boolean inRange;
 unsigned long distance;
 char *dir_coor;
-#define LED 9
+#define LED 8
+
+
 
 
 void setup() {
@@ -91,7 +94,7 @@ void process() {
   Serial.println(led);
   Serial.println("disp");
   Serial.println(disp);
-
+  
   
   
   if (debug) {
@@ -151,11 +154,11 @@ static void gpsdump(TinyGPS &gps)
   float flat, flon;
   unsigned long age, date, time, chars = 0;
   unsigned short sentences = 0, failed = 0;
-  
   //Hardcoded locations
   static const float TARGET_LAT1 = 63.41696, TARGET_LON1 = 10.40298;
   //static const float TARGET_LAT1 = 63.410679, TARGET_LON1 = 10.412807;
-  
+  //#define TARGET_LAT1 63.41696
+  //#define TARGET_LON1 10.40298
 
   print_int(gps.satellites(), TinyGPS::GPS_INVALID_SATELLITES, 5);
   print_int(gps.hdop(), TinyGPS::GPS_INVALID_HDOP, 5);
@@ -184,13 +187,10 @@ static void gpsdump(TinyGPS &gps)
   dir_coor = (char *)TinyGPS::cardinal(TinyGPS::course_to(flat, flon, TARGET_LAT1, TARGET_LON1));
   inRange = in_range((unsigned long)TinyGPS::distance_between(flat, flon, TARGET_LAT1, TARGET_LON1), range);
   
-  Serial.println(disp);
-  Serial.println(led);
- 
   if(inRange){ 
     if(disp[0]=='d')
     {
-      update_lcd(distance, range, TARGET_LAT1, TARGET_LON1, *dir_coor);
+      update_lcd(distance, range, TARGET_LAT1, TARGET_LON1, dir_coor);
     }
     if(led[0]=='l')
     {
@@ -215,7 +215,7 @@ static void gpsdump(TinyGPS &gps)
 
 //MARIA - Is distance within range?
 boolean in_range(unsigned long val, char range[])
-{
+{ 
   char buffer[12];
   PString(buffer, sizeof(buffer), val);
   int r = atoi(range); 
@@ -243,16 +243,22 @@ boolean in_range(unsigned long val, char range[])
   return inRange; 
 }
 
-static void update_lcd(unsigned long val, char range[], float TARGET_LAT, float TARGET_LON, char dir_coor)
+static void update_lcd(unsigned long val, char range[],const float TARGET_LAT, const float TARGET_LON, char *dir_coor)
 {
+  
+  Serial.println(*dir_coor);
 
   char dist[12];
   PString(dist, sizeof(dist), val);
   char dir[5];
-  PString(dist, sizeof(dist), val);
+  PString(dir, sizeof(dir), dir_coor);
+  char lat[10];
+  PString(lat, sizeof(lat), TARGET_LAT);
+  char lon[10];
+  PString(lon, sizeof(lon), TARGET_LON);
   
   slcd.clear();
-  delay(1000);
+  delay(500);
   slcd.setCursor(0,0);
   
   if(disp[1]=='1'){
@@ -266,7 +272,7 @@ static void update_lcd(unsigned long val, char range[], float TARGET_LAT, float 
       Serial.println("display direction");
       slcd.setCursor(0, 1);
       slcd.print("Direction :");
-      slcd.print(dir_coor);  
+      slcd.print(dir);  
       
       if(disp[3]=='3')
       {
@@ -274,11 +280,11 @@ static void update_lcd(unsigned long val, char range[], float TARGET_LAT, float 
         delay(700);
         slcd.setCursor(15, 0);
         slcd.print("lat :");
-        slcd.print("24345331"); 
+        slcd.print(lat); 
         slcd.setCursor(15, 1);
         slcd.print("lon :");
-        slcd.print("24345331");
-        for (int positionCounter = 0; positionCounter < 13; positionCounter++) {
+        slcd.print(lon);
+        for (int positionCounter = 0; positionCounter < 15; positionCounter++) {
           // scroll one position left:
           slcd.scrollDisplayLeft(); 
           // wait a bit:
@@ -293,10 +299,10 @@ static void update_lcd(unsigned long val, char range[], float TARGET_LAT, float 
        delay(700);
        slcd.setCursor(15, 0);
        slcd.print("lat :");
-       slcd.print("24345331"); 
+       slcd.print(lat); 
        slcd.setCursor(15, 1);
        slcd.print("lon :");
-       slcd.print("24345331");
+       slcd.print(lon);
        for (int positionCounter = 0; positionCounter < 13; positionCounter++) {
          // scroll one position left:
          slcd.scrollDisplayLeft(); 
@@ -308,17 +314,17 @@ static void update_lcd(unsigned long val, char range[], float TARGET_LAT, float 
     Serial.println("display direction");
     slcd.home();
     slcd.print("Direction :");
-    slcd.print(dir_coor);  
+    slcd.print(dir);  
     
     if(disp[2]=='3'){
       Serial.println("display coordinates");
       delay(700);
       slcd.setCursor(15, 0);
       slcd.print("lat :");
-      slcd.print("24345331"); 
+      slcd.print(lat); 
       slcd.setCursor(15, 1);
       slcd.print("lon :");
-      slcd.print("24345331");
+      slcd.print(lon);
       for (int positionCounter = 0; positionCounter < 15; positionCounter++) {
         // scroll one position left:
         slcd.scrollDisplayLeft(); 
@@ -331,18 +337,18 @@ static void update_lcd(unsigned long val, char range[], float TARGET_LAT, float 
     Serial.println("display coordinates");
     slcd.home();
     slcd.print("lat :");
-    slcd.print("24345331"); 
+    slcd.print(lat); 
     slcd.setCursor(0, 1);
     slcd.print("lon :");
-    slcd.print("24345331");
+    slcd.print(lon);
   }
   feedgps();
 }
 
 static void update_LED(char range[])
 {
-  int r = atoi(range); 
-  //int r = 9;
+  //int r = atoi(range); 
+  int r = 9;
   if(led[1]=='1')
   {
     digitalWrite(LED, HIGH);
@@ -353,30 +359,30 @@ static void update_LED(char range[])
     if(r < 100)
     {
       Serial.println("r er mindre enn 100");
-      digitalWrite(LED, HIGH);
-      delay(500);
       digitalWrite(LED, LOW);
+      delay(500);
+      digitalWrite(LED, HIGH);
       delay(500);
       
       if(r < 50)
       {
-        digitalWrite(LED, HIGH);
-        delay(200);
         digitalWrite(LED, LOW);
+        delay(200);
+        digitalWrite(LED, HIGH);
         delay(200);
         
         if(r < 20)
         {
-          digitalWrite(LED, HIGH);
-          delay(100);
           digitalWrite(LED, LOW);
+          delay(100);
+          digitalWrite(LED, HIGH);
           delay(100);
           
           if(r < 10)
           {
-            digitalWrite(LED, HIGH);
-            delay(50);
             digitalWrite(LED, LOW);
+            delay(50);
+            digitalWrite(LED, HIGH);
             delay(50);
    
           }

@@ -59,7 +59,10 @@ hr.soften {
 }
 .jumbotron p {
   margin-bottom: 18px;
-  font-weight: 300;
+font-weight: 300;
+position: absolute;
+z-index: 1;
+margin-left: -140px;
 }
 .jumbotron .btn-large {
   font-size: 20px;
@@ -424,6 +427,7 @@ hr.soften {
 -------------------------------------------------- */
 
 #progressBox .span3 {
+  border: solid black;
   width: 150px;
   vertical-align: middle;
 }
@@ -548,7 +552,7 @@ img#strekmann {
 
 img#facebook-login{
     max-width: 185px;
-    margin: 20px 0;
+    margin: 30px 0;
 }
 
 //Maria
@@ -939,25 +943,88 @@ background-position: 0 40px; }
   margin-bottom: 15px;
   margin-top: -50px;
 }
-.subhead h1 a{
-  font-size: 70px;
+.subhead h1 {
+  font-size: 50px;
   color: #468847;
 }
 .subhead h2 {
   font-size: 30px;
   color: #71af71;
-  margin-left: 170px;
+  margin-left: 225px;
+}
+
+.span3{
+  margin-top: 0px;
+}
+
+#header_img{
+width: 420px;
+float: right;
+margin: -124px 75px;
+
+}
+
+.container{
+  width: 1020px;
+
+}
+
+.content{
+  width: 100%;
+  height: 100%;
+  margin-left: auto;
+  margin-right: auto;
+
+}
+
+#headerContent{
+  
+}
+
+#groupContent .page-header{
+  margin-top: -25px;
+}
+
+#groupContent{
+  background-color: white;
+  border-color: #bce8f1;
+  width: 240px;
+  border: solid 1px #B0B0B0;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+  float: left;
 }
 
 #homeContent {
-  
+  width: 700px;
+  float: right;
   height: 100%;
   background-color: white;
   padding: 1% 3% 1% 3%;
   border: solid 1px #B0B0B0;
   -webkit-border-radius: 4px;
   border-radius: 4px;
+  margin-bottom: 70px;
 }
+
+#howtoContent {
+  width: 956px;
+  float: right;
+  height: 100%;
+  background-color: white;
+  padding: 1% 3% 1% 3%;
+  border: solid 1px #B0B0B0;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+  margin-bottom: 70px;
+}
+
+#howtoContent .span9{
+
+  margin-left: 240px;
+  margin-right: auto;
+}
+
 #homeBoxes {
   padding-top: 30px;
 }
@@ -1075,7 +1142,7 @@ label.label { display: inline; }
 
 #arduinoBase{
 		width:694px;
-	
+                margin-top: 10px;
 		height:440px;
 		background-image: url('../images/grovebaseshield.png');
                 background-size: 66% 60%;
@@ -1293,7 +1360,6 @@ label.label { display: inline; }
   color: #3b5998;
   font-weight: bold;
   font-size: 13px;
-  margin:15px;
   width:300px;
   
   
@@ -1324,7 +1390,6 @@ label.label { display: inline; }
   color: #3b5998;
   font-weight: bold;
   font-size: 13px;
-  margin-left:15px;
   width:300px;
 
 }
@@ -1360,7 +1425,7 @@ label.label { display: inline; }
 }
 
 .span5{
-  margin: 15px 0;
+  margin: 0;
 }
 
 .span4 {
@@ -1403,11 +1468,17 @@ label.label { display: inline; }
 }
 
 #followers p i{
-  margin-left:15px;
+  margin-left:0;
 }
 
 h2 a {
   color:#999999;
+}
+
+#following  {
+  background-color: white;
+  border-color: #B0B0B0;
+
 }
 
 #following p {
@@ -1496,40 +1567,4 @@ h2 a.smallhead{
 
 .span9#range {
   height: 135px;
-}
-
-#start p{
-  color: #525252;
-font-size: 16px;
-line-height: 1.7em;
-font-weight: normal;
-
-}
-
-#start a{
-  color: #71af71;
-}
-
-input[type="submit"] {
-  display: inline-block;
-  padding: 4px 10px 4px;
-  margin-bottom: 0;
-  font-size: 13px;
-  line-height: 18px;
-  color: #333333;
-  text-align: center;
-  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
-  vertical-align: middle;
-  background-color: #f5f5f5;
-  background-image: -webkit-linear-gradient(top, #ffffff, #e6e6e6);
-  background-repeat: repeat-x;
-  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-  border: 1px solid #ccc;
-  border-bottom-color: #bbb;
-  -webkit-border-radius: 4px;
-  border-radius: 4px;
-  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2),0 1px 2px rgba(0, 0, 0, 0.05);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2),0 1px 2px rgba(0, 0, 0, 0.05);
-  cursor: pointer;
-
 }

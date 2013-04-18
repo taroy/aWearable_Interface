@@ -64,6 +64,8 @@ static void gpsdump(TinyGPS &gps)
   unsigned short sentences = 0, failed = 0;
   static const float TARGET_LAT = 63.41696, TARGET_LON = 10.40298;
   
+
+  
   print_int(gps.satellites(), TinyGPS::GPS_INVALID_SATELLITES, 5);
   print_int(gps.hdop(), TinyGPS::GPS_INVALID_HDOP, 5);
   gps.f_get_position(&flat, &flon, &age);
@@ -134,7 +136,6 @@ static void print_float(float val, float invalid, int len, int prec)
   else
   {
     Serial.print(val, prec);
-    
     int vi = abs((int)val);
     int flen = prec + (val < 0.0 ? 2 : 1);
     flen += vi >= 1000 ? 4 : vi >= 100 ? 3 : vi >= 10 ? 2 : 1;
