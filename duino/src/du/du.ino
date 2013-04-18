@@ -23,7 +23,7 @@ static void print_str(const char *str, int len);
 static void print_str_target(const char *str, int len);
 
 
-char messageBuffer[20], cmd[3], range[4]={"100"}, pin[4], val[4], aux[4], lat[10], lon[10], led[3]={"l2"}, disp[5]={"d123"};
+char messageBuffer[20], cmd[3], range[4], pin[4], val[4], aux[4], lat[10], lon[10], led[3], disp[5];
 boolean debug = false;
 int index = 0;
 Servo servo;
