@@ -38,6 +38,7 @@ char *dir_coor;
 void setup() {
   Serial.begin(115200);
   slcd.begin();
+  Serial.println("SETUP");
   pinMode(LED, OUTPUT);
   nss.begin(9600);
   
@@ -94,7 +95,6 @@ void process() {
   Serial.println(led);
   Serial.println("disp");
   Serial.println(disp);
-  
   
   
   if (debug) {

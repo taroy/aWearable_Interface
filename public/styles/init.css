@@ -153,7 +153,7 @@ label.label{display:inline;}
 .awareness-buttons .btn:active{position:relative;top:1px;}
 #mainContainer{width:700px;margin-top:10px;height:420px;color:#3a87ad;}
 #components{background-color:#d9edf7;width:650px;padding:10px 22px 10px 22px;border:solid 1px #bce8f1;-webkit-border-radius:4px;border-radius:4px;height:120px;color:#3a87ad;}
-#arduinoBase{width:694px;margin-top:10px;height:440px;background-image:url('../images/grovebaseshield.png');background-size:66% 60%;background-repeat:no-repeat;background-color:#d9edf7;border:solid 1px #bce8f1;-webkit-border-radius:4px;border-radius:4px;background-position-x:25%;background-position-y:50%;}
+#arduinoBase{width:694px;margin-top:10px;height:440px;background-image:url('../images/ardu_back.jpg');background-size:50%;background-repeat:no-repeat;background-color:#d9edf7;border:solid 1px #bce8f1;-webkit-border-radius:4px;border-radius:4px;background-position-x:25%;background-position-y:50%;}
 #arduinoBase p{color:black;font-weight:normal;}
 .dragableBox1{margin-bottom:5px;margin-right:40px;padding:3px 3px 3px 3px;font-weight:bold;text-align:center;display:inline-block;}
 .dragableBox1 img{width:200px;height:auto;}
