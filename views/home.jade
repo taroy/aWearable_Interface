@@ -45,18 +45,14 @@ section#groupContent
                               var friendnames = document.getElementById("friendnamesDiv1");
                               friendnames.innerHTML+=(response['name'] + "<br>");
                               document.getElementById("fjerneDiv1").appendChild(removefriend);
-                              friendnames.innerHTML+=("<br>");
-                            
-                            
+                              friendnames.innerHTML+=("<br>");  
                           });
-                      }   
-                    
+                      }       
                 }
             }
         });
       }
       
- 
       function functionRemove() {
           var elem = document.getElementById('friendnamesDiv');
           elem.parentNode.removeChild(elem);
@@ -68,7 +64,6 @@ section#groupContent
           return false; 
       }
 
-      
     .span3
       .page-header
       
@@ -84,7 +79,7 @@ section#groupContent
         <br>
         <div id="following">    
         p 
-            b Friends you are aware of:
+            b Friends you are following:
             <br>
         
             <div type="text" id="friendnamesDiv"> 
@@ -96,21 +91,17 @@ section#groupContent
                 
             <div TITLE="Delete friend" id="fjerneDiv1" onclick="functionRemove1()"> </div>
             </div>
-
         <br>
-        
         <div id="followers">  
         p
-            b Friends aware of you:
+            b Friends following you:
             p
-                i No friends are aware of you
+                i No friends are following you yet
         </div>
       </div>
-
       <br>
       <br>
   
-     
     .span3
       .page-header
         <img src="images/Black_Lock.png" id="lock">
@@ -157,37 +148,17 @@ section#groupContent
     .span3
       .page-header
     
-
   section#homeContent
 
-    //CONNECT AWEARABLE TO THE COMPUTER    
-
+ 
+    //ADD COMPONENTS  
     .row
-      
-      .span9#e2-exampleConnection
-        .page-header  
-         h1 1. Connect your aWearable to the computer
-           small <br>Connect the USB cable to the aWearable and the computer, then click the button
-        p
-          a.btn(href="#")#buttonConnect
-              i.icon-refresh
-              |  Connect to aWearable
-          .alert.alert-info Please connect to your aWearable using the button.
-          .alert.hide.alert-error Unable to connect to aWearable!
-          .alert.hide.alert-success Connection to aWearable established!
-
-     
-    //ADD COMPONENTS
-    .rowLine    
-    .row
-
       .span9
         .page-header
 
-          h1 2. Choose parts and their behavior and plug the parts to the aWearable
+          h1 1. Choose parts and their behavior and plug the parts to the aWearable
             small <br>a. Drag the desired parts to their respective boxes
 
-      
           <div id="mainContainer">
           <h2></h2>
         
@@ -212,11 +183,10 @@ section#groupContent
           <div id="box103" class="dragableBoxRight"></div>		      
           <div id="box101" class="dragableBoxRight"></div>
           <div id="box102" class="dragableBoxRight"></div>
-        
           </div>
-        
+                  
           <div class="clear"></div>
-          </div>
+          
           .span2 
             <div id="divDisplay"></div>
           .span2
@@ -225,31 +195,22 @@ section#groupContent
             <div id="divLights"></div>
           .span2
             <div id="divVibration"></div>
-          <div id="debug"></div>        
-    
-        .span9
-          <br>
-          <div id="connect_parts">
-          h1
-            small <br>c. Plug the chosen parts to the aWearable as illustrated above
-            
+          <div id="debug"></div>
+          </br>
           </div>
-        
+    
         script
           function doneCustom(numericIdSource, numericIdTarget ) {
             var r=confirm("Make sure you have plugged the parts correct before clicking 'OK'!");
             if (r==true) {
             
                 document.getElementById("progress_image3").src = "images/prog_green.gif";
-            
-            
             }
             else {
               document.getElementById("progress_image3").src = "images/prog_long_grey.gif";
             }
           }
-
-            
+  
         <!-- Dragn drop-->
         script
             <!--// Custom drop action for the target boxes-->
@@ -289,8 +250,6 @@ section#groupContent
               else {
                 sourceObj.style.backgroundColor='#FF4D45';	<!--// Reset back to default white background color-->
               }
-            
-
 
               if(targetId=='components') {	<!--// Target is the capital box - append the dragged item as child of first sub div, i.e. as child of <div id="dropContent">-->
                 targetObj = targetObj.getElementsByTagName('DIV')[0];
@@ -302,7 +261,6 @@ section#groupContent
                     displayId = "";
                     document.getElementById("displayId").innerHTML = displayId;
                     console.log(displayId);
-                  
                   }
                   if(numericIdSource==2) {
                     document.getElementById("divLights").innerHTML= "";
@@ -310,8 +268,7 @@ section#groupContent
                     ledId = "";
                     document.getElementById("ledId").innerHTML = ledId;
                     console.log(ledId);
-                 
-                  
+  
                   }
                   if(numericIdSource==3) {
                     document.getElementById("divVibration").innerHTML= "";
@@ -321,8 +278,6 @@ section#groupContent
                     document.getElementById("divSound").innerHTML= "";
                   
                   }
-              
-  
               }
               targetObj.appendChild(sourceObj);	<!--// Append	-->
             }
@@ -343,12 +298,20 @@ section#groupContent
             dragDropObj.addTarget('components','dropItems'); <!--// Set <div id="leftColumn"> as a drop target. Call function dropItems on drop-->
         
             dragDropObj.init();	// Initizlizing drag and drop object
+    
+    //Plug parts
+    .rowLine
+    .row 
+      .span9
+        .page-header
+
+          h1 2. Plug the parts to the aWearable device
+          <p> <br>Plug the chosen parts to the aWearable as illustrated above. <br>The numbers next to cable... shows how to plug the parts correct <br> GPS
        
     //CHOOSE RANGE
     .rowLine
     .row
-
-        
+    
       .span9#range
         .page-header
           h1 3. Choose range
@@ -359,13 +322,28 @@ section#groupContent
             option(value='0') Choose range
             option(value='020') 20m
             option(value='100') 100m
-
             option(value='200') 200m
-
             option(value='500') 500m
           | 
 
-
+      //CONNECT AWEARABLE TO THE COMPUTER    
+    .rowLine  
+    .row
+    
+      
+      .span9#e2-exampleConnection
+        .page-header  
+          h1 4. Connect your aWearable to the computer
+            small <br>Connect the USB cable to the aWearable and the computer, then click the button
+          <p><br><b><i>NB! Make sure you have plugged the parts correct before clicking the button!</b></i></p>
+        p
+          a.btn(href="#")#buttonConnect
+              i.icon-refresh
+              |  Connect to aWearable
+          .alert.alert-info Click the button to connect
+          .alert.hide.alert-error Unable to connect to aWearable!
+          .alert.hide.alert-success Connection to aWearable established!
+      
       //SAVE APPLICATION
     .rowLine
     .row
@@ -373,15 +351,15 @@ section#groupContent
 
       .span9#e2-exampleValidate
         .page-header
-          h1 4. Save application
+          h1 5. Save application
         a.btn(href="#")#buttonSend
           i.icon-retweet
           |  Upload Application
           <br>
-        .alert.alert-info Make sure you have plugged the parts correct before clicking 'Upload Application!
+        .alert.alert-info Click the button to create the application!
         .alert.hide.alert-success Hooray, your aWerable application is now ready for use!
         <br>
-        
+        <p><b>When you are done uploading, unplug the USB cable and make sure the battary is connected to the aWearable.<br> Close the bag and start..</b>
         <br>
 
 
