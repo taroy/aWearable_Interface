@@ -155,7 +155,7 @@ section#groupContent
       .span9
         .page-header
 
-          h1 1. Choose parts and their behavior and plug the parts to the aWearable
+          h1 1. Choose parts and their behavior
             small <br>a. Drag the desired parts to their respective boxes
 
           <div id="mainContainer">
@@ -192,8 +192,10 @@ section#groupContent
             <div id="divSound"></div>
           .span2
             <div id="divLights"></div>
+            <div id="divVibration"></div>        
+
           .span2
-            <div id="divVibration"></div>
+            
           <div id="debug"></div>
           </br>
           </div>
@@ -222,7 +224,7 @@ section#groupContent
               var numericIdSource = idOfDraggedItem.replace(/[^0-9]/gi,'')/1;	<!--// Find numeric id of source-->
             
               <!--// Display is chosen-->
-              if(numericIdSource==1 && numericIdTarget-numericIdSource==100){	<!--// In the html above, there's a difference in 100 between the id of the country and it's capital(example:	-->									
+              if(numericIdSource==1 && numericIdTarget-numericIdSource==100){	<!--// In the html above, there's a difference in 100 between the id 								
                 sourceObj.style.backgroundColor='#dff0d8';	<!--// Set green background color for dragged objec		-->
                 var displayId = 'd';
                 console.log(displayId);
@@ -230,7 +232,7 @@ section#groupContent
                 loadDisplay();
               }
               <!--// Light is chosen-->
-              else if(numericIdSource==2 && numericIdTarget-numericIdSource==100){	<!--// In the html above, there's a difference in 100 between the id of the country and it's capital(example:	-->									
+              else if(numericIdSource==2 && numericIdTarget-numericIdSource==100){	<!--// In the html above, there's a difference in 100 between the id 									
                 sourceObj.style.backgroundColor='#dff0d8';	<!--// Set green background color for dragged objec		-->
                 var ledId = 'l';
                 console.log(ledId);
@@ -238,16 +240,16 @@ section#groupContent
                 loadLights();
                 
               }
-              else if(numericIdSource==3 && numericIdTarget-numericIdSource==100){	<!--// In the html above, there's a difference in 100 between the id of the country and it's capital(example:	-->									
+              else if(numericIdSource==3 && numericIdTarget-numericIdSource==100){	<!--// In the html above, there's a difference in 100 between the id 									
                 sourceObj.style.backgroundColor='#dff0d8';	<!--// Set green background color for dragged objec		-->
                 loadVibration()
               }
-              else if(numericIdSource==4 && numericIdTarget-numericIdSource==100){	<!--// In the html above, there's a difference in 100 between the id of the country and it's capital(example:	-->									
+              else if(numericIdSource==4 && numericIdTarget-numericIdSource==100){	<!--// In the html above, there's a difference in 100 between the id									
                 sourceObj.style.backgroundColor='#dff0d8';	<!--// Set green background color for dragged objec		-->
                 loadSound()
               }
               else {
-                sourceObj.style.backgroundColor='#FF4D45';	<!--// Reset back to default white background color-->
+                sourceObj.style.backgroundColor='#FF4D45';	<!--// Reset back to default background color-->
               }
 
               if(targetId=='components') {	<!--// Target is the capital box - append the dragged item as child of first sub div, i.e. as child of <div id="dropContent">-->
@@ -290,11 +292,11 @@ section#groupContent
             dragDropObj.addSource('box4',true);	<!-- Make <div id="box4"> dragable. slide item back into original position after drop-->
         
             <!--// Assigning drop events on the targets-->
-            dragDropObj.addTarget('box101','dropItems'); <!--// Set <div id="leftColumn"> as a drop target. Call function dropItems on drop-->
-            dragDropObj.addTarget('box102','dropItems'); <!--// Set <div id="leftColumn"> as a drop target. Call function dropItems on drop-->
-            dragDropObj.addTarget('box103','dropItems'); <!--// Set <div id="leftColumn"> as a drop target. Call function dropItems on drop-->
-            dragDropObj.addTarget('box104','dropItems'); <!--// Set <div id="leftColumn"> as a drop target. Call function dropItems on drop-->
-            dragDropObj.addTarget('components','dropItems'); <!--// Set <div id="leftColumn"> as a drop target. Call function dropItems on drop-->
+            dragDropObj.addTarget('box101','dropItems'); 
+            dragDropObj.addTarget('box102','dropItems'); 
+            dragDropObj.addTarget('box103','dropItems'); 
+            dragDropObj.addTarget('box104','dropItems'); 
+            dragDropObj.addTarget('components','dropItems'); 
         
             dragDropObj.init();	// Initizlizing drag and drop object
     
@@ -305,7 +307,17 @@ section#groupContent
         .page-header
 
           h1 2. Plug the parts to the aWearable device
-          <p> <br>Plug the chosen parts to the aWearable as illustrated above. <br>The numbers next to cable... shows how to plug the parts correct <br> GPS
+            small <br>Plug the chosen parts to the aWearable as illustrated in 1b
+          <br><b>
+          <div id="plug_parts">
+          <ul>
+          <li>The numbers next to the cable shows which cable goes to which part</li>
+          <br>
+          <li>Attach the parts to the velcro on the bag</li>
+          <br>  
+          <li> The green light with the text 'GPS' next to it, will start to blink when GPS signals are retrived</li>
+          </ul></b>
+          </div>
        
     //CHOOSE RANGE
     .rowLine
@@ -314,7 +326,7 @@ section#groupContent
       .span9#range
         .page-header
           h1 3. Choose range
-            small <br>You will only receive location information when friends are inside this range.
+            small <br>You will receive location information when friends are inside this range.
           <br>  
           p
           select.span2#rangeValue
@@ -333,7 +345,7 @@ section#groupContent
       .span9#e2-exampleConnection
         .page-header  
           h1 4. Connect your aWearable to the computer
-            small <br>Connect the USB cable to the aWearable and the computer, then click the button
+            small<br>Connect the USB cable to the aWearable and the computer, and click the button</b></p>
           <p><br><b><i>NB! Make sure you have plugged the parts correct before clicking the button!</b></i></p>
         p
           a.btn(href="#")#buttonConnect
@@ -351,6 +363,7 @@ section#groupContent
       .span9#e2-exampleValidate
         .page-header
           h1 5. Save application
+            small <br>Click the button when you are ready to save the application
         a.btn(href="#")#buttonSend
           i.icon-retweet
           |  Upload Application
@@ -358,7 +371,7 @@ section#groupContent
         .alert.alert-info Click the button to create the application!
         .alert.hide.alert-success Hooray, your aWerable application is now ready for use!
         <br>
-        <p><b>When you are done uploading, unplug the USB cable and make sure the battary is connected to the aWearable.<br> Close the bag and start..</b>
+        <p><b>When you have succesfully uploaded the application, unplug the USB cable and make sure the battery is connected to the aWearable. Close the bag and it is ready for use!</b>
         <br>
 
 

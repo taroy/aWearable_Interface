@@ -176,13 +176,13 @@ a{color:#F00;}
 #box2{width:75px;height:85px;}
 #box3{width:85px;height:95px;}
 #box4{width:65px;height:88px;}
-#divDisplay{margin:-290px 0 0 442px;}
+#divDisplay{margin:-290px 0 0 442px;color:#525252;}
 #divDisplay .container{width:300px;}
-#divLights{margin:-50px 0 0 410px;}
+#divLights{margin:-50px 0 0 410px;color:#525252;}
 #divLights .container{width:300px;height:70px;}
-#divSound{margin:-390px 0 0 90px;}
+#divSound{margin:-390px 0 0 90px;color:#525252;}
 #divSound .container{width:300px;}
-#divVibration{margin:-60px 0 0 -140px;float:left;}
+#divVibration{margin:-70px 0 0 0;color:#525252;}
 #divVibration .container{width:300px;height:70px;}
 #divVibration .span5{width:300px;}
 #friendnamesDiv{color:#3b5998;font-weight:bold;font-size:13px;width:300px;}
@@ -236,3 +236,5 @@ input[type="submit"]{display:inline-block;padding:4px 10px 4px;margin-bottom:0;f
 #fb-text{font-weight:bold;color:#525252;font-size:13px;}
 #acceptOuter h4{color:#525252;}
 #accept img{width:140px;float:left;}
+#plug_parts li{line-height:18px;margin-bottom:12px;color:#525252;font-size:13px;}
+#plug_parts ul{list-style:circle outside;}
