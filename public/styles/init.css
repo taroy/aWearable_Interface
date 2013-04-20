@@ -118,7 +118,9 @@ form.well{padding:14px;}
 .subhead h1{font-size:50px;color:#468847;}
 .subhead h2{font-size:30px;color:#71af71;margin-left:225px;}
 .span3{margin-top:0px;}
-#header_img{width:422px;float:right;margin:-125px 75px;}
+#header_img{width:422px;float:right;margin:-125px 30px;}
+#header_img2{width:422px;float:right;margin:-125px 75px;}
+#header_img3{width:422px;float:right;margin:-89px 75px;}
 .container{width:1020px;}
 .content{width:100%;height:100%;margin-left:auto;margin-right:auto;}
 #groupContent .page-header{margin-top:-35px;}
@@ -153,11 +155,7 @@ label.label{display:inline;}
 .awareness-buttons .btn:active{position:relative;top:1px;}
 #mainContainer{width:700px;margin-top:10px;height:420px;color:#3a87ad;}
 #components{background-color:#d9edf7;width:650px;padding:10px 22px 10px 22px;border:solid 1px #bce8f1;-webkit-border-radius:4px;border-radius:4px;height:120px;color:#3a87ad;}
-<<<<<<< HEAD
-#arduinoBase{width:694px;margin-top:10px;height:440px;background-image:url('../images/ardu_back.jpg');background-size:50%;background-repeat:no-repeat;background-color:#d9edf7;border:solid 1px #bce8f1;-webkit-border-radius:4px;border-radius:4px;background-position-x:25%;background-position-y:50%;}
-=======
-#arduinoBase{width:694px;margin-top:10px;height:440px;background-image:url('../images/aw_back.jpg');background-size:56% 60%;background-repeat:no-repeat;background-color:#d9edf7;border:solid 1px #bce8f1;-webkit-border-radius:4px;border-radius:4px;background-position-x:25%;background-position-y:45%;}
->>>>>>> fd6850aa93911e67dd833d7802b74b024ce782a6
+#arduinoBase{width:694px;margin-top:10px;height:440px;background-image:url('../images/aw_back2.jpg');background-size:56% 60%;background-repeat:no-repeat;background-color:#d9edf7;border:solid 1px #bce8f1;-webkit-border-radius:4px;border-radius:4px;background-position-x:25%;background-position-y:45%;}
 #arduinoBase p{color:black;font-weight:normal;}
 .dragableBox1{margin-bottom:5px;margin-right:40px;padding:3px 3px 3px 3px;font-weight:bold;text-align:center;display:inline-block;}
 .dragableBox1 img{width:200px;height:auto;}
@@ -216,7 +214,7 @@ h2 a{color:#999999;}
 #connect_parts .btn{margin-right:20px;}
 h2 a.selected{color:#71af71;text-decoration:underline;}
 h2 a:hover{color:#71af71;}
-#overview2{width:350px;height:140px;margin-left:auto;margin-right:auto;}
+#overview2{width:700px;height:95px;margin-left:auto;margin-right:auto;}
 h2 a.smallhead{font-size:24px;}
 .help{float:right;margin-top:-10px;}
 .help a{color:#999999;padding:0 0 0 20px;font-size:16px;}
