@@ -7,8 +7,7 @@
 
 
 // initialize the library
-SerialLCD slcd(11,12);//this is a must, assign soft serial pins
-//const int ledPin =  9;
+SerialLCD slcd(7,8);//this is a must, assign soft serial pins
 
 
 TinyGPS gps;
@@ -30,7 +29,7 @@ Servo servo;
 boolean inRange;
 unsigned long distance;
 char *dir_coor;
-#define LED 8
+#define LED 9
 
 
 
@@ -38,6 +37,7 @@ char *dir_coor;
 void setup() {
   Serial.begin(115200);
   slcd.begin();
+  Serial.println("SETUP");
   pinMode(LED, OUTPUT);
   nss.begin(9600);
   
@@ -94,7 +94,6 @@ void process() {
   Serial.println(led);
   Serial.println("disp");
   Serial.println(disp);
-  
   
   
   if (debug) {
@@ -155,8 +154,8 @@ static void gpsdump(TinyGPS &gps)
   unsigned long age, date, time, chars = 0;
   unsigned short sentences = 0, failed = 0;
   //Hardcoded locations
-  static const float TARGET_LAT1 = 63.41696, TARGET_LON1 = 10.40298;
-  //static const float TARGET_LAT1 = 63.410679, TARGET_LON1 = 10.412807;
+  //static const float TARGET_LAT1 = 63.41696, TARGET_LON1 = 10.40298;
+  static const float TARGET_LAT1 = 63.411428, TARGET_LON1 = 10.412507;
   //#define TARGET_LAT1 63.41696
   //#define TARGET_LON1 10.40298
 
