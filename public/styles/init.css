@@ -87,8 +87,8 @@ img#progress_image5{margin-top:5%;}
 img#progress_image6{margin-top:5%;}
 img#progress_image2{visibility:hidden;}
 img#strekmann{max-height:100px;}
-img#facebook-login{max-width:185px;margin:30px 0;}
-img#facebook-friends{max-width:110px;margin:20px 0;}
+img#facebook-login{max-width:185px;margin:30px 0;cursor:pointer;}
+img#facebook-friends{max-width:200px;margin:20px 0;cursor:pointer;}
 #nameForm{width:170px;color:grey;}
 #variables label{margin-bottom:0;}
 .download-btn{margin:36px 0 108px;}
@@ -143,6 +143,7 @@ label.label{display:inline;}
 #e2-secondStep select{margin-right:4px;}
 .exampleLinks{margin-top:8px;}
 .range{margin-bottom:0px;position:relative;top:-9px;margin-left:12px;width:373px;}
+#rangeValue{cursor:pointer;}
 .interval{margin-bottom:0px;position:relative;top:-9px;margin-left:12px;width:60px;}
 .collectedTags{margin-top:14px;}
 #connection-log{height:358px;overflow:hidden;padding-top:4px;overflow-x:hidden;margin-bottom:16px;}
@@ -158,13 +159,13 @@ label.label{display:inline;}
 #arduinoBase{width:694px;margin-top:10px;height:440px;background-image:url('../images/aw_back2.jpg');background-size:56% 60%;background-repeat:no-repeat;background-color:#d9edf7;border:solid 1px #bce8f1;-webkit-border-radius:4px;border-radius:4px;background-position-x:25%;background-position-y:45%;}
 #arduinoBase p{color:black;font-weight:normal;}
 .dragableBox1{margin-bottom:5px;margin-right:40px;padding:3px 3px 3px 3px;font-weight:bold;text-align:center;display:inline-block;}
-.dragableBox1 img{width:200px;height:auto;}
+.dragableBox1 img{width:200px;height:auto;cursor:pointer;}
 .dragableBox2{margin-bottom:5px;padding:3px 3px 3px 3px;margin-right:40px;font-weight:bold;text-align:center;display:inline-block;}
-.dragableBox2 img{width:75px;height:85px;}
+.dragableBox2 img{width:75px;height:85px;cursor:pointer;}
 .dragableBox3{margin-bottom:5px;margin-right:40px;padding:3px 3px 3px 3px;font-weight:bold;text-align:center;display:inline-block;}
-.dragableBox3 img{width:85px;height:95px;}
+.dragableBox3 img{width:85px;height:95px;cursor:pointer;}
 .dragableBox4{margin-bottom:5px;margin-right:40px;padding:3px 3px 3px 3px;font-weight:bold;text-align:center;display:inline-block;}
-.dragableBox4 img{width:65px;height:auto;}
+.dragableBox4 img{width:65px;height:auto;cursor:pointer;}
 .dragableBoxRight{border:1px solid #71af71;-webkit-border-radius:2px;border-radius:2px;margin-bottom:5px;padding:3px 3px 3px 3px;font-weight:bold;text-align:center;}
 div.dragableBoxRight{height:90px;width:140px;float:left;margin-right:5px;padding:0;}
 .dropBox{width:190px;border:1px solid #000;background-color:#71af71;height:400px;margin-bottom:10px;padding:3px;overflow:auto;}

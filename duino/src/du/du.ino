@@ -154,8 +154,8 @@ static void gpsdump(TinyGPS &gps)
   unsigned long age, date, time, chars = 0;
   unsigned short sentences = 0, failed = 0;
   //Hardcoded locations
-  //static const float TARGET_LAT1 = 63.41696, TARGET_LON1 = 10.40298;
-  static const float TARGET_LAT1 = 63.411428, TARGET_LON1 = 10.412507;
+  static const float TARGET_LAT1 = 63.416287, TARGET_LON1 = 10.402851;
+  //static const float TARGET_LAT1 = 63.411428, TARGET_LON1 = 10.412507;
   //#define TARGET_LAT1 63.41696
   //#define TARGET_LON1 10.40298
 
