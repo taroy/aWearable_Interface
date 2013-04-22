@@ -191,7 +191,7 @@ xmlns:fb="https://www.facebook.com/2008/fbml")
         console.log('Welcome!  Fetching your information.... ');
         FB.api('/me', function(response) {
             console.log('Good to see you, ' + response.name + '.');
-            document.getElementById('fb-text').innerHTML=("<b>You are logged in as:</b>");
+            document.getElementById('fb-text').innerHTML=("You are logged in as:");
             document.getElementById('fb-login-img').innerHTML = '<img src="http://graph.facebook.com/' + response.id + '/picture" />';
             document.getElementById("fb-login").innerHTML=(response['name'] +"<br>");
             
