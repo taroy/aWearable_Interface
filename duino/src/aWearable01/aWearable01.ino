@@ -1,5 +1,6 @@
 #include <SoftwareSerial.h>
 #include <TinyGPS.h>
+//#include <stdlib.h> 
 
 TinyGPS gps;
 SoftwareSerial nss(2, 3);
@@ -64,7 +65,11 @@ static void gpsdump(TinyGPS &gps)
   unsigned short sentences = 0, failed = 0;
   static const float TARGET_LAT = 63.41696, TARGET_LON = 10.40298;
   
-
+  
+  //char float_str3[16] = "";
+  //dtostrf(TARGET_LAT,4,6,float_str3);
+  //Serial.println(TARGET_LAT);
+  //Serial.println(float_str3);
   
   print_int(gps.satellites(), TinyGPS::GPS_INVALID_SATELLITES, 5);
   print_int(gps.hdop(), TinyGPS::GPS_INVALID_HDOP, 5);

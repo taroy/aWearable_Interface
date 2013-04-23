@@ -1,9 +1,8 @@
-#include <Servo.h>
 #include <SoftwareSerial.h>
 #include <TinyGPS.h>
 #include <SerialLCD.h>
 #include <PString.h> 
-#include <arduino.h>
+#include <stdlib.h> 
 
 
 // initialize the library
@@ -22,12 +21,12 @@ static void print_str(const char *str, int len);
 static void print_str_target(const char *str, int len);
 
 
-char messageBuffer[20], cmd[3], range[4], pin[4], val[4], aux[4], lat[10], lon[10], led[3], disp[5];
+char messageBuffer[20], cmd[3], range[4]={"500"}, pin[4], val[4], aux[4], lat[10], lon[10], led[3]={"l2"}, disp[5]={"d23"};
 boolean debug = false;
 int index = 0;
-Servo servo;
 boolean inRange;
 unsigned long distance;
+unsigned long degree;
 char *dir_coor;
 #define LED 9
 
@@ -109,7 +108,6 @@ void process() {
     case 3:  aw(pin,val);               break;
     case 4:  ar(pin);                   break;
     case 90: autoReply();               break;
-    case 98: handleServo(pin,val,aux);  break;
     case 99: toggleDebug(val);          break;
     default:                            break;
   }
@@ -154,7 +152,7 @@ static void gpsdump(TinyGPS &gps)
   unsigned long age, date, time, chars = 0;
   unsigned short sentences = 0, failed = 0;
   //Hardcoded locations
-  static const float TARGET_LAT1 = 63.416287, TARGET_LON1 = 10.402851;
+  static const float TARGET_LAT1 = 63.417217, TARGET_LON1 = 10.40195;
   //static const float TARGET_LAT1 = 63.411428, TARGET_LON1 = 10.412507;
   //#define TARGET_LAT1 63.41696
   //#define TARGET_LON1 10.40298
@@ -182,14 +180,17 @@ static void gpsdump(TinyGPS &gps)
   //print_float(flat == TinyGPS::GPS_INVALID_F_ANGLE ? 0.0 : TinyGPS::course_to(flat, flon,TARGET_LAT2, TARGET_LON2), TinyGPS::GPS_INVALID_F_ANGLE, 7, 2);
   //print_str_target(flat == TinyGPS::GPS_INVALID_F_ANGLE ? "*** " : TinyGPS::cardinal(TinyGPS::course_to(flat, flon, TARGET_LAT2, TARGET_LON2)), 6);
   
+  degree = TinyGPS::course_to(flat, flon,TARGET_LAT1, TARGET_LON1);
   distance = (unsigned long)TinyGPS::distance_between(flat, flon, TARGET_LAT1, TARGET_LON1);
   dir_coor = (char *)TinyGPS::cardinal(TinyGPS::course_to(flat, flon, TARGET_LAT1, TARGET_LON1));
   inRange = in_range((unsigned long)TinyGPS::distance_between(flat, flon, TARGET_LAT1, TARGET_LON1), range);
   
+
+  
   if(inRange){ 
     if(disp[0]=='d')
     {
-      update_lcd(distance, range, TARGET_LAT1, TARGET_LON1, dir_coor);
+      update_lcd(distance, range, TARGET_LAT1, TARGET_LON1, dir_coor, flat, flon);
     }
     if(led[0]=='l')
     {
@@ -242,7 +243,7 @@ boolean in_range(unsigned long val, char range[])
   return inRange; 
 }
 
-static void update_lcd(unsigned long val, char range[],const float TARGET_LAT, const float TARGET_LON, char *dir_coor)
+static void update_lcd(unsigned long val, char range[],const float TARGET_LAT, const float TARGET_LON, char *dir_coor, float flat, float flon)
 {
   
   Serial.println(*dir_coor);
@@ -251,96 +252,193 @@ static void update_lcd(unsigned long val, char range[],const float TARGET_LAT, c
   PString(dist, sizeof(dist), val);
   char dir[5];
   PString(dir, sizeof(dir), dir_coor);
-  char lat[10];
-  PString(lat, sizeof(lat), TARGET_LAT);
-  char lon[10];
-  PString(lon, sizeof(lon), TARGET_LON);
+  char deg[5];
+  PString(deg, sizeof(deg), degree);
+  char targlat[10];
+  dtostrf(TARGET_LAT, 9, 6, targlat);
+  char targlon[10];
+  dtostrf(TARGET_LON, 9, 6, targlon);
+  char yourlat[10];
+  dtostrf(flat, 9, 6, yourlat);
+  char yourlon[10];
+  dtostrf(flon, 9, 6, yourlon);
+
   
   slcd.clear();
-  delay(500);
-  slcd.setCursor(0,0);
+  slcd.home();
   
+  // d1
   if(disp[1]=='1'){
     Serial.println("display distance");
     slcd.print("Distance :");
     slcd.print(dist);  
-    slcd.print("m");
-    
+    slcd.print("m ");
+
+    // d12
     if(disp[2]=='2')
     {
       Serial.println("display direction");
       slcd.setCursor(0, 1);
       slcd.print("Direction :");
-      slcd.print(dir);  
+      slcd.print(dir); 
+      delay(1000);
       
+      // d123
       if(disp[3]=='3')
       {
-        Serial.println("display coordinates");
-        delay(700);
-        slcd.setCursor(15, 0);
+        slcd.clear();
+        slcd.home();
+        slcd.print("Friend ");
+        slcd.setCursor(0, 1);
+        slcd.print("coordinates: ");
+    
+        delay(500);
+        slcd.clear();
+        slcd.home();
         slcd.print("lat :");
-        slcd.print(lat); 
-        slcd.setCursor(15, 1);
+        slcd.print(targlat); 
+        slcd.setCursor(0, 1);
         slcd.print("lon :");
-        slcd.print(lon);
-        for (int positionCounter = 0; positionCounter < 15; positionCounter++) {
-          // scroll one position left:
-          slcd.scrollDisplayLeft(); 
-          // wait a bit:
-          delay(150);
-        }
+        slcd.print(targlon);
+    
+        delay(1000);
+        slcd.clear();
+        slcd.home();
+        slcd.print("Your ");
+        slcd.setCursor(0, 1);
+        slcd.print("coordinates: ");
+
+        delay(500);
+        slcd.clear();
+        slcd.home();
+        slcd.print("lat :");
+        slcd.print(yourlat); 
+        slcd.setCursor(0, 1);
+        slcd.print("lon :");
+        slcd.print(yourlon);
       }
     }
-    
+  
+    // d13
     else if(disp[2]=='3')
     {
-       Serial.println("display coordinates");
-       delay(700);
-       slcd.setCursor(15, 0);
-       slcd.print("lat :");
-       slcd.print(lat); 
-       slcd.setCursor(15, 1);
-       slcd.print("lon :");
-       slcd.print(lon);
-       for (int positionCounter = 0; positionCounter < 13; positionCounter++) {
-         // scroll one position left:
-         slcd.scrollDisplayLeft(); 
-         // wait a bit:
-         delay(150);
-       }
-    }
-  }else if(disp[1]=='2'){
+        delay(1000);
+        slcd.clear();
+        slcd.home();
+        slcd.print("Friend ");
+        slcd.setCursor(0, 1);
+        slcd.print("coordinates: ");
+    
+        delay(500);
+        slcd.clear();
+        slcd.home();
+        slcd.print("lat :");
+        slcd.print(targlat); 
+        slcd.setCursor(0, 1);
+        slcd.print("lon :");
+        slcd.print(targlon);
+    
+        delay(1000);
+        slcd.clear();
+        slcd.home();
+        slcd.print("Your ");
+        slcd.setCursor(0, 1);
+        slcd.print("coordinates: ");
+
+        delay(500);
+        slcd.clear();
+        slcd.home();
+        slcd.print("lat :");
+        slcd.print(yourlat); 
+        slcd.setCursor(0, 1);
+        slcd.print("lon :");
+        slcd.print(yourlon);
+      }
+  }
+    
+
+  
+  // d2
+  else if(disp[1]=='2')
+  {
     Serial.println("display direction");
     slcd.home();
     slcd.print("Direction :");
     slcd.print(dir);  
     
+    // d23
     if(disp[2]=='3'){
       Serial.println("display coordinates");
-      delay(700);
-      slcd.setCursor(15, 0);
+      delay(1000);
+      slcd.clear();
+      slcd.home();
+      slcd.print("Friend ");
+      slcd.setCursor(0, 1);
+      slcd.print("coordinates: ");
+    
+      delay(500);
+      slcd.clear();
+      slcd.home();
       slcd.print("lat :");
-      slcd.print(lat); 
-      slcd.setCursor(15, 1);
+      slcd.print(targlat); 
+      slcd.setCursor(0, 1);
       slcd.print("lon :");
-      slcd.print(lon);
-      for (int positionCounter = 0; positionCounter < 15; positionCounter++) {
-        // scroll one position left:
-        slcd.scrollDisplayLeft(); 
-        // wait a bit:
-        delay(150);
-      }
+      slcd.print(targlon);
+    
+      delay(1000);
+      slcd.clear();
+      slcd.home();
+      slcd.print("Your ");
+      slcd.setCursor(0, 1);
+      slcd.print("coordinates: ");
+
+      delay(500);
+      slcd.clear();
+      slcd.home();
+      slcd.print("lat :");
+      slcd.print(yourlat); 
+      slcd.setCursor(0, 1);
+      slcd.print("lon :");
+      slcd.print(yourlon);
+
     }
   }
-  else if(disp[1]=='3'){
+  
+  // d3
+  else if(disp[1]=='3')
+  {
     Serial.println("display coordinates");
     slcd.home();
+    slcd.print("Friend ");
+    slcd.setCursor(0, 1);
+    slcd.print("coordinates: ");
+    
+    delay(500);
+    slcd.clear();
+    slcd.home();
     slcd.print("lat :");
-    slcd.print(lat); 
+    slcd.print(targlat); 
     slcd.setCursor(0, 1);
     slcd.print("lon :");
-    slcd.print(lon);
+    slcd.print(targlon);
+    
+    delay(1000);
+    slcd.clear();
+    slcd.home();
+    slcd.print("Your ");
+    slcd.setCursor(0, 1);
+    slcd.print("coordinates: ");
+
+    delay(500);
+    slcd.clear();
+    slcd.home();
+    slcd.print("lat :");
+    slcd.print(yourlat); 
+    slcd.setCursor(0, 1);
+    slcd.print("lon :");
+    slcd.print(yourlon);
   }
+  
   feedgps();
 }
 
@@ -632,30 +730,5 @@ int getPin(char *pin) { //Converts to A0-A5, and returns -1 on error
 }
   
 
-/*
- * Handle Servo commands
- * attach, detach, write, read, writeMicroseconds, attached
- */
-void handleServo(char *pin, char *val, char *aux) {
-  if (debug) {
-    Serial.println("ss"); }
-    
-  int p = getPin(pin);
-  if (p == -1 && debug) {
-    Serial.println("badpin"); 
-  } else {
-    Serial.println("got signal");
-    if (atoi(val) == 0) {
-      servo.detach();
-    } else if (atoi(val) == 1) {
-      servo.attach(p);
-      Serial.println("attached");
-    } else if (atoi(val) == 2) {
-      Serial.println("writing to servo");
-      Serial.println(atoi(aux));
-      servo.write(atoi(aux));
-    }  
-  }
-}
 
 
