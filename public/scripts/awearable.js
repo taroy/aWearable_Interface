@@ -70,8 +70,8 @@ define(function()
         console.log("ButtonSend canceled:Choose at least one component");
        
         $('#e2-exampleValidate .alert').addClass('hide');
-        $('#e2-exampleValidate .alert-info').removeClass('hide');
-        $('#e2-exampleValidate .alert-info').html('Choose at least one part for your application before uploading'); 
+        $('#e2-exampleValidate .alert-error').removeClass('hide');
+        $('#e2-exampleValidate .alert-error').html('Go back to step 1a, and choose at least one part to drag to its respective box'); 
         return;
       }
      //Check that display options are set
@@ -79,8 +79,8 @@ define(function()
         console.log("ButtonSend canceled:Choose display options");
         
         $('#e2-exampleValidate .alert').addClass('hide');
-        $('#e2-exampleValidate .alert-info').removeClass('hide');
-        $('#e2-exampleValidate .alert-info').html('Choose display options');
+        $('#e2-exampleValidate .alert-error').removeClass('hide');
+        $('#e2-exampleValidate .alert-error').html('Go back to step 1b, and set display options');
         return;
       }
       
@@ -89,8 +89,8 @@ define(function()
         console.log("ButtonSend canceled: Choose light options");
        
         $('#e2-exampleValidate .alert').addClass('hide');
-        $('#e2-exampleValidate .alert-info').removeClass('hide');
-        $('#e2-exampleValidate .alert-info').html('Choose light options');
+        $('#e2-exampleValidate .alert-error').removeClass('hide');
+        $('#e2-exampleValidate .alert-error').html('Go back to step 1b, and set light options');
         return;
       }
       
@@ -99,8 +99,8 @@ define(function()
         console.log("Choose range");
        
         $('#e2-exampleValidate .alert').addClass('hide');
-        $('#e2-exampleValidate .alert-info').removeClass('hide');
-        $('#e2-exampleValidate .alert-info').html('Set range');
+        $('#e2-exampleValidate .alert-error').removeClass('hide');
+        $('#e2-exampleValidate .alert-error').html('Go back to step 3 and set range');
         return;  
       }
       

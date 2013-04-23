@@ -205,17 +205,7 @@ section#groupContent
           </br>
           </div>
     
-        script
-          function doneCustom(numericIdSource, numericIdTarget ) {
-            var r=confirm("Make sure you have plugged the parts correct before clicking 'OK'!");
-            if (r==true) {
-            
-                document.getElementById("progress_image3").src = "images/prog_green.gif";
-            }
-            else {
-              document.getElementById("progress_image3").src = "images/prog_long_grey.gif";
-            }
-          }
+       
   
         <!-- Dragn drop-->
         script
@@ -350,7 +340,7 @@ section#groupContent
         .page-header  
           h1 4. Connect your aWearable to the computer
             small<br>Connect the USB cable to the aWearable and the computer, and click the button</b></p>
-          <p><br><b><i>NB! Make sure you have plugged the parts correct before clicking the button!</b></i></p>
+          
         p
           a.btn(href="#")#buttonConnect
               i.icon-refresh
@@ -373,6 +363,7 @@ section#groupContent
           |  Upload Application
           <br>
         .alert.alert-info Click the button to create the application!
+        .alert.hide.alert-error 
         .alert.hide.alert-success Hooray, your aWearable application is now ready for use!
         <br>
 
