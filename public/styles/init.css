@@ -242,3 +242,4 @@ input[type="submit"]{display:inline-block;padding:4px 10px 4px;margin-bottom:0;f
 #plug_parts li{line-height:18px;margin-bottom:12px;color:#525252;font-size:13px;}
 #plug_parts ul{list-style:circle outside;}
 .rowLineSmall{border-bottom:solid #D3D3D3 1px;padding:0;width:205px;}
+.fb-text-name #fb-text{font-size:13px;color:#525252;font-weight:bold;}

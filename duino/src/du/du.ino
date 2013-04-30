@@ -21,7 +21,7 @@ static void print_str(const char *str, int len);
 static void print_str_target(const char *str, int len);
 
 
-char messageBuffer[20], cmd[3], range[4]={"500"}, pin[4], val[4], aux[4], lat[10], lon[10], led[3]={"l2"}, disp[5]={"d23"};
+char messageBuffer[20], cmd[3], range[4], pin[4], val[4], aux[4], lat[10], lon[10], led[3], disp[5];
 boolean debug = false;
 int index = 0;
 boolean inRange;
@@ -152,8 +152,8 @@ static void gpsdump(TinyGPS &gps)
   unsigned long age, date, time, chars = 0;
   unsigned short sentences = 0, failed = 0;
   //Hardcoded locations
-  static const float TARGET_LAT1 = 63.417217, TARGET_LON1 = 10.40195;
-  //static const float TARGET_LAT1 = 63.411428, TARGET_LON1 = 10.412507;
+  //static const float TARGET_LAT1 = 63.417217, TARGET_LON1 = 10.40195;
+  static const float TARGET_LAT1 = 63.411428, TARGET_LON1 = 10.412507;
   //#define TARGET_LAT1 63.41696
   //#define TARGET_LON1 10.40298
 

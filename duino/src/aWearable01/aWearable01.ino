@@ -1,6 +1,5 @@
 #include <SoftwareSerial.h>
 #include <TinyGPS.h>
-//#include <stdlib.h> 
 
 TinyGPS gps;
 SoftwareSerial nss(2, 3);
