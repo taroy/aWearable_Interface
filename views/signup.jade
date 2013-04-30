@@ -18,7 +18,7 @@ script
         var z=document.forms["signup"]["awearableID"].value;
             if (z==null || z=="")
               {
-              alert("aWearableID must be filled out");
+              alert("aWearableID must be filled out before creating aWearable account");
               return false;
             }
     }
@@ -41,21 +41,24 @@ header.jumbotron.subhead#overview2
        .page-header
     
             h1 Sign up
-                small <br>Sign up with your facebook account and the aWearable ID
-            <br>
+                small <br>Enter your aWearable ID and log in to your facebook account
+         
                 
             <form name="signup" action="/" method="get" onsubmit="return validateForm()">
-            <div id="fb-text"></div>
+            <p><b><br>Enter aWearable ID:<font color="red" size="4px">*</font></b>
+            <p><i>The aWearable ID can be found on the aWearable device</i></p></p> <input type="text" name="awearableID"><br>
+            
+            <br>
+            <div class="fb-text-name">
+            <div id="fb-text"></div></div>
             <div id="fb-login"></div>
             <div id="fb-login-img">
             
-            <p><b>Use facebook to create an account:</b></p>
+            <p><b>Use facebook to create an account:<font color="red" size="4px">*</font></b></p>
 
             <img type="button" onclick="login() " id="facebook-login" src="images/facebook-login.png"; return true;/>
             </div>
   
-            <p><b><br>aWearable ID:</b>
-            <p><i>The aWearable ID can be found on the aWearable device</i></p></p> <input type="text" name="awearableID"><br>
             <br>
             <input type="submit" value="Save account">
             <br>
