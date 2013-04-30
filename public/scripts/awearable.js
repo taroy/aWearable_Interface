@@ -71,7 +71,7 @@ define(function()
        
         $('#e2-exampleValidate .alert').addClass('hide');
         $('#e2-exampleValidate .alert-error').removeClass('hide');
-        $('#e2-exampleValidate .alert-error').html('Go back to step 1a, and choose at least one part to drag to its respective box'); 
+        $('#e2-exampleValidate .alert-error').html('Go back to step 3a, and choose at least one part to drag to its respective box'); 
         return;
       }
      //Check that display options are set
@@ -80,7 +80,7 @@ define(function()
         
         $('#e2-exampleValidate .alert').addClass('hide');
         $('#e2-exampleValidate .alert-error').removeClass('hide');
-        $('#e2-exampleValidate .alert-error').html('Go back to step 1b, and set display options');
+        $('#e2-exampleValidate .alert-error').html('Go back to step 13b, and set display options');
         return;
       }
       
@@ -90,7 +90,7 @@ define(function()
        
         $('#e2-exampleValidate .alert').addClass('hide');
         $('#e2-exampleValidate .alert-error').removeClass('hide');
-        $('#e2-exampleValidate .alert-error').html('Go back to step 1b, and set light options');
+        $('#e2-exampleValidate .alert-error').html('Go back to step 3b, and set light options');
         return;
       }
       
@@ -100,7 +100,7 @@ define(function()
        
         $('#e2-exampleValidate .alert').addClass('hide');
         $('#e2-exampleValidate .alert-error').removeClass('hide');
-        $('#e2-exampleValidate .alert-error').html('Go back to step 3 and set range');
+        $('#e2-exampleValidate .alert-error').html('Go back to step 5 and set range');
         return;  
       }
       
